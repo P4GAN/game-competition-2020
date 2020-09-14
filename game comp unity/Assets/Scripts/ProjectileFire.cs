@@ -15,7 +15,7 @@ public class ProjectileFire : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetKeyDown(KeyCode.P)) {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float angle = Mathf.Atan2((mousePos.y - transform.position.y), (mousePos.x - transform.position.x)) * Mathf.Rad2Deg;
             Vector2 direction = (mousePos - transform.position).normalized;
