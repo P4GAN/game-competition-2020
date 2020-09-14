@@ -23,9 +23,11 @@ public class ExplosionControl : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision)
     {
         Rigidbody2D rb2d = collision.GetComponent<Rigidbody2D>();
-        Vector2 direction = (transform.position - collision.transform.position).normalized;
-        float distance = (transform.position - collision.transform.position).magnitude;
-        rb2d.AddForce(direction * explosionForce * distance);
+        if (rb2d) {
+            Vector2 direction = (transform.position - collision.transform.position).normalized;
+            float distance = (transform.position - collision.transform.position).magnitude;
+            rb2d.AddForce(direction * explosionForce * distance);
+        }
 
     }
 }

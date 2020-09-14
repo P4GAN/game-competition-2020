@@ -140,7 +140,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 0
-  explosion: {fileID: 0}
+  explosion: {fileID: 3389446590304753102, guid: 1b6528d5f93e5443a8a26cfce3965beb,
+    type: 3}
   enemyProjectile: 0
 --- !u!50 &-3571662604864995426
 Rigidbody2D:

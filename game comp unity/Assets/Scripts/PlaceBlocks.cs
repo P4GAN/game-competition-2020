@@ -29,11 +29,15 @@ public class PlaceBlocks : MonoBehaviour
         blocks = new Dictionary<Vector2, GameObject>{
             [startingBlockPos] = startingBlock
         };
-
         for (int x=-20; x<20; x++) {
-            for (int y=0; y>-10; y--) {
+            blockPos = new Vector2 (x - 0.5f, -0.5f);
+            blockInstance = Instantiate(inventory[0], blockPos, Quaternion.identity);
+            blocks.Add(blockPos, blockInstance);
+        }
+        for (int x=-20; x<20; x++) {
+            for (int y=-1; y>-10; y--) {
                 blockPos = new Vector2 (x - 0.5f, y - 0.5f);
-                int index = random.Next(0, inventory.Count);
+                int index = random.Next(1, inventory.Count);
                 blockInstance = Instantiate(inventory[index], blockPos, Quaternion.identity);
                 blocks.Add(blockPos, blockInstance);
             }
