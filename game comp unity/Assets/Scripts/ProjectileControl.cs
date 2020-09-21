@@ -10,7 +10,7 @@ public class ProjectileControl : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (!col.CompareTag("Player") && !enemyProjectile)
+        if (!col.CompareTag("Player") && !col.CompareTag("Explosion") && !enemyProjectile)
         {
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);

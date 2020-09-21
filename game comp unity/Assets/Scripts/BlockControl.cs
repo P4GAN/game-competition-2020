@@ -2,51 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlaceBlocks : MonoBehaviour
+public class BlockControl : MonoBehaviour
 {
 
-    public GameObject block;
+
+    public Dictionary<Vector2, GameObject> blocks;
+    public GameObject startingBlock;
     public GameObject blockInstance;
-    public GameObject player;
+    public System.Random random = new System.Random();
+
+    public List<GameObject> blockList;
     public Vector2 mousePos;
 
     public Vector2 blockPos;
-    public List<GameObject> inventory;
-    public int inventoryIndex;
-
-    public Dictionary<Vector2, GameObject> blocks;
-
-    public GameObject startingBlock;
-    public float timer = 0;
-    public float breakBlockTime = 2.5f;
-    public float playerReach = 5f;
-    public System.Random random = new System.Random();
+    
 
     // Start is called before the first frame update
-    void Start()
-    {
+
+
+    // Update is called once per frame
+
+
+    public void PlaceBlock(int itemID, Vector2 position ) {
+        position = new Vector2 (Mathf.Ceil(position.x) - 0.5f, Mathf.Ceil(position.y) - 0.5f);
+        if (!blocks.ContainsKey(position)) {
+            blockInstance = Instantiate(blockList[itemID], position, Quaternion.identity);
+            blocks.Add(position, blockInstance);    
+        }
+    }
+    public void RemoveBlock(Vector2 position ) {
+        position = new Vector2 (Mathf.Ceil(position.x) - 0.5f, Mathf.Ceil(position.y) - 0.5f);
+        if (blocks.ContainsKey(position)) {
+            Destroy(blocks[position]);
+            blocks.Remove(position);
+        }
+    }
+
+    void Start() {
+
         var startingBlockPos = new Vector2(startingBlock.transform.position.x, startingBlock.transform.position.y);
         blocks = new Dictionary<Vector2, GameObject>{
             [startingBlockPos] = startingBlock
         };
         for (int x=-20; x<20; x++) {
             blockPos = new Vector2 (x - 0.5f, -0.5f);
-            blockInstance = Instantiate(inventory[0], blockPos, Quaternion.identity);
-            blocks.Add(blockPos, blockInstance);
+            PlaceBlock(0, blockPos);
         }
         for (int x=-20; x<20; x++) {
             for (int y=-1; y>-10; y--) {
                 blockPos = new Vector2 (x - 0.5f, y - 0.5f);
-                int index = random.Next(1, inventory.Count);
-                blockInstance = Instantiate(inventory[index], blockPos, Quaternion.identity);
-                blocks.Add(blockPos, blockInstance);
+                int index = random.Next(1, 3);
+                PlaceBlock(index, blockPos);
             }
         }
 
     }
-
-    // Update is called once per frame
-    void Update()
+}
+    /*void Update()
     {
 
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -61,6 +73,7 @@ public class PlaceBlocks : MonoBehaviour
 
                 //if (distance.magnitude < playerReach) {
                     //timer = 0;
+                    inventoryScript.RemoveItem(inventoryIndex, 1);
                     Destroy(blocks[blockPos]);
                     blocks.Remove(blockPos);
                 //}
@@ -73,6 +86,7 @@ public class PlaceBlocks : MonoBehaviour
 
         
             if (!blocks.ContainsKey(blockPos)) {
+                inventoryScript.AddItem(inventoryIndex, 1);
                 blockInstance = Instantiate(inventory[inventoryIndex], blockPos, Quaternion.identity);
                 blocks.Add(blockPos, blockInstance);    
             }
@@ -80,16 +94,16 @@ public class PlaceBlocks : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            inventoryIndex = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
             inventoryIndex = 1;
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
             inventoryIndex = 2;
         }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            inventoryIndex = 3;
+        }
 
-        /*if (Input.GetMouseButtonDown(1)) {
+        if (Input.GetMouseButtonDown(1)) {
 
             else {
                 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -111,7 +125,7 @@ public class PlaceBlocks : MonoBehaviour
                     blocks.Add(blockPos, blockInstance);
                 }
             }
-        }*/
+        }
         
     }
-}
+}*/

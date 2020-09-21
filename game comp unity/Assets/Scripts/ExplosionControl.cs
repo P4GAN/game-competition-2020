@@ -26,7 +26,7 @@ public class ExplosionControl : MonoBehaviour {
         if (rb2d) {
             Vector2 direction = (transform.position - collision.transform.position).normalized;
             float distance = (transform.position - collision.transform.position).magnitude;
-            rb2d.AddForce(direction * explosionForce * distance);
+            rb2d.AddForce(-direction * explosionForce * distance);
         }
 
     }
