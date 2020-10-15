@@ -7,7 +7,7 @@ public class ProjectileFire : MonoBehaviour {
     public GameObject projectile;
     public GameObject projectileInstance;
     public Vector3 mousePos;
-    public float projectileSpeed = 1000f;
+    public float projectileSpeed = 500f;
 
 	// Use this for initialization
 	void Start () {

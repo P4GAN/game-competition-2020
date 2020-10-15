@@ -564,14 +564,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66f222e2de944fd5a10c4b41b36b267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingBlock: {fileID: 834726938}
-  blockInstance: {fileID: 0}
+  blockInstance: {fileID: 834726938}
   blockList:
   - {fileID: 8479467872115296855, guid: eeaa490c3cdda47eca4894224db434db, type: 3}
   - {fileID: 8191838500510243364, guid: 92567e3f2dcc04db28e3ecdb8af726aa, type: 3}
   - {fileID: 124369526511539819, guid: 7da12b6707d784363ace1bc0764a79f3, type: 3}
   mousePos: {x: 0, y: 0}
-  blockPos: {x: 0, y: 0}
+  inventoryIndex: 1
 --- !u!4 &1367509937
 Transform:
   m_ObjectHideFlags: 0
@@ -601,12 +600,12 @@ PrefabInstance:
     - target: {fileID: 6176760914987986408, guid: eeaa490c3cdda47eca4894224db434db,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6176760914987986408, guid: eeaa490c3cdda47eca4894224db434db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6176760914987986408, guid: eeaa490c3cdda47eca4894224db434db,
         type: 3}

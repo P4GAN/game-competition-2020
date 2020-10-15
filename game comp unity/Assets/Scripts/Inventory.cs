@@ -6,23 +6,21 @@ public class Inventory : MonoBehaviour
 {
 
     public int inventoryIndex;
-    public BlockControl blockControlScript;
-    public GameObject blockControlObject;
+    public GameObject blockControlGameObject;
     public List<int> InventoryItems;
     public List<int> InventoryAmounts;
     public GameObject blockInstance;
-    public GameObject player;
     public Vector2 mousePos;
     public Vector2 blockPos;
     public float timer = 0;
-    public float breakBlockTime = 2.5f;
-    public float playerReach = 5f;
+    public BlockControl blockControlScript;
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        blockControlScript = blockControlObject.GetComponent<BlockControl>();
+        blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
         for (int i=0; i<20; i++) {
             InventoryItems.Add(0);
             InventoryAmounts.Add(0);
@@ -34,41 +32,45 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        blockPos = new Vector2 (Mathf.Ceil(mousePos.x) - 0.5f, Mathf.Ceil(mousePos.y) - 0.5f);
         if (Input.GetMouseButtonDown(0)) {
-            blockControlScript.PlaceBlock(inventoryIndex, blockPos);
-        }
-        if (Input.GetMouseButtonDown(1)) {
-            blockControlScript.RemoveBlock(blockPos);
+            AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
+            GameObject block = asteroidBlockControlScript.RemoveBlock(mousePos);
+            AddItem(block.GetComponent<BlockData>().blockID, 1);
 
         }
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            inventoryIndex = 1;
+        if (Input.GetMouseButtonDown(1)) {
+            AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
+            if (RemoveItem(inventoryIndex, 1)) {
+
+                asteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true);
+            }
+
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            inventoryIndex = 2;
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) {
-            inventoryIndex = 3;
-        }
+        //if (Input.mouseScrollDelta.y > 0) {
+        if (Input.GetKeyDown(KeyCode.M)) {
+            inventoryIndex += 1;
+        } 
+        if (Input.GetKeyDown(KeyCode.N)) {
+            inventoryIndex -= 1;
+        } 
+                
 
     }
 
     public void AddItem(int itemID, int amount) {
-        int index = InventoryItems.FindIndex(x => x == itemID);
+        int index = InventoryItems.IndexOf(itemID);
         if (index != -1) {
             InventoryAmounts[index] += amount;
         }
         else {
-            index = InventoryItems.FindIndex(x => x == 0);
+            index = InventoryItems.IndexOf(0);
             InventoryItems[index] = itemID;
             InventoryAmounts[index] += amount;
         }
 
     }
 
-    public bool RemoveItem(int itemID, int amount) {
-        int index = InventoryItems.FindIndex(x => x == itemID);
+    public bool RemoveItem(int index, int amount) {
         if (index != -1) {
             if (amount <= InventoryAmounts[index]) {
                 InventoryAmounts[index] -= amount;

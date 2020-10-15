@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ExplosionControl : MonoBehaviour {
 
-    public float explosionForce = 100f;
+    public float explosionForce = 1f;
     public float timer = 0.0f;
 
 	// Use this for initialization
@@ -26,7 +26,8 @@ public class ExplosionControl : MonoBehaviour {
         if (rb2d) {
             Vector2 direction = (transform.position - collision.transform.position).normalized;
             float distance = (transform.position - collision.transform.position).magnitude;
-            rb2d.AddForce(-direction * explosionForce * distance);
+            rb2d.AddForce((-direction * explosionForce) / Mathf.Pow(distance, 2), ForceMode2D.Impulse);
+            Debug.Log((-direction * explosionForce) / Mathf.Pow(distance, 2));
         }
 
     }
