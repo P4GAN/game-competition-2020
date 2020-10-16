@@ -258,32 +258,9 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
         type: 3}
-      propertyPath: blockList.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: blockList.Array.data[0]
+      propertyPath: selectedAsteroid
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: blockList.Array.data[1]
-      value: 
-      objectReference: {fileID: 8479467872115296855, guid: eeaa490c3cdda47eca4894224db434db,
-        type: 3}
-    - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: blockList.Array.data[2]
-      value: 
-      objectReference: {fileID: 8191838500510243364, guid: 92567e3f2dcc04db28e3ecdb8af726aa,
-        type: 3}
-    - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: blockList.Array.data[3]
-      value: 
-      objectReference: {fileID: 124369526511539819, guid: 7da12b6707d784363ace1bc0764a79f3,
-        type: 3}
     - target: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
         type: 3}
       propertyPath: m_Name

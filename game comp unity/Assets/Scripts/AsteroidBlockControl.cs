@@ -63,7 +63,7 @@ public class AsteroidBlockControl : MonoBehaviour
     public GameObject PlaceBlock(int itemID, Vector2 position, bool adjacentPosition) {
         Vector2 gridPosition = gamePositionToGridPosition(position);
         blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
-        if (!asteroidBlocks.ContainsKey(gridPosition)) {
+        if (!IsOccupied(position)) {
             if (adjacentPosition) {
                 if (asteroidBlocks.ContainsKey(new Vector2(gridPosition.x + 1, gridPosition.y)) ||
                     asteroidBlocks.ContainsKey(new Vector2(gridPosition.x - 1, gridPosition.y)) ||
@@ -87,7 +87,7 @@ public class AsteroidBlockControl : MonoBehaviour
     }
     public GameObject RemoveBlock(Vector2 position ) {
         position = gamePositionToGridPosition(position);
-        if (asteroidBlocks.ContainsKey(position)) {
+        if (IsOccupied(position)) {
             GameObject block = asteroidBlocks[position];
             Destroy(asteroidBlocks[position]);
             asteroidBlocks.Remove(position);

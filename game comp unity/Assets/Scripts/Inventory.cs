@@ -40,9 +40,10 @@ public class Inventory : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1)) {
             AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            if (RemoveItem(inventoryIndex, 1)) {
-
-                asteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true);
+            if (!asteroidBlockControlScript.IsOccupied(mousePos)) {
+                if (RemoveItem(inventoryIndex, 1)) {
+                    asteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true);
+                }
             }
 
         }
