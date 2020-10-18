@@ -97,7 +97,7 @@ public class AsteroidBlockControl : MonoBehaviour
     }
 
     void OnMouseOver() {
-
+        Debug.Log("lmao");
         if (Input.GetMouseButtonDown(0) && blockControlScript.selectedAsteroid != gameObject) {
             Debug.Log(9);
             blockControlScript.selectedAsteroid = gameObject;

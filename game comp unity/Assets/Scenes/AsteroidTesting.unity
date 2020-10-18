@@ -121,6 +121,81 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &874970064
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_Name
+      value: BlockControlGameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a1fe97ccd6cf742fdbde618c196e8679, type: 3}
+--- !u!1 &874970065 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
+    type: 3}
+  m_PrefabInstance: {fileID: 874970064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1368192487
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,80 +324,6 @@ Transform:
   m_Father: {fileID: 6847803898079087823}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &2029801627
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: selectedAsteroid
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_Name
-      value: BlockControlGameObject
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1953158202767549294, guid: a1fe97ccd6cf742fdbde618c196e8679,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a1fe97ccd6cf742fdbde618c196e8679, type: 3}
 --- !u!1001 &6847803898079087817
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,8 +454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryIndex: 0
-  blockControlGameObject: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
-    type: 3}
+  blockControlGameObject: {fileID: 874970065}
   InventoryItems: 
   InventoryAmounts: 
   blockInstance: {fileID: 0}

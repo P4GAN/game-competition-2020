@@ -35,7 +35,9 @@ public class Inventory : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
             GameObject block = asteroidBlockControlScript.RemoveBlock(mousePos);
-            AddItem(block.GetComponent<BlockData>().blockID, 1);
+            if (block) {
+                AddItem(block.GetComponent<BlockData>().blockID, 1);
+            }
 
         }
         if (Input.GetMouseButtonDown(1)) {
