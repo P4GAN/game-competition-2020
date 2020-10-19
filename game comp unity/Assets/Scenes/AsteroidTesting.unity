@@ -128,6 +128,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: blockList.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -9054608079305449309, guid: a1fe97ccd6cf742fdbde618c196e8679,
+        type: 3}
+      propertyPath: blockList.Array.data[4]
+      value: 
+      objectReference: {fileID: 8405985398693010183, guid: 167bcffab40db4f9b8e5cd59cd52db86,
+        type: 3}
     - target: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
         type: 3}
       propertyPath: m_Name

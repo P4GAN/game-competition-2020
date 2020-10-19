@@ -55,13 +55,19 @@ public class ProcedualGeneration : MonoBehaviour
                 noise *= scale;
                 noise += modifier;
 
+                float distance = Mathf.Sqrt(Mathf.Pow(x - centerX, 2) + Mathf.Pow(y - centerY, 2));
 
-
-                if (noise - Mathf.Sqrt(Mathf.Pow(x - centerX, 2) + Mathf.Pow(y - centerY, 2)) > 0) {
-                    mass += 1;
-
+                if (noise - distance > 0) {
                     Vector2 blockPos = new Vector2 (x, y);
-                    GameObject placedBlock = asteroidBlockControlScript.PlaceBlock(3, blockPos, false);
+                    if (noise - (3 * distance) > 0 ) {
+                        mass += 1;
+
+                        GameObject placedBlock = asteroidBlockControlScript.PlaceBlock(4, blockPos, false);
+                    }
+                    else {
+                        mass += 1;
+                        GameObject placedBlock = asteroidBlockControlScript.PlaceBlock(3, blockPos, false);
+                    }
                     
                 }
             }

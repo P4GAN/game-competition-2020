@@ -7,19 +7,18 @@ public class AsteroidBlockControl : MonoBehaviour
 
     public Dictionary<Vector2, GameObject> asteroidBlocks = new Dictionary<Vector2, GameObject>{};
     //stores grid positions
-    public GameObject blockControlGameObject;
     public BlockControl blockControlScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
+        blockControlScript = GameObject.Find("BlockControlGameObject").GetComponent<BlockControl>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     Vector2 gamePositionToGridPosition(Vector2 gamePosition) {
@@ -55,14 +54,16 @@ public class AsteroidBlockControl : MonoBehaviour
 
     public bool IsOccupied(Vector2 position) {
         Vector2 gridPosition = gamePositionToGridPosition(position);
-        if (asteroidBlocks.ContainsKey(gridPosition)) {
-            return true;
+        foreach(Vector2 key in asteroidBlocks.Keys) {
+            if (key == gridPosition) {
+                return true;
+            }
         }
         return false;
     }
     public GameObject PlaceBlock(int itemID, Vector2 position, bool adjacentPosition) {
         Vector2 gridPosition = gamePositionToGridPosition(position);
-        blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
+        blockControlScript = GameObject.Find("BlockControlGameObject").GetComponent<BlockControl>();
         if (!IsOccupied(position)) {
             if (adjacentPosition) {
                 if (asteroidBlocks.ContainsKey(new Vector2(gridPosition.x + 1, gridPosition.y)) ||
@@ -86,18 +87,17 @@ public class AsteroidBlockControl : MonoBehaviour
         return null;
     }
     public GameObject RemoveBlock(Vector2 position ) {
-        position = gamePositionToGridPosition(position);
+        Vector2 gridPosition = gamePositionToGridPosition(position);
         if (IsOccupied(position)) {
-            GameObject block = asteroidBlocks[position];
-            Destroy(asteroidBlocks[position]);
-            asteroidBlocks.Remove(position);
+            GameObject block = asteroidBlocks[gridPosition];
+            Destroy(asteroidBlocks[gridPosition]);
+            asteroidBlocks.Remove(gridPosition);
             return block;
         }
         return null;
     }
 
     void OnMouseOver() {
-        Debug.Log("lmao");
         if (Input.GetMouseButtonDown(0) && blockControlScript.selectedAsteroid != gameObject) {
             Debug.Log(9);
             blockControlScript.selectedAsteroid = gameObject;
