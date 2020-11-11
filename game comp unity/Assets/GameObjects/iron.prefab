@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8340480215341551933}
   - component: {fileID: 6917214700715484484}
+  - component: {fileID: -7243739364742559977}
   m_Layer: 0
-  m_Name: download
+  m_Name: iron
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,3 +82,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-7243739364742559977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8405985398693010183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4ebccd8adac4287a99828d2f305b97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockID: 4

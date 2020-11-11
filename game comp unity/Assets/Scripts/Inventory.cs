@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class Inventory : MonoBehaviour
 {
@@ -14,6 +16,9 @@ public class Inventory : MonoBehaviour
     public Vector2 blockPos;
     public float timer = 0;
     public BlockControl blockControlScript;
+    public List<GameObject> HotbarIconGameObjects;
+    public List<Image> HotbarIcons;
+    public List<Text> HotbarNumbers;
 
 
 
@@ -24,7 +29,11 @@ public class Inventory : MonoBehaviour
         for (int i=0; i<20; i++) {
             InventoryItems.Add(0);
             InventoryAmounts.Add(0);
-
+        }
+        for (int i=0; i<HotbarIconGameObjects.Count; i++) {
+            HotbarIconGameObjects[i].transform.localPosition = new Vector3((i * 100) - 400, -300, 0);
+            HotbarIcons.Add(HotbarIconGameObjects[i].GetComponent<Image>());
+            HotbarNumbers[i].transform.localPosition = new Vector3((i * 100) - 400, -300, 0) + new Vector3(30, -30, 0);
         }
     }
 
@@ -71,6 +80,7 @@ public class Inventory : MonoBehaviour
             InventoryItems[index] = itemID;
             InventoryAmounts[index] += amount;
         }
+        updateHotbarIcons();
 
     }
 
@@ -78,6 +88,7 @@ public class Inventory : MonoBehaviour
         if (index != -1) {
             if (amount <= InventoryAmounts[index]) {
                 InventoryAmounts[index] -= amount;
+                updateHotbarIcons();
                 return true;
             }
             else {
@@ -86,6 +97,13 @@ public class Inventory : MonoBehaviour
         }
         else {
             return false;
+        }
+    }
+
+    public void updateHotbarIcons() {
+        for (int i=0; i<9; i++) {
+            HotbarIcons[i].sprite = blockControlScript.blockSprites[InventoryItems[i]];
+            HotbarNumbers[i].text = InventoryAmounts[i].ToString();
         }
     }
 }

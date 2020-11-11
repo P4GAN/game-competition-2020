@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BlockControl : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class BlockControl : MonoBehaviour
 
     public GameObject selectedAsteroid;
     public List<GameObject> blockList;
+    public List<Sprite> blockSprites;
     void Start()
     {
         
