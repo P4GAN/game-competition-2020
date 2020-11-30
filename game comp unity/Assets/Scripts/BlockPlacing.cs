@@ -11,7 +11,7 @@ public class BlockPlacing : MonoBehaviour
     };
     public GameObject blockInstance;
 
-    public List<GameObject> blockList;
+    public List<GameObject> itemList;
     public Vector2 mousePos;
     public int inventoryIndex = 1;
 

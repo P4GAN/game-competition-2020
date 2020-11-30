@@ -61,8 +61,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedAsteroid: {fileID: 0}
-  blockList:
+  itemList:
   - {fileID: 0}
   - {fileID: 8479467872115296855, guid: eeaa490c3cdda47eca4894224db434db, type: 3}
   - {fileID: 8191838500510243364, guid: 92567e3f2dcc04db28e3ecdb8af726aa, type: 3}
   - {fileID: 124369526511539819, guid: 7da12b6707d784363ace1bc0764a79f3, type: 3}
+  - {fileID: 8405985398693010183, guid: 167bcffab40db4f9b8e5cd59cd52db86, type: 3}
+  itemIconList:
+  - {fileID: 2570182255797173556, guid: bcf057de7f0e5482f8be90dfe42d15e6, type: 3}
+  - {fileID: 2570182255797173556, guid: 6e708e8cb8a5f470fb366978c5247438, type: 3}
+  - {fileID: 2570182255797173556, guid: e43e302ce34c045ee8135b686cd8249b, type: 3}
+  - {fileID: 2570182255797173556, guid: be3f194d1090b4cf89756ccfcfec4b15, type: 3}
+  - {fileID: 2570182255797173556, guid: 8ed0c4552a1c746b5b9a75ee940d933e, type: 3}

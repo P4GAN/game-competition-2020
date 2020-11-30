@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7585894586163627525}
   - component: {fileID: 1175323148912233980}
   m_Layer: 0
-  m_Name: dirt
+  m_Name: 02dirt
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,4 +121,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4ebccd8adac4287a99828d2f305b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockID: 2
+  itemID: 2

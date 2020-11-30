@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 
 public class Inventory : MonoBehaviour
@@ -14,27 +13,21 @@ public class Inventory : MonoBehaviour
     public GameObject blockInstance;
     public Vector2 mousePos;
     public Vector2 blockPos;
-    public float timer = 0;
+    
     public BlockControl blockControlScript;
-    public List<GameObject> HotbarIconGameObjects;
-    public List<Image> HotbarIcons;
-    public List<Text> HotbarNumbers;
-
-
+    public InventoryUI InventoryUIScript;
 
     // Start is called before the first frame update
     void Start()
     {
         blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
+        InventoryUIScript = GetComponent<InventoryUI>();
+
         for (int i=0; i<20; i++) {
             InventoryItems.Add(0);
             InventoryAmounts.Add(0);
         }
-        for (int i=0; i<HotbarIconGameObjects.Count; i++) {
-            HotbarIconGameObjects[i].transform.localPosition = new Vector3((i * 100) - 400, -300, 0);
-            HotbarIcons.Add(HotbarIconGameObjects[i].GetComponent<Image>());
-            HotbarNumbers[i].transform.localPosition = new Vector3((i * 100) - 400, -300, 0) + new Vector3(30, -30, 0);
-        }
+
     }
 
     // Update is called once per frame
@@ -44,9 +37,8 @@ public class Inventory : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
             GameObject block = asteroidBlockControlScript.RemoveBlock(mousePos);
-            Debug.Log(block);
             if (block) {
-                AddItem(block.GetComponent<BlockData>().blockID, 1);
+                AddItem(block.GetComponent<ItemData>().itemID, 1);
             }
 
         }
@@ -80,7 +72,8 @@ public class Inventory : MonoBehaviour
             InventoryItems[index] = itemID;
             InventoryAmounts[index] += amount;
         }
-        updateHotbarIcons();
+        InventoryUIScript = GetComponent<InventoryUI>();
+        InventoryUIScript.updateInventoryUI();
 
     }
 
@@ -88,7 +81,8 @@ public class Inventory : MonoBehaviour
         if (index != -1) {
             if (amount <= InventoryAmounts[index]) {
                 InventoryAmounts[index] -= amount;
-                updateHotbarIcons();
+                InventoryUIScript = GetComponent<InventoryUI>();
+                InventoryUIScript.updateInventoryUI();
                 return true;
             }
             else {
@@ -100,10 +94,4 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void updateHotbarIcons() {
-        for (int i=0; i<9; i++) {
-            HotbarIcons[i].sprite = blockControlScript.blockSprites[InventoryItems[i]];
-            HotbarNumbers[i].text = InventoryAmounts[i].ToString();
-        }
-    }
 }

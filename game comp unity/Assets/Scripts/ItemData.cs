@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BlockData : MonoBehaviour
+public class ItemData : MonoBehaviour
 {
     // Start is called before the first frame update
-    public int blockID;
+    public int itemID;
 
     
 }

@@ -8,8 +8,8 @@ public class BlockControl : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject selectedAsteroid;
-    public List<GameObject> blockList;
-    public List<Sprite> blockSprites;
+    public List<GameObject> itemList;
+    public List<GameObject> itemIconList;
     void Start()
     {
         

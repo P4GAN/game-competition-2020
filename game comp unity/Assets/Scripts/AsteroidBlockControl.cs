@@ -70,7 +70,7 @@ public class AsteroidBlockControl : MonoBehaviour
                     asteroidBlocks.ContainsKey(new Vector2(gridPosition.x - 1, gridPosition.y)) ||
                     asteroidBlocks.ContainsKey(new Vector2(gridPosition.x, gridPosition.y + 1)) ||
                     asteroidBlocks.ContainsKey(new Vector2(gridPosition.x, gridPosition.y - 1))) {
-                        GameObject blockInstance = Instantiate(blockControlScript.blockList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
+                        GameObject blockInstance = Instantiate(blockControlScript.itemList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
                         asteroidBlocks.Add(gridPosition, blockInstance);    
                         blockInstance.transform.parent = gameObject.transform;
                         return blockInstance;
@@ -78,7 +78,7 @@ public class AsteroidBlockControl : MonoBehaviour
                 else {return null;}
             }
             if (!adjacentPosition) {
-                GameObject blockInstance = Instantiate(blockControlScript.blockList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
+                GameObject blockInstance = Instantiate(blockControlScript.itemList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
                 asteroidBlocks.Add(gridPosition, blockInstance);    
                 blockInstance.transform.parent = gameObject.transform;
                 return blockInstance;
