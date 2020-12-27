@@ -25,12 +25,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && mouseOver) {
             
-            if (mouseOver){
-                Debug.Log("t");
-                InventoryUIScript.InventorySlotClicked(gameObject);
-            }
+            InventoryUIScript.InventorySlotLeftClicked(gameObject);
+            
+        }
+        if (Input.GetMouseButtonDown(1) && mouseOver) {
+            
+            InventoryUIScript.InventorySlotRightClicked(gameObject);
+            
         }
 
 
@@ -38,15 +41,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log(gameObject);
-        Debug.Log("enter");
         mouseOver = true;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log(gameObject);
-        Debug.Log("exit");
+
         mouseOver = false;
     }
 

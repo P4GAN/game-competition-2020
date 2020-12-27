@@ -62,6 +62,9 @@ public class InventoryUI : MonoBehaviour
             inventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
 
             inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[i].ToString();
+            if (InventoryScript.InventoryAmounts[i] == 0 || InventoryScript.InventoryAmounts[i] == 1) {
+                inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
+            }
         }
     }
 
@@ -75,26 +78,70 @@ public class InventoryUI : MonoBehaviour
         return temporaryContainedItem;
     }
 
-    public void InventorySlotClicked(GameObject InventorySlotGameObject) {
+    public void InventorySlotRightClicked(GameObject InventorySlotGameObject) {
+        Debug.Log("r");
+        InventorySlot inventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
+        Inventory InventoryScript = GetComponent<Inventory>();
+
+        if (currentHeldGameObject.GetComponent<ItemData>().itemID == 0) {
+            Destroy(currentHeldGameObject);
+            currentHeldGameObject = Instantiate(inventorySlotScript.containedItem, transform.position, Quaternion.identity);
+            currentHeldGameObject.transform.SetParent(canvas.transform);
+            currentHeldGameObject.GetComponent<Image>().raycastTarget = false;
+
+            currentHeldAmount = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex]/2;
+
+            currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldAmount.ToString();
+
+            Debug.Log(currentHeldAmount);
+            Debug.Log(InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex]);
+
+            InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] -= currentHeldAmount;
+
+            Debug.Log(InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex]);
+            Debug.Log(InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString());
+
+            inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString();
+
+        }
+    }
+
+    public void InventorySlotLeftClicked(GameObject InventorySlotGameObject) {
+        Debug.Log("l");
         //Debug.Log(InventorySlotGameObject);
         InventorySlot inventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
         Inventory InventoryScript = GetComponent<Inventory>();
 
-        GameObject temporaryContainedItem = inventorySlotScript.containedItem;
-        inventorySlotScript.containedItem = currentHeldGameObject;
+        if (inventorySlotScript.containedItem.GetComponent<ItemData>().itemID == currentHeldGameObject.GetComponent<ItemData>().itemID) {
+            int newAmount = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] + currentHeldAmount;
+            InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] = newAmount;
+            inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = newAmount.ToString();
+            Destroy(currentHeldGameObject);
+            currentHeldGameObject = Instantiate(emptyItem, transform.position, Quaternion.identity);
+        }
+        else {
+            GameObject temporaryContainedItem = inventorySlotScript.containedItem;
+            inventorySlotScript.containedItem = currentHeldGameObject;
 
-        inventorySlotScript.containedItem.transform.SetParent(InventorySlotGameObject.transform, false);
-        inventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            inventorySlotScript.containedItem.transform.SetParent(InventorySlotGameObject.transform, false);
+            inventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
 
-        currentHeldGameObject = temporaryContainedItem;
-        currentHeldGameObject.transform.SetParent(canvas.transform);
-        currentHeldGameObject.transform.SetAsFirstSibling();
+            currentHeldGameObject = temporaryContainedItem;
+            currentHeldGameObject.transform.SetParent(canvas.transform);
+            currentHeldGameObject.GetComponent<Image>().raycastTarget = false;
 
-        InventoryScript.InventoryItems[inventorySlotScript.inventoryIndex] = inventorySlotScript.containedItem.GetComponent<ItemData>().itemID;
-        
-        int temporaryAmount = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex];
-        InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] = currentHeldAmount;
-        currentHeldAmount = temporaryAmount;
+            InventoryScript.InventoryItems[inventorySlotScript.inventoryIndex] = inventorySlotScript.containedItem.GetComponent<ItemData>().itemID;
+            
+            int temporaryAmount = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex];
+            InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] = currentHeldAmount;
+            currentHeldAmount = temporaryAmount;
+
+        }
+
+        inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString();
+        if (InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] == 1) {
+            inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
+        }
 
         /*InventorySlotGameObject.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString(); 
         currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldAmount.ToString();

@@ -44,10 +44,11 @@ public class Inventory : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(1)) {
             AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            if (!asteroidBlockControlScript.IsOccupied(mousePos)) {
-                if (RemoveItem(inventoryIndex, 1)) {
-                    asteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true);
+            if (ItemInInventory(inventoryIndex, 1)) {
+                if (asteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true)) {
+                    RemoveItem(inventoryIndex, 1);
                 }
+                
             }
 
         }
@@ -63,6 +64,7 @@ public class Inventory : MonoBehaviour
     }
 
     public void AddItem(int itemID, int amount) {
+        Debug.Log("add");
         int index = InventoryItems.IndexOf(itemID);
         if (index != -1) {
             InventoryAmounts[index] += amount;
@@ -77,21 +79,19 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public bool RemoveItem(int index, int amount) {
-        if (index != -1) {
-            if (amount <= InventoryAmounts[index]) {
-                InventoryAmounts[index] -= amount;
-                InventoryUIScript = GetComponent<InventoryUI>();
-                InventoryUIScript.updateInventoryUI();
-                return true;
-            }
-            else {
-                return false;
-            }
+    public bool ItemInInventory(int index, int amount) {
+        if (index != -1 && amount <= InventoryAmounts[index]) {
+            return true;
         }
-        else {
-            return false;
-        }
+        return false;
+    }
+
+    public void RemoveItem(int index, int amount) {
+        Debug.Log("remove");
+        InventoryAmounts[index] -= amount;
+        InventoryUIScript = GetComponent<InventoryUI>();
+        InventoryUIScript.updateInventoryUI();
+
     }
 
 }
