@@ -8,9 +8,9 @@ public class InventoryUI : MonoBehaviour
 {
 
     public Inventory InventoryScript;
-    
-    public BlockControl blockControlScript;
-    public GameObject blockControlGameObject;
+    public ItemControl ItemControlScript;
+
+    public GameObject itemControlGameObject;
 
     public List<GameObject> HotbarIcons;
 
@@ -25,10 +25,10 @@ public class InventoryUI : MonoBehaviour
     public GameObject canvas;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Inventory InventoryScript = GetComponent<Inventory>();
-        BlockControl blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
+        ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         /*for (int i=0; i<HotbarIcons.Count; i++) {
             HotbarIconGameObjects[i].transform.localPosition = new Vector3((i * 100) - 400, -300, 0);
             HotbarIcons.Add(HotbarIconGameObjects[i].GetComponent<Image>());
@@ -52,56 +52,56 @@ public class InventoryUI : MonoBehaviour
             //HotbarIcons[i].sprite = blockControlScript.itemIcons[InventoryScript.InventoryItems[i]];
             //HotbarNumbers[i].text = InventoryScript.InventoryAmounts[i].ToString();
             Inventory InventoryScript = GetComponent<Inventory>();
-            BlockControl blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
+            ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
 
-            GameObject item = Instantiate(blockControlScript.itemIconList[InventoryScript.InventoryItems[i]], transform.position, Quaternion.identity);
-            InventorySlot inventorySlotScript = InventorySlots[i].GetComponent<InventorySlot>();
-            Destroy(inventorySlotScript.containedItem);
-            inventorySlotScript.containedItem = item;
-            inventorySlotScript.containedItem.transform.SetParent(InventorySlots[i].transform, false);
-            inventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            GameObject item = Instantiate(ItemControlScript.itemIconList[InventoryScript.InventoryItems[i]], transform.position, Quaternion.identity);
+            InventorySlot InventorySlotScript = InventorySlots[i].GetComponent<InventorySlot>();
+            Destroy(InventorySlotScript.containedItem);
+            InventorySlotScript.containedItem = item;
+            InventorySlotScript.containedItem.transform.SetParent(InventorySlots[i].transform, false);
+            InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
 
-            inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[i].ToString();
+            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[i].ToString();
             if (InventoryScript.InventoryAmounts[i] == 0 || InventoryScript.InventoryAmounts[i] == 1) {
-                inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
+                InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
             }
         }
     }
 
     GameObject updateInventorySlot(int inventoryIndex, GameObject newInventoryItem) {
-        InventorySlot inventorySlotScript = InventorySlots[inventoryIndex].GetComponent<InventorySlot>();
+        InventorySlot InventorySlotScript = InventorySlots[inventoryIndex].GetComponent<InventorySlot>();
 
-        GameObject temporaryContainedItem = inventorySlotScript.containedItem;
-        inventorySlotScript.containedItem = newInventoryItem;
-        inventorySlotScript.containedItem.transform.parent = InventorySlots[inventoryIndex].transform;
+        GameObject temporaryContainedItem = InventorySlotScript.containedItem;
+        InventorySlotScript.containedItem = newInventoryItem;
+        InventorySlotScript.containedItem.transform.parent = InventorySlots[inventoryIndex].transform;
 
         return temporaryContainedItem;
     }
 
     public void InventorySlotRightClicked(GameObject InventorySlotGameObject) {
         Debug.Log("r");
-        InventorySlot inventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
         Inventory InventoryScript = GetComponent<Inventory>();
+        InventorySlot InventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
 
         if (currentHeldGameObject.GetComponent<ItemData>().itemID == 0) {
             Destroy(currentHeldGameObject);
-            currentHeldGameObject = Instantiate(inventorySlotScript.containedItem, transform.position, Quaternion.identity);
+            currentHeldGameObject = Instantiate(InventorySlotScript.containedItem, transform.position, Quaternion.identity);
             currentHeldGameObject.transform.SetParent(canvas.transform);
             currentHeldGameObject.GetComponent<Image>().raycastTarget = false;
 
-            currentHeldAmount = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex]/2;
+            currentHeldAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]/2;
 
             currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldAmount.ToString();
 
             Debug.Log(currentHeldAmount);
-            Debug.Log(InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex]);
+            Debug.Log(InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]);
 
-            InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] -= currentHeldAmount;
+            InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] -= currentHeldAmount;
 
-            Debug.Log(InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex]);
-            Debug.Log(InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString());
+            Debug.Log(InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]);
+            Debug.Log(InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString());
 
-            inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString();
+            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString();
 
         }
     }
@@ -109,41 +109,41 @@ public class InventoryUI : MonoBehaviour
     public void InventorySlotLeftClicked(GameObject InventorySlotGameObject) {
         Debug.Log("l");
         //Debug.Log(InventorySlotGameObject);
-        InventorySlot inventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
+        InventorySlot InventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
         Inventory InventoryScript = GetComponent<Inventory>();
 
-        if (inventorySlotScript.containedItem.GetComponent<ItemData>().itemID == currentHeldGameObject.GetComponent<ItemData>().itemID) {
-            int newAmount = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] + currentHeldAmount;
-            InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] = newAmount;
-            inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = newAmount.ToString();
+        if (InventorySlotScript.containedItem.GetComponent<ItemData>().itemID == currentHeldGameObject.GetComponent<ItemData>().itemID) {
+            int newAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] + currentHeldAmount;
+            InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] = newAmount;
+            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = newAmount.ToString();
             Destroy(currentHeldGameObject);
             currentHeldGameObject = Instantiate(emptyItem, transform.position, Quaternion.identity);
         }
         else {
-            GameObject temporaryContainedItem = inventorySlotScript.containedItem;
-            inventorySlotScript.containedItem = currentHeldGameObject;
+            GameObject temporaryContainedItem = InventorySlotScript.containedItem;
+            InventorySlotScript.containedItem = currentHeldGameObject;
 
-            inventorySlotScript.containedItem.transform.SetParent(InventorySlotGameObject.transform, false);
-            inventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            InventorySlotScript.containedItem.transform.SetParent(InventorySlotGameObject.transform, false);
+            InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
 
             currentHeldGameObject = temporaryContainedItem;
             currentHeldGameObject.transform.SetParent(canvas.transform);
             currentHeldGameObject.GetComponent<Image>().raycastTarget = false;
 
-            InventoryScript.InventoryItems[inventorySlotScript.inventoryIndex] = inventorySlotScript.containedItem.GetComponent<ItemData>().itemID;
+            InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex] = InventorySlotScript.containedItem.GetComponent<ItemData>().itemID;
             
-            int temporaryAmount = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex];
-            InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] = currentHeldAmount;
+            int temporaryAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex];
+            InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] = currentHeldAmount;
             currentHeldAmount = temporaryAmount;
 
         }
 
-        inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString();
-        if (InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex] == 1) {
-            inventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
+        InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString();
+        if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 1) {
+            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
         }
 
-        /*InventorySlotGameObject.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[inventorySlotScript.inventoryIndex].ToString(); 
+        /*InventorySlotGameObject.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString(); 
         currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldAmount.ToString();
         if (InventorySlotGameObject.GetComponentInChildren<Text>().text == "0") {
             InventorySlotGameObject.GetComponentInChildren<Text>().text = "";
@@ -154,18 +154,18 @@ public class InventoryUI : MonoBehaviour
 
         
         /*if (currentHeldGameObject == null) {
-            if (inventorySlotScript.containedItem != null) {
-                currentHeldGameObject = inventorySlotScript.containedItem;
-                Destroy(inventorySlotScript.containedItem);
+            if (InventorySlotScript.containedItem != null) {
+                currentHeldGameObject = InventorySlotScript.containedItem;
+                Destroy(InventorySlotScript.containedItem);
             }
         }
         else {
-            if (inventorySlotScript.containedItem == null) {
-                inventorySlotScript.containedItem = currentHeldGameObject;
+            if (InventorySlotScript.containedItem == null) {
+                InventorySlotScript.containedItem = currentHeldGameObject;
             }
             else {
-                GameObject temporaryContainedItem = inventorySlotScript.containedItem;
-                inventorySlotScript.containedItem = currentHeldGameObject;
+                GameObject temporaryContainedItem = InventorySlotScript.containedItem;
+                InventorySlotScript.containedItem = currentHeldGameObject;
                 currentHeldGameObject = temporaryContainedItem;
 
             }

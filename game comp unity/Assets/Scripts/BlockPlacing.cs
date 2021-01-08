@@ -74,7 +74,7 @@ public class BlockPlacing : MonoBehaviour
 
                 //if (distance.magnitude < playerReach) {
                     //timer = 0;
-                    //inventoryScript.RemoveItem(inventoryIndex, 1);
+                    //InventoryScript.RemoveItem(inventoryIndex, 1);
                     RemoveBlock(mousePos);
                 //}
             

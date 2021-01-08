@@ -7,12 +7,12 @@ public class AsteroidBlockControl : MonoBehaviour
 
     public Dictionary<Vector2, GameObject> asteroidBlocks = new Dictionary<Vector2, GameObject>{};
     //stores grid positions
-    public BlockControl blockControlScript;
+    public ItemControl ItemControlScript;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        blockControlScript = GameObject.Find("BlockControlGameObject").GetComponent<BlockControl>();
+        ItemControlScript = GameObject.Find("ItemControlGameObject").GetComponent<ItemControl>();
     }
 
     // Update is called once per frame
@@ -54,23 +54,18 @@ public class AsteroidBlockControl : MonoBehaviour
 
     public bool IsOccupied(Vector2 position) {
         Vector2 gridPosition = gamePositionToGridPosition(position);
-        foreach(Vector2 key in asteroidBlocks.Keys) {
-            if (key == gridPosition) {
-                return true;
-            }
-        }
-        return false;
+        return asteroidBlocks.ContainsKey(gridPosition);
     }
     public GameObject PlaceBlock(int itemID, Vector2 position, bool adjacentPosition) {
         Vector2 gridPosition = gamePositionToGridPosition(position);
-        blockControlScript = GameObject.Find("BlockControlGameObject").GetComponent<BlockControl>();
+
         if (!IsOccupied(position)) {
             if (adjacentPosition) {
                 if (asteroidBlocks.ContainsKey(new Vector2(gridPosition.x + 1, gridPosition.y)) ||
                     asteroidBlocks.ContainsKey(new Vector2(gridPosition.x - 1, gridPosition.y)) ||
                     asteroidBlocks.ContainsKey(new Vector2(gridPosition.x, gridPosition.y + 1)) ||
                     asteroidBlocks.ContainsKey(new Vector2(gridPosition.x, gridPosition.y - 1))) {
-                        GameObject blockInstance = Instantiate(blockControlScript.itemList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
+                        GameObject blockInstance = Instantiate(ItemControlScript.itemList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
                         asteroidBlocks.Add(gridPosition, blockInstance);    
                         blockInstance.transform.parent = gameObject.transform;
                         return blockInstance;
@@ -78,7 +73,7 @@ public class AsteroidBlockControl : MonoBehaviour
                 else {return null;}
             }
             if (!adjacentPosition) {
-                GameObject blockInstance = Instantiate(blockControlScript.itemList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
+                GameObject blockInstance = Instantiate(ItemControlScript.itemList[itemID], gridPositionToGamePosition(gridPosition), transform.rotation);
                 asteroidBlocks.Add(gridPosition, blockInstance);    
                 blockInstance.transform.parent = gameObject.transform;
                 return blockInstance;
@@ -98,8 +93,8 @@ public class AsteroidBlockControl : MonoBehaviour
     }
 
     void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0) && blockControlScript.selectedAsteroid != gameObject) {
-            blockControlScript.selectedAsteroid = gameObject;
+        if (Input.GetMouseButtonDown(0) && ItemControlScript.selectedAsteroid != gameObject) {
+            ItemControlScript.selectedAsteroid = gameObject;
         }
         
 

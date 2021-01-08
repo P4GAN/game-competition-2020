@@ -25,7 +25,7 @@ public class Planet : MonoBehaviour
     }
 
     void CreatePlanet(int radius) {
-        AsteroidBlockControl asteroidBlockControlScript = gameObject.GetComponent<AsteroidBlockControl>();
+        AsteroidBlockControl AsteroidBlockControlScript = gameObject.GetComponent<AsteroidBlockControl>();
 
         for (float x = -radius; x < radius; x++) {
             for (float y = -radius; y < radius; y++) {
@@ -33,7 +33,7 @@ public class Planet : MonoBehaviour
                 float distance = Mathf.Sqrt(Mathf.Pow(x, 2) + Mathf.Pow(y, 2));
 
                 if (distance <= radius) {
-                    GameObject placedBlock = asteroidBlockControlScript.PlaceBlock(3, new Vector2 (x, y), false);
+                    GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(3, new Vector2 (x, y), false);
                     
                 }
             }

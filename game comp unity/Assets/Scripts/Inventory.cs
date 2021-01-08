@@ -7,20 +7,18 @@ public class Inventory : MonoBehaviour
 {
 
     public int inventoryIndex;
-    public GameObject blockControlGameObject;
+    public GameObject itemControlGameObject;
     public List<int> InventoryItems;
     public List<int> InventoryAmounts;
-    public GameObject blockInstance;
     public Vector2 mousePos;
-    public Vector2 blockPos;
     
-    public BlockControl blockControlScript;
+    public ItemControl ItemControlScript;
     public InventoryUI InventoryUIScript;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        blockControlScript = blockControlGameObject.GetComponent<BlockControl>();
+        ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         InventoryUIScript = GetComponent<InventoryUI>();
 
         for (int i=0; i<20; i++) {
@@ -35,20 +33,20 @@ public class Inventory : MonoBehaviour
     {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         if (Input.GetMouseButtonDown(0)) {
-            AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            GameObject block = asteroidBlockControlScript.RemoveBlock(mousePos);
+            AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
+            GameObject block = AsteroidBlockControlScript.RemoveBlock(mousePos);
             if (block) {
                 AddItem(block.GetComponent<ItemData>().itemID, 1);
             }
 
         }
         if (Input.GetMouseButtonDown(1)) {
-            AsteroidBlockControl asteroidBlockControlScript = blockControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            if (ItemInInventory(inventoryIndex, 1)) {
-                if (asteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true)) {
-                    RemoveItem(inventoryIndex, 1);
+            AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
+            if (InventoryAmounts[inventoryIndex] >= 1) {
+                if (AsteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true)) {
+                    RemoveItemAtIndex(inventoryIndex, 1);
                 }
-                
+
             }
 
         }
@@ -74,24 +72,40 @@ public class Inventory : MonoBehaviour
             InventoryItems[index] = itemID;
             InventoryAmounts[index] += amount;
         }
-        InventoryUIScript = GetComponent<InventoryUI>();
         InventoryUIScript.updateInventoryUI();
 
     }
 
-    public bool ItemInInventory(int index, int amount) {
-        if (index != -1 && amount <= InventoryAmounts[index]) {
-            return true;
+    public bool ItemInInventory(int itemIndex, int amount) {
+        int totalAmount = 0;
+        for (int i = 0; i < InventoryItems.Count; i++) {
+            if (InventoryItems[i] == itemIndex) { 
+                totalAmount += InventoryAmounts[i];
+            }
         }
-        return false;
+        return (totalAmount >= amount);
     }
 
-    public void RemoveItem(int index, int amount) {
-        Debug.Log("remove");
+    public void RemoveItemAtIndex(int index, int amount) {
         InventoryAmounts[index] -= amount;
-        InventoryUIScript = GetComponent<InventoryUI>();
         InventoryUIScript.updateInventoryUI();
 
+    }
+
+    public void RemoveItem(int itemID, int amount) {
+        for (int i = 0; i < InventoryItems.Count; i++) {
+            if (InventoryItems[i] == itemID) { 
+                if (amount <= InventoryAmounts[i]) {
+                    InventoryAmounts[i] -= amount;
+                    break;
+                }
+                else {
+                    amount -= InventoryAmounts[i];
+                    InventoryAmounts[i] = 0;
+                }
+            }
+        } 
+        InventoryUIScript.updateInventoryUI();
     }
 
 }

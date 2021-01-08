@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProcedualGeneration : MonoBehaviour
+public class ProceduralGeneration : MonoBehaviour
 {
 
     public GameObject asteroid;
@@ -38,13 +38,14 @@ public class ProcedualGeneration : MonoBehaviour
 
     void CreateAsteroid(float centerX, float centerY, float scale, float modifier) {
         GameObject asteroidInstance = Instantiate(asteroid, new Vector2 (centerX, centerY), Quaternion.identity);
+        AsteroidBlockControl AsteroidBlockControlScript = asteroidInstance.GetComponent<AsteroidBlockControl>();
+
         Rigidbody2D rb2d = asteroidInstance.GetComponent<Rigidbody2D>();
 
         int newNoise = Random.Range(0,10000);
 
         float maxPerlinValue = scale + modifier;
 
-        AsteroidBlockControl asteroidBlockControlScript = asteroidInstance.GetComponent<AsteroidBlockControl>();
 
         int mass = 0;
 
@@ -62,18 +63,18 @@ public class ProcedualGeneration : MonoBehaviour
                     if (noise - (3 * distance) > 0 ) {
                         mass += 1;
 
-                        GameObject placedBlock = asteroidBlockControlScript.PlaceBlock(4, blockPos, false);
+                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(4, blockPos, false);
                     }
                     else {
                         mass += 1;
-                        GameObject placedBlock = asteroidBlockControlScript.PlaceBlock(3, blockPos, false);
+                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(3, blockPos, false);
                     }
                     
                 }
             }
         }
 
-        //foreach(Vector2 position in asteroidBlockControlScript.asteroidBlocks.Keys) {
+        //foreach(Vector2 position in AsteroidBlockControlScript.asteroidBlocks.Keys) {
             //Debug.Log(position);
         //}
         //rb2d.mass = mass;

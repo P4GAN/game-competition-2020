@@ -88,9 +88,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d8740587ed084ddb91ffd5c0e5b8a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockList:
-  - {fileID: 8479467872115296855, guid: eeaa490c3cdda47eca4894224db434db, type: 3}
-  - {fileID: 8191838500510243364, guid: 92567e3f2dcc04db28e3ecdb8af726aa, type: 3}
-  - {fileID: 124369526511539819, guid: 7da12b6707d784363ace1bc0764a79f3, type: 3}
-  blockControlGameObject: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
+  ItemControlGameObject: {fileID: 1953158202767549292, guid: a1fe97ccd6cf742fdbde618c196e8679,
     type: 3}
+  itemControlScript: {fileID: 0}

@@ -5,7 +5,6 @@ using UnityEngine;
 public class ProjectileFire : MonoBehaviour {
 
     public GameObject projectile;
-    public GameObject projectileInstance;
     public Vector3 mousePos;
     public float projectileSpeed = 500f;
 
@@ -19,7 +18,7 @@ public class ProjectileFire : MonoBehaviour {
             mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float angle = Mathf.Atan2((mousePos.y - transform.position.y), (mousePos.x - transform.position.x)) * Mathf.Rad2Deg;
             Vector2 direction = (mousePos - transform.position).normalized;
-            projectileInstance = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
+            GameObject projectileInstance = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, angle));
             projectileInstance.GetComponent<Rigidbody2D>().AddForce(direction * projectileSpeed);
             GetComponent<Rigidbody2D>().AddForce(-direction * projectileSpeed);
         }
