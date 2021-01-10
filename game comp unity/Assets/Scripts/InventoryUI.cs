@@ -53,18 +53,26 @@ public class InventoryUI : MonoBehaviour
             //HotbarNumbers[i].text = InventoryScript.InventoryAmounts[i].ToString();
             Inventory InventoryScript = GetComponent<Inventory>();
             ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
-
-            GameObject item = Instantiate(ItemControlScript.itemIconList[InventoryScript.InventoryItems[i]], transform.position, Quaternion.identity);
             InventorySlot InventorySlotScript = InventorySlots[i].GetComponent<InventorySlot>();
-            Destroy(InventorySlotScript.containedItem);
-            InventorySlotScript.containedItem = item;
-            InventorySlotScript.containedItem.transform.SetParent(InventorySlots[i].transform, false);
-            InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+
+
+            if (InventoryScript.InventoryItems[i] != InventorySlotScript.containedItem.GetComponent<ItemData>().itemID) {
+                GameObject item = Instantiate(ItemControlScript.itemIconList[InventoryScript.InventoryItems[i]], transform.position, Quaternion.identity);      
+                if (InventoryScript.InventoryAmounts[i] == 0) {
+                    item = Instantiate(emptyItem, transform.position, Quaternion.identity);
+                }
+
+                Destroy(InventorySlotScript.containedItem);
+                InventorySlotScript.containedItem = item;
+                InventorySlotScript.containedItem.transform.SetParent(InventorySlots[i].transform, false);
+                InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            }
 
             InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[i].ToString();
             if (InventoryScript.InventoryAmounts[i] == 0 || InventoryScript.InventoryAmounts[i] == 1) {
                 InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
             }
+            
         }
     }
 
@@ -89,20 +97,26 @@ public class InventoryUI : MonoBehaviour
             currentHeldGameObject.transform.SetParent(canvas.transform);
             currentHeldGameObject.GetComponent<Image>().raycastTarget = false;
 
-            currentHeldAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]/2;
+            currentHeldAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] - InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]/2;
 
             currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldAmount.ToString();
+            if (currentHeldAmount == 0 || currentHeldAmount == 1) {
+                currentHeldGameObject.GetComponentInChildren<Text>().text = "";
+            }
 
-            Debug.Log(currentHeldAmount);
-            Debug.Log(InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]);
+            
 
             InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] -= currentHeldAmount;
-
-            Debug.Log(InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]);
-            Debug.Log(InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString());
-
+            if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 ) {
+                Destroy(InventorySlotScript.containedItem);
+                InventorySlotScript.containedItem = Instantiate(emptyItem, transform.position, Quaternion.identity);
+                InventorySlotScript.containedItem.transform.SetParent(InventorySlotGameObject.transform, false);
+                InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            }
             InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString();
-
+            if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 1) {
+                InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
+            }
         }
     }
 
@@ -139,7 +153,7 @@ public class InventoryUI : MonoBehaviour
         }
 
         InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString();
-        if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 1) {
+        if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 1 || InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex] == 0) {
             InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
         }
 
