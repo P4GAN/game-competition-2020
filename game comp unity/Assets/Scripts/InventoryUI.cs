@@ -12,10 +12,7 @@ public class InventoryUI : MonoBehaviour
 
     public GameObject itemControlGameObject;
 
-    public List<GameObject> HotbarIcons;
-
-    public bool inventoryVisible = false;
-    public GameObject InventoryGameObject;
+    public GameObject InventoryPanelGameObject;
     public List<GameObject> InventorySlots;
 
     public GameObject currentHeldGameObject;
@@ -24,8 +21,11 @@ public class InventoryUI : MonoBehaviour
 
     public GameObject canvas;
 
+    public GameObject HotbarGameObject;
+    public List<GameObject> HotbarSlots;
+
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         Inventory InventoryScript = GetComponent<Inventory>();
         ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
@@ -40,7 +40,7 @@ public class InventoryUI : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab)) {
-            InventoryGameObject.SetActive(!InventoryGameObject.activeSelf);
+            InventoryPanelGameObject.SetActive(!InventoryPanelGameObject.activeSelf);
         }
         currentHeldGameObject.transform.position = Input.mousePosition;
 
@@ -155,7 +155,7 @@ public class InventoryUI : MonoBehaviour
         InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString();
         if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 1 || InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex] == 0) {
             InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
-        }
+        } 
 
         /*InventorySlotGameObject.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString(); 
         currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldAmount.ToString();

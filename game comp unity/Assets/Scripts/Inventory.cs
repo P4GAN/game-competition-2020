@@ -1,68 +1,102 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
 
-    public int inventoryIndex;
     public GameObject itemControlGameObject;
+    public ItemControl ItemControlScript;
+
     public List<int> InventoryItems;
     public List<int> InventoryAmounts;
-    public Vector2 mousePos;
-    
-    public ItemControl ItemControlScript;
-    public InventoryUI InventoryUIScript;
+
+    public GameObject InventoryPanelGameObject;
+    public GameObject InventoryPanelGameObjectInstance;
+
+    public GameObject canvas;
+
+    public GameObject InventorySlotGameObject;
+    public List<GameObject> InventorySlots;
+
+    public GameObject emptyItem;
+
+    public Vector2 position;
+    public int inventoryWidth;
+    public int inventoryHeight;
 
     // Start is called before the first frame update
     void Awake()
     {
-        ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
-        InventoryUIScript = GetComponent<InventoryUI>();
+        ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();  
 
-        for (int i=0; i<20; i++) {
+        int inventorySize = inventoryWidth * inventoryHeight;
+
+        for (int i = 0; i < inventorySize; i++) {
             InventoryItems.Add(0);
             InventoryAmounts.Add(0);
+        }
+
+        InventoryPanelGameObjectInstance = Instantiate(InventoryPanelGameObject, position, Quaternion.identity);
+        InventoryPanelGameObjectInstance.transform.SetParent(canvas.transform, false);
+        Vector2 InventoryPanelSize = InventoryPanelGameObjectInstance.GetComponent<RectTransform>().sizeDelta;
+        Vector2 InventorySlotSize = InventorySlotGameObject.GetComponent<RectTransform>().sizeDelta;
+
+        int inventoryIndex = 0;
+        for (int y = 0; y < inventoryHeight; y++) {
+            for (int x = 0; x < inventoryWidth; x++) {
+                Vector2 position = new Vector2(((-InventoryPanelSize.x/2) + (InventorySlotSize.x/2) + 5 + (x * 110)), ((-InventoryPanelSize.y/2) + (InventorySlotSize.y/2) + 5 + (y * 110)));
+                GameObject InventorySlotInstance = Instantiate(InventorySlotGameObject, position, Quaternion.identity); 
+                InventorySlotInstance.GetComponent<InventorySlot>().inventoryIndex = inventoryIndex;
+                inventoryIndex += 1;
+                InventorySlotInstance.transform.SetParent(InventoryPanelGameObjectInstance.transform, false);
+                InventorySlots.Add(InventorySlotInstance);
+            }
         }
 
     }
 
     // Update is called once per frame
     void Update()
-    {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        if (Input.GetMouseButtonDown(0)) {
-            AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            GameObject block = AsteroidBlockControlScript.RemoveBlock(mousePos);
-            if (block) {
-                AddItem(block.GetComponent<ItemData>().itemID, 1);
-            }
-
-        }
-        if (Input.GetMouseButtonDown(1)) {
-            AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            if (InventoryAmounts[inventoryIndex] >= 1) {
-                if (AsteroidBlockControlScript.PlaceBlock(InventoryItems[inventoryIndex], mousePos, true)) {
-                    RemoveItemAtIndex(inventoryIndex, 1);
-                }
-
-            }
-
-        }
-        //if (Input.mouseScrollDelta.y > 0) {
-        if (Input.GetKeyDown(KeyCode.M)) {
-            inventoryIndex += 1;
-        } 
-        if (Input.GetKeyDown(KeyCode.N)) {
-            inventoryIndex -= 1;
-        } 
-                
+    {       
 
     }
 
+    public void UpdateInventoryUI() {
+        for (int i = 0; i < InventoryItems.Count; i++) {
+
+            ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
+            InventorySlot InventorySlotScript = InventorySlots[i].GetComponent<InventorySlot>();
+
+
+            if (InventoryItems[i] != InventorySlotScript.containedItem.GetComponent<ItemData>().itemID) {
+                GameObject item = Instantiate(ItemControlScript.itemIconList[InventoryItems[i]], transform.position, Quaternion.identity);      
+                if (InventoryAmounts[i] == 0) {
+                    item = Instantiate(emptyItem, transform.position, Quaternion.identity);
+                }
+
+                Destroy(InventorySlotScript.containedItem);
+                InventorySlotScript.containedItem = item;
+                InventorySlotScript.containedItem.transform.SetParent(InventorySlots[i].transform, false);
+                InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            }
+
+            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryAmounts[i].ToString();
+            if (InventoryAmounts[i] == 0 || InventoryAmounts[i] == 1) {
+                InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
+            }
+            
+            PlayerInventory playerInventoryScript = GetComponent<PlayerInventory>();
+            if (playerInventoryScript) {
+                playerInventoryScript.UpdateHotbarUI();
+                GetComponent<Crafting>().updateCraftingRecipes();
+            }
+        }
+    }
+
+
     public void AddItem(int itemID, int amount) {
-        Debug.Log("add");
         int index = InventoryItems.IndexOf(itemID);
         if (index != -1) {
             InventoryAmounts[index] += amount;
@@ -72,14 +106,14 @@ public class Inventory : MonoBehaviour
             InventoryItems[index] = itemID;
             InventoryAmounts[index] += amount;
         }
-        InventoryUIScript.updateInventoryUI();
+        UpdateInventoryUI();
 
     }
 
-    public bool ItemInInventory(int itemIndex, int amount) {
+    public bool ItemInInventory(int itemID, int amount) {
         int totalAmount = 0;
         for (int i = 0; i < InventoryItems.Count; i++) {
-            if (InventoryItems[i] == itemIndex) { 
+            if (InventoryItems[i] == itemID) { 
                 totalAmount += InventoryAmounts[i];
             }
         }
@@ -88,24 +122,31 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItemAtIndex(int index, int amount) {
         InventoryAmounts[index] -= amount;
-        InventoryUIScript.updateInventoryUI();
+        if (InventoryAmounts[index] == 0) {
+            InventoryItems[index] = 0;
+        }
+        UpdateInventoryUI();
 
     }
 
     public void RemoveItem(int itemID, int amount) {
         for (int i = 0; i < InventoryItems.Count; i++) {
             if (InventoryItems[i] == itemID) { 
-                if (amount <= InventoryAmounts[i]) {
+                if (amount < InventoryAmounts[i]) {
                     InventoryAmounts[i] -= amount;
                     break;
                 }
                 else {
                     amount -= InventoryAmounts[i];
                     InventoryAmounts[i] = 0;
+                    InventoryItems[i] = 0;
                 }
             }
         } 
-        InventoryUIScript.updateInventoryUI();
+        UpdateInventoryUI();
     }
+
+    
+
 
 }

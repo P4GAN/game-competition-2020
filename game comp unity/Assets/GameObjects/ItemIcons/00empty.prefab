@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemID: 0
+  itemType: 
 --- !u!1 &6290511412906468328
 GameObject:
   m_ObjectHideFlags: 0

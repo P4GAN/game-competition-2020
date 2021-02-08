@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class CraftingRecipeSlot : MonoBehaviour
+public class CraftingRecipeSlot : MonoBehaviour, IPointerClickHandler
 {
     // Start is called before the first frame update
 
@@ -21,9 +22,10 @@ public class CraftingRecipeSlot : MonoBehaviour
     {
         
     }
-    void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0) && craftable){
+    public void OnPointerClick(PointerEventData eventData) {
+        if (craftable) {
             CraftingScript.craftItem(index);
         }
+        
     }
 }

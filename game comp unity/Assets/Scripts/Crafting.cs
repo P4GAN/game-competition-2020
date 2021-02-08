@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Crafting : MonoBehaviour
 {
-
+    public GameObject CraftingPanel;
     public GameObject CraftingMenuGameObject;
     public GameObject CraftingRecipeGameObject;
     public int craftingRecipeDistance = 25;
@@ -13,29 +13,28 @@ public class Crafting : MonoBehaviour
     public Vector2 itemIconSize;
     public List<Dictionary<int, int>> CraftingRecipeList = new List<Dictionary<int, int>>(){
         new Dictionary<int, int>(){
-            {1, 1},
-            {2, 2},
-            {3, 3}
+            {4, 1}
 
         },
-        new Dictionary<int, int>(){
-            {1, 1},
-            {2, 2},
-            {3, 3}
-
-        }
     };
+
+    public List<int> CraftingResultList;
+    public List<int> CraftingResultAmountList;
+
+
     public List<GameObject> CraftingRecipeGameObjectList;
 
     public Inventory InventoryScript;
+    public ItemControl ItemControlScript;
+
     public GameObject itemControlGameObject;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        Inventory InventoryScript = GetComponent<Inventory>();
-        ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
+        InventoryScript = GetComponent<Inventory>();
+        ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         Debug.Log(CraftingRecipeList.Count);
         for (int i = 0; i < CraftingRecipeList.Count; i++) {
             Vector2 craftingRecipePos = new Vector2(0, -i * craftingRecipeDistance + 135f);
@@ -50,7 +49,7 @@ public class Crafting : MonoBehaviour
 
             for (int j = 0; j < itemIndexList.Count; j++) {
                 Vector2 itemIconPos = new Vector2(j * itemIconDistance - 75f, 0);
-                GameObject itemIcon = Instantiate(ItemControlScript.itemIconList[j], itemIconPos, Quaternion.identity);
+                GameObject itemIcon = Instantiate(ItemControlScript.itemIconList[itemIndexList[j]], itemIconPos, Quaternion.identity);
                 itemIcon.GetComponent<RectTransform>().sizeDelta = itemIconSize;
                 itemIcon.GetComponentInChildren<Text>().text = CraftingRecipeList[i][itemIndexList[j]].ToString();
                 if (CraftingRecipeList[i][itemIndexList[j]] == 0 || CraftingRecipeList[i][itemIndexList[j]] == 1) {
@@ -68,7 +67,7 @@ public class Crafting : MonoBehaviour
         
     }
 
-    void updateCraftingRecipes() {
+    public void updateCraftingRecipes() {
 
         for (int i = 0; i < CraftingRecipeList.Count; i++) {
             bool craftable = true;
@@ -79,10 +78,10 @@ public class Crafting : MonoBehaviour
             }
             CraftingRecipeGameObjectList[i].GetComponent<CraftingRecipeSlot>().craftable = craftable;
             if (craftable) {
-                CraftingRecipeGameObjectList[i].GetComponent<SpriteRenderer>().color = Color.white;
+                CraftingRecipeGameObjectList[i].GetComponent<Image>().color = Color.white;
             }
             else {
-                CraftingRecipeGameObjectList[i].GetComponent<SpriteRenderer>().color = Color.black;
+                CraftingRecipeGameObjectList[i].GetComponent<Image>().color = Color.black;
 
             }
 
@@ -91,8 +90,12 @@ public class Crafting : MonoBehaviour
     }
 
     public void craftItem(int craftingSlotIndex) {
+        Debug.Log("L");
         foreach (int itemID in CraftingRecipeList[craftingSlotIndex].Keys) {
             InventoryScript.RemoveItem(itemID, CraftingRecipeList[craftingSlotIndex][itemID]);
         }
+        InventoryScript.AddItem(CraftingResultList[craftingSlotIndex], CraftingResultAmountList[craftingSlotIndex]);
+        InventoryScript.UpdateInventoryUI();
+        updateCraftingRecipes();
     }
 }

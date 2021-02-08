@@ -10,8 +10,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 {
 
     public int inventoryIndex;
-    public GameObject player;
-    public InventoryUI InventoryUIScript;
+    public PlayerInventory PlayerInventoryScript;
     public GameObject containedItem;
 
     public bool mouseOver = false;
@@ -19,7 +18,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Start is called before the first frame update
     void Start()
     {
-        InventoryUIScript = player.GetComponent<InventoryUI>();
+        PlayerInventoryScript = GameObject.Find("player").GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -27,12 +26,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         if (Input.GetMouseButtonDown(0) && mouseOver) {
             
-            InventoryUIScript.InventorySlotLeftClicked(gameObject);
+            PlayerInventoryScript.InventorySlotLeftClicked(gameObject);
             
         }
         if (Input.GetMouseButtonDown(1) && mouseOver) {
             
-            InventoryUIScript.InventorySlotRightClicked(gameObject);
+            PlayerInventoryScript.InventorySlotRightClicked(gameObject);
             
         }
 

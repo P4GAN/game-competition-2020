@@ -67,7 +67,7 @@ public class ProceduralGeneration : MonoBehaviour
                     }
                     else {
                         mass += 1;
-                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(3, blockPos, false);
+                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(1, blockPos, false);
                     }
                     
                 }
