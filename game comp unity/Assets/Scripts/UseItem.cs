@@ -12,11 +12,14 @@ public class UseItem : MonoBehaviour
     public ItemControl ItemControlScript;
 
     public Inventory InventoryScript;
+
+    public PlayerInventory PlayerInventoryScript;
     // Start is called before the first frame update
     void Start()
     {
         InventoryScript = GetComponent<Inventory>();
         ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
+        PlayerInventoryScript = GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -46,7 +49,7 @@ public class UseItem : MonoBehaviour
     public void UseItemLeftClickDown() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
 
         if (itemType == "projectileGun") {
             ProjectileFire projectileFireScript = GetComponent<ProjectileFire>(); 
@@ -88,13 +91,13 @@ public class UseItem : MonoBehaviour
     public void UseItemRightClickDown() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
 
         if (itemType == "block") {
             AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            if (InventoryScript.InventoryAmounts[inventoryIndex] >= 1) {
-                if (AsteroidBlockControlScript.PlaceBlock(InventoryScript.InventoryItems[inventoryIndex], mousePos, true)) {
-                    InventoryScript.RemoveItemAtIndex(inventoryIndex, 1);
+            if (InventoryScript.InventoryAmounts[PlayerInventoryScript.inventoryIndex] >= 1) {
+                if (AsteroidBlockControlScript.PlaceBlock(InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex], mousePos, true)) {
+                    InventoryScript.RemoveItemAtIndex(PlayerInventoryScript.inventoryIndex, 1);
                 }
 
             }
@@ -105,7 +108,7 @@ public class UseItem : MonoBehaviour
         GetComponent<LaserFire>().ControlLaser();
 
     }
-    public void UseItemRight ClickUp() {
+    public void UseItemRightClickUp() {
         GetComponent<LaserFire>().DestroyLaser();
     }
 }
