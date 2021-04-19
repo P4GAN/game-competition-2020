@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     // Start is called before the first frame update
 
     public GameObject player;
+    public float health = 100f;
 
 
     void Start()
@@ -19,4 +20,15 @@ public class Enemy : MonoBehaviour
     {
         
     }
+
+    public bool TakeDamage(float damage) { // returns if the damage killed enemy or not
+        health -= damage;
+        if (health < 0) {
+            Destroy(gameObject);
+            return true;
+        }
+        return false;
+    }
+
+
 }

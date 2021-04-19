@@ -1,7 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.IO;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+[Serializable]
+public class CraftingRecipe {
+    public int CraftingResult;
+    public int CraftingResultAmount;
+    public List<int> CraftingIngredients;
+    public List<int> CraftingIngredientAmounts;
+}
+
+[Serializable]
+public class CraftingRecipeObjects
+{
+    public List<CraftingRecipe> CraftingRecipeList;
+}
+
 
 public class Crafting : MonoBehaviour
 {
@@ -11,16 +28,6 @@ public class Crafting : MonoBehaviour
     public int craftingRecipeDistance = 25;
     public int itemIconDistance = 20;
     public Vector2 itemIconSize;
-    public List<Dictionary<int, int>> CraftingRecipeList = new List<Dictionary<int, int>>(){
-        new Dictionary<int, int>(){
-            {4, 1}
-
-        },
-    };
-
-    public List<int> CraftingResultList;
-    public List<int> CraftingResultAmountList;
-
 
     public List<GameObject> CraftingRecipeGameObjectList;
 
@@ -29,10 +36,32 @@ public class Crafting : MonoBehaviour
 
     public GameObject itemControlGameObject;
 
+    public List<CraftingRecipe> CraftingRecipeList;
+
+    public string fileName;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        /*CraftingRecipe test = new CraftingRecipe();
+        test.CraftingResult = 1;
+        test.CraftingResultAmount = 1;
+        test.CraftingIngredients = new List<int>(){1};
+        test.CraftingIngredientAmounts = new List<int>(){1};
+        CraftingRecipeObjects playerRecipes = new CraftingRecipeObjects();
+
+        playerRecipes.CraftingRecipeList = new List<CraftingRecipe>() {
+            test,
+        };
+
+        string json = JsonUtility.ToJson(playerRecipes, true);
+        Debug.Log(json);
+        File.WriteAllText("test.json", json);*/
+        
+        string json = File.ReadAllText(fileName);
+        CraftingRecipeList = JsonUtility.FromJson<CraftingRecipeObjects>(json).CraftingRecipeList;
+
         InventoryScript = GetComponent<Inventory>();
         ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         Debug.Log(CraftingRecipeList.Count);
@@ -44,15 +73,15 @@ public class Crafting : MonoBehaviour
             CraftingRecipeSlotScript.playerGameObject = gameObject;
             CraftingRecipeSlotScript.index = i;
 
-            List<int> itemIndexList = new List<int>(CraftingRecipeList[i].Keys);
+            List<int> itemIndexList = new List<int>(CraftingRecipeList[i].CraftingIngredients);
             itemIndexList.Sort();
 
             for (int j = 0; j < itemIndexList.Count; j++) {
                 Vector2 itemIconPos = new Vector2(j * itemIconDistance - 75f, 0);
                 GameObject itemIcon = Instantiate(ItemControlScript.itemIconList[itemIndexList[j]], itemIconPos, Quaternion.identity);
                 itemIcon.GetComponent<RectTransform>().sizeDelta = itemIconSize;
-                itemIcon.GetComponentInChildren<Text>().text = CraftingRecipeList[i][itemIndexList[j]].ToString();
-                if (CraftingRecipeList[i][itemIndexList[j]] == 0 || CraftingRecipeList[i][itemIndexList[j]] == 1) {
+                itemIcon.GetComponentInChildren<Text>().text = CraftingRecipeList[i].CraftingIngredientAmounts[j].ToString();
+                if (CraftingRecipeList[i].CraftingIngredientAmounts[j] == 0 || CraftingRecipeList[i].CraftingIngredientAmounts[j] == 1) {
                     itemIcon.GetComponentInChildren<Text>().text = "";
                 }
                 itemIcon.transform.SetParent(CraftingRecipeGameObjectCopy.transform, false);
@@ -71,8 +100,8 @@ public class Crafting : MonoBehaviour
 
         for (int i = 0; i < CraftingRecipeList.Count; i++) {
             bool craftable = true;
-            foreach (int itemID in CraftingRecipeList[i].Keys) {
-                if (!InventoryScript.ItemInInventory(itemID, CraftingRecipeList[i][itemID])) {
+            for (int j = 0; j < CraftingRecipeList[i].CraftingIngredients.Count; j++) {
+                if (!InventoryScript.ItemInInventory(CraftingRecipeList[i].CraftingIngredients[j], CraftingRecipeList[i].CraftingIngredientAmounts[j])) {
                     craftable = false;
                 }
             }
@@ -90,11 +119,12 @@ public class Crafting : MonoBehaviour
     }
 
     public void craftItem(int craftingSlotIndex) {
-        Debug.Log("L");
-        foreach (int itemID in CraftingRecipeList[craftingSlotIndex].Keys) {
-            InventoryScript.RemoveItem(itemID, CraftingRecipeList[craftingSlotIndex][itemID]);
+
+        for (int i = 0; i < CraftingRecipeList[craftingSlotIndex].CraftingIngredients.Count; i++) {
+            InventoryScript.RemoveItem(CraftingRecipeList[craftingSlotIndex].CraftingIngredients[i], CraftingRecipeList[craftingSlotIndex].CraftingIngredientAmounts[i]);
         }
-        InventoryScript.AddItem(CraftingResultList[craftingSlotIndex], CraftingResultAmountList[craftingSlotIndex]);
+
+        InventoryScript.AddItem(CraftingRecipeList[craftingSlotIndex].CraftingResult, CraftingRecipeList[craftingSlotIndex].CraftingResultAmount);
         InventoryScript.UpdateInventoryUI();
         updateCraftingRecipes();
     }

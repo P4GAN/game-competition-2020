@@ -13,14 +13,8 @@ public class LaserFire : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	public void StartLaser () {
 
-        if (laserInstance == null) {
-            laserInstance = Instantiate(laser, transform.position, Quaternion.identity);
-        }
-    }
-    public void ControlLaser () {
-
+    public void LaserFunction() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float angle = Mathf.Atan2((mousePos.y - transform.position.y), (mousePos.x - transform.position.x)) * Mathf.Rad2Deg;
         
@@ -40,10 +34,25 @@ public class LaserFire : MonoBehaviour {
         laserInstance.transform.position = position; 
         laserInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
         laserInstance.transform.localScale = new Vector2(Vector2.Distance(transform.position, position) * 2, 1);
-    
+    }
+
+	public void StartLaser () {
+
+        if (laserInstance == null) {
+            laserInstance = Instantiate(laser, transform.position, Quaternion.identity);
+            LaserFunction();
+        }
+    }
+    public void ControlLaser () {
+
+        if (laserInstance != null) {
+            LaserFunction();
+        }
     }
     public void DestroyLaser() {
-        Destroy(laserInstance);
+        if (laserInstance != null) {
+            Destroy(laserInstance);
+        }
         
 	}
 

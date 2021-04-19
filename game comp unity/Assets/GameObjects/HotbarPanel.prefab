@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 4
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 1677854228635084905}
   mouseOver: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 1
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 1848493222007343448}
   mouseOver: 0
@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 2
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 8480112286983832852}
   mouseOver: 0
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 5
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 4606004207298153561}
   mouseOver: 0
@@ -548,7 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 3
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 5523987012609533012}
   mouseOver: 0
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 8
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 7453063385978053884}
   mouseOver: 0
@@ -732,7 +732,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 6
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 3525338025237576483}
   mouseOver: 0
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 9
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 2585431872779055452}
   mouseOver: 0
@@ -1092,7 +1092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08cbb026271f14ba4ba3fba5ac38bdb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
+  inventoryIndex: 7
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 474963253256462322}
   mouseOver: 0

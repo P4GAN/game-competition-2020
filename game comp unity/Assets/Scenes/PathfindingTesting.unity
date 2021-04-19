@@ -1601,8 +1601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6a4327fe9264eb5be1faedf5708be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeWidth: 1
-  nodeHeight: 1
+  nodeWidth: 100
+  nodeHeight: 100
   startX: 0
   startY: 0
   nodeDistance: 1
@@ -1615,7 +1615,7 @@ MonoBehaviour:
     type: 3}
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 55
 --- !u!1 &1458482608
 GameObject:
   m_ObjectHideFlags: 0

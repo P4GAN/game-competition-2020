@@ -15,6 +15,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public bool mouseOver = false;
 
+    public GameObject itemCaption;
+    public GameObject itemCaptionInstance;
+
     // Start is called before the first frame update
     void Start()
     {

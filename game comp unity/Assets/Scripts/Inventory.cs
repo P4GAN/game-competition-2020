@@ -38,12 +38,25 @@ public class Inventory : MonoBehaviour
             InventoryAmounts.Add(0);
         }
 
+        InventoryItems[0] = 17;
+        InventoryItems[1] = 18;
+        InventoryItems[2] = 14;
+        InventoryItems[3] = 15;
+        InventoryItems[4] = 16;
+
+        InventoryAmounts[0] = 1;
+        InventoryAmounts[1] = 1;
+        InventoryAmounts[2] = 1;
+        InventoryAmounts[3] = 1;
+        InventoryAmounts[4] = 100;
+
+
         InventoryPanelGameObjectInstance = Instantiate(InventoryPanelGameObject, position, Quaternion.identity);
         InventoryPanelGameObjectInstance.transform.SetParent(canvas.transform, false);
         Vector2 InventoryPanelSize = InventoryPanelGameObjectInstance.GetComponent<RectTransform>().sizeDelta;
         Vector2 InventorySlotSize = InventorySlotGameObject.GetComponent<RectTransform>().sizeDelta;
 
-        int inventoryIndex = 0;
+        int inventoryIndex = 10;
         for (int y = 0; y < inventoryHeight; y++) {
             for (int x = 0; x < inventoryWidth; x++) {
                 Vector2 position = new Vector2(((-InventoryPanelSize.x/2) + (InventorySlotSize.x/2) + 5 + (x * 110)), ((-InventoryPanelSize.y/2) + (InventorySlotSize.y/2) + 5 + (y * 110)));
@@ -55,6 +68,8 @@ public class Inventory : MonoBehaviour
             }
         }
 
+        UpdateInventoryUI();
+
     }
 
     // Update is called once per frame
@@ -64,7 +79,8 @@ public class Inventory : MonoBehaviour
     }
 
     public void UpdateInventoryUI() {
-        for (int i = 0; i < InventoryItems.Count; i++) {
+        PlayerInventory playerInventoryScript = GetComponent<PlayerInventory>();
+        for (int i = playerInventoryScript.hotbarSize; i < InventoryItems.Count; i++) {
 
             ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
             InventorySlot InventorySlotScript = InventorySlots[i].GetComponent<InventorySlot>();
@@ -87,7 +103,6 @@ public class Inventory : MonoBehaviour
                 InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
             }
             
-            PlayerInventory playerInventoryScript = GetComponent<PlayerInventory>();
             if (playerInventoryScript) {
                 playerInventoryScript.UpdateHotbarUI();
                 GetComponent<Crafting>().updateCraftingRecipes();

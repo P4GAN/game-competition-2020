@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6158413196865767786}
   - component: {fileID: 6582191159301457423}
   m_Layer: 0
-  m_Name: imkv74m4q5g41 copy (1)
+  m_Name: laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,9 +24,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2508295566898348497}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5090141, y: 14.509106, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.9326712, w: 0.3607278}
+  m_LocalPosition: {x: -2.6106198, y: 12.625369, z: 0}
+  m_LocalScale: {x: 7.058104, y: 1, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

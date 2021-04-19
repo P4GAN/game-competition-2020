@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8440060102611479243}
   - component: {fileID: 4923713118451647009}
   m_Layer: 0
-  m_Name: 15rifle
+  m_Name: 17assembler
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: db136d465b1ca4895ad1adf82b23f552, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9fcc2ff7eff7d42339de355e86f87072, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,8 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4ebccd8adac4287a99828d2f305b97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemID: 15
-  itemType: laserGun
+  itemID: 17
+  itemType: block
+  blockType: assembler
 --- !u!1 &6290511412906468328
 GameObject:
   m_ObjectHideFlags: 0

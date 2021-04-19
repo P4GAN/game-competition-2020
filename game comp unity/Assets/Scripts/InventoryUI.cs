@@ -12,7 +12,10 @@ public class InventoryUI : MonoBehaviour
 
     public GameObject itemControlGameObject;
 
-    public GameObject InventoryPanelGameObject;
+    public GameObject InventoryPanelGameObject;    
+    public GameObject RefinerCraftingMenu;
+    public GameObject AssemblerCraftingMenu;
+
     public List<GameObject> InventorySlots;
 
     public GameObject currentHeldGameObject;
@@ -41,7 +44,11 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab)) {
             InventoryPanelGameObject.SetActive(!InventoryPanelGameObject.activeSelf);
+            RefinerCraftingMenu.SetActive(false);
+            AssemblerCraftingMenu.SetActive(false);
         }
+
+
         currentHeldGameObject.transform.position = Input.mousePosition;
 
     }

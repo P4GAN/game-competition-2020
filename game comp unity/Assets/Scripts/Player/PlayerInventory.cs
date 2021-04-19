@@ -45,7 +45,10 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab)) {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
-            craftingPanel.SetActive(!craftingPanel.activeSelf);
+
+            GameObject.Find("Canvas").transform.Find("CraftingMenuPlayer").gameObject.SetActive(inventoryPanel.activeSelf);
+            GameObject.Find("Canvas").transform.Find("CraftingMenuRefiner").gameObject.SetActive(false);
+            GameObject.Find("Canvas").transform.Find("CraftingMenuAssembler").gameObject.SetActive(false);
         }
 
         if (inventoryPanel.activeSelf) {
@@ -72,6 +75,7 @@ public class PlayerInventory : MonoBehaviour
 
             ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
             InventorySlot InventorySlotScript = hotbarSlots[i].GetComponent<InventorySlot>();
+            Inventory InventoryScript = GetComponent<Inventory>();
 
             if (InventoryScript.InventoryItems[i] != InventorySlotScript.containedItem.GetComponent<ItemData>().itemID) {
                 GameObject item = Instantiate(ItemControlScript.itemIconList[InventoryScript.InventoryItems[i]], transform.position, Quaternion.identity);      

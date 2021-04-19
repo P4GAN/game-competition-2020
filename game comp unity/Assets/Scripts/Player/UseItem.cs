@@ -52,10 +52,10 @@ public class UseItem : MonoBehaviour
         string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
 
         if (itemType == "projectileGun") {
-            ProjectileFire projectileFireScript = GetComponent<ProjectileFire>(); 
+            ProjectileFire projectileFireScript = itemControlGameObject.GetComponent<ProjectileFire>(); 
             int bulletIndex = InventoryScript.InventoryItems.IndexOf(16);
             if (bulletIndex != -1 && InventoryScript.InventoryAmounts[bulletIndex] > 0) {
-                projectileFireScript.FireProjectile(ItemControlScript.itemList[16]);
+                projectileFireScript.MouseFireProjectile(ItemControlScript.itemList[16], gameObject);
                 InventoryScript.RemoveItemAtIndex(bulletIndex, 1);
             }
         }
@@ -69,7 +69,7 @@ public class UseItem : MonoBehaviour
         code to break block
         */
 
-        if (itemType == "") {
+        if (itemType == "tool") {
             AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
             GameObject block = AsteroidBlockControlScript.RemoveBlock(mousePos);
             if (block) {
@@ -81,11 +81,20 @@ public class UseItem : MonoBehaviour
     }
 
     public void UseItemLeftClickHold() {
-        GetComponent<LaserFire>().ControlLaser();
+        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+
+        if (itemType == "laserGun") {
+            GetComponent<LaserFire>().ControlLaser();
+        }
 
     }
     public void UseItemLeftClickUp() {
-        GetComponent<LaserFire>().DestroyLaser();
+        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+
+        if (itemType == "laserGun") {
+
+            GetComponent<LaserFire>().DestroyLaser();
+        }
     }
 
     public void UseItemRightClickDown() {
@@ -105,10 +114,13 @@ public class UseItem : MonoBehaviour
         }
     }
     public void UseItemRightClickHold() {
-        GetComponent<LaserFire>().ControlLaser();
+        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+
 
     }
     public void UseItemRightClickUp() {
-        GetComponent<LaserFire>().DestroyLaser();
+        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+
+
     }
 }
