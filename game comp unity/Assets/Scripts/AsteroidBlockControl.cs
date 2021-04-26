@@ -56,6 +56,7 @@ public class AsteroidBlockControl : MonoBehaviour
         Vector2 gridPosition = gamePositionToGridPosition(position);
         return asteroidBlocks.ContainsKey(gridPosition);
     }
+    
     public GameObject PlaceBlock(int itemID, Vector2 position, bool adjacentPosition) {
         Vector2 gridPosition = gamePositionToGridPosition(position);
 

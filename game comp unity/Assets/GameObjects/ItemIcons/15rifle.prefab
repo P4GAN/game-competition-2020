@@ -90,6 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: 15
   itemType: laserGun
+  itemCaptionString: fuck you
 --- !u!1 &6290511412906468328
 GameObject:
   m_ObjectHideFlags: 0

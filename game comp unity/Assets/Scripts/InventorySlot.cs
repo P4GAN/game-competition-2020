@@ -16,17 +16,18 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool mouseOver = false;
 
     public GameObject itemCaption;
-    public GameObject itemCaptionInstance;
 
     // Start is called before the first frame update
     void Start()
     {
         PlayerInventoryScript = GameObject.Find("player").GetComponent<PlayerInventory>();
+        itemCaption = GameObject.Find("ItemCaption");
     }
 
     // Update is called once per frame
     void Update()
     {
+        itemCaption.transform.position = Input.mousePosition;       
         if (Input.GetMouseButtonDown(0) && mouseOver) {
             
             PlayerInventoryScript.InventorySlotLeftClicked(gameObject);
@@ -44,12 +45,14 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public void OnPointerEnter(PointerEventData eventData)
     {
         mouseOver = true;
+        itemCaption.SetActive(true);
+        itemCaption.GetComponent<Text>().text = containedItem.GetComponent<ItemData>().itemCaptionString;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-
         mouseOver = false;
+        itemCaption.SetActive(false);
     }
 
 }

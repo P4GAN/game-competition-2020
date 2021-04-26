@@ -42,7 +42,6 @@ public class PlayerInventory : MonoBehaviour
     void Update()
     {
 
-
         if (Input.GetKeyDown(KeyCode.Tab)) {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
 
@@ -60,14 +59,15 @@ public class PlayerInventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M)) {
             inventoryIndex += 1;
-            inventoryIndex = inventoryIndex % hotbarSize;
-            hotbarIndicator.transform.position = hotbarSlots[inventoryIndex].transform.position;
         } 
         if (Input.GetKeyDown(KeyCode.N)) {
             inventoryIndex -= 1;
-            inventoryIndex = inventoryIndex % hotbarSize;
-            hotbarIndicator.transform.position = hotbarSlots[inventoryIndex % hotbarSize].transform.position;
         } 
+        inventoryIndex = inventoryIndex % hotbarSize;
+        if (inventoryIndex < 0) {
+            inventoryIndex = hotbarSize + inventoryIndex;
+        }
+        hotbarIndicator.transform.position = hotbarSlots[inventoryIndex].transform.position;
     }
 
     public void UpdateHotbarUI() {

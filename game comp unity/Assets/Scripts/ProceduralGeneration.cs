@@ -36,11 +36,32 @@ public class ProceduralGeneration : MonoBehaviour
         }
     }
 
+    void SpawnOres(float minX, float maxX, float minY, float maxY, AsteroidBlockControl AsteroidBlockControlScript) {
+        float randomOre = Random.value;
+    
+        int newNoise = Random.Range(0,10000);
+
+        for (float x = minX; x < maxX; x++) {
+            for (float y = minY; y < maxY; y++) {
+                float noise = Mathf.PerlinNoise(newNoise + (x / radius), newNoise + (y / radius));
+                if (noise > 0.3f) {
+                    Vector2 blockPos = new Vector2 (x, y);
+                    if (AsteroidBlockControlScript.asteroidBlocks[blockPos]) {
+                        AsteroidBlockControlScript.RemoveBlock(blockPos);
+                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(4, blockPos, false);
+                    }
+                }
+            }
+        }
+    }
+
     void CreateAsteroid(float centerX, float centerY, float scale, float modifier) {
         GameObject asteroidInstance = Instantiate(asteroid, new Vector2 (centerX, centerY), Quaternion.identity);
         AsteroidBlockControl AsteroidBlockControlScript = asteroidInstance.GetComponent<AsteroidBlockControl>();
 
         Rigidbody2D rb2d = asteroidInstance.GetComponent<Rigidbody2D>();
+
+        string asteroidType = new List<string>(){"c", "s", "m"}[Random.Range(0, 2)];
 
         int newNoise = Random.Range(0,10000);
 
@@ -60,19 +81,15 @@ public class ProceduralGeneration : MonoBehaviour
 
                 if (noise - distance > 0) {
                     Vector2 blockPos = new Vector2 (x, y);
-                    if (noise - (3 * distance) > 0 ) {
-                        mass += 1;
 
-                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(4, blockPos, false);
-                    }
-                    else {
                         mass += 1;
                         GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(1, blockPos, false);
-                    }
                     
                 }
             }
         }
+
+        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, AsteroidBlockControlScript);
 
         //foreach(Vector2 position in AsteroidBlockControlScript.asteroidBlocks.Keys) {
             //Debug.Log(position);
