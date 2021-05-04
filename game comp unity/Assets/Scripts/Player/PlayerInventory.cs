@@ -33,9 +33,16 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         InventoryScript = GetComponent<Inventory>();
+        itemControlGameObject = GameObject.Find("ItemControlGameObject");
         ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         inventoryPanel = InventoryScript.InventoryPanelGameObjectInstance;
         craftingPanel = GetComponent<Crafting>().CraftingPanel;
+        hotbarIndicator = GameObject.Find("HotbarIndicator");
+        for (int i = 0; i < 10; i++) {
+            hotbarSlots[i] = GameObject.Find("HotbarSlot" + i.ToString());
+        }
+        currentHeldGameObject = GameObject.Find("00empty");
+        canvas = GameObject.Find("Canvas");
     }
 
     // Update is called once per frame
@@ -71,6 +78,15 @@ public class PlayerInventory : MonoBehaviour
     }
 
     public void UpdateHotbarUI() {
+        if (itemControlGameObject == null) {
+            itemControlGameObject = GameObject.Find("ItemControlGameObject");
+        }
+        if (hotbarSlots[0] == null) {
+            for (int i = 0; i < 10; i++) {
+                hotbarSlots[i] = GameObject.Find("HotbarSlot" + i.ToString());
+            }
+        }
+
         for (int i = 0; i < hotbarSize; i++) {
 
             ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();

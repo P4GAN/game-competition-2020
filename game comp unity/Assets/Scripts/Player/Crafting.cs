@@ -23,7 +23,7 @@ public class CraftingRecipeObjects
 public class Crafting : MonoBehaviour
 {
     public GameObject CraftingPanel;
-    public GameObject CraftingMenuGameObject;
+    public string CraftingMenuGameObjectName;
     public GameObject CraftingRecipeGameObject;
     public int craftingRecipeDistance = 25;
     public int itemIconDistance = 20;
@@ -63,12 +63,13 @@ public class Crafting : MonoBehaviour
         CraftingRecipeList = JsonUtility.FromJson<CraftingRecipeObjects>(json).CraftingRecipeList;
 
         InventoryScript = GetComponent<Inventory>();
+        itemControlGameObject = GameObject.Find("ItemControlGameObject");
         ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         Debug.Log(CraftingRecipeList.Count);
         for (int i = 0; i < CraftingRecipeList.Count; i++) {
             Vector2 craftingRecipePos = new Vector2(0, -i * craftingRecipeDistance + 135f);
             GameObject CraftingRecipeGameObjectCopy = Instantiate(CraftingRecipeGameObject, craftingRecipePos, Quaternion.identity);
-            CraftingRecipeGameObjectCopy.transform.SetParent(CraftingMenuGameObject.transform, false);
+            CraftingRecipeGameObjectCopy.transform.SetParent(GameObject.Find("Canvas").transform.Find(CraftingMenuGameObjectName), false);
             CraftingRecipeSlot CraftingRecipeSlotScript = CraftingRecipeGameObjectCopy.GetComponent<CraftingRecipeSlot>();
             CraftingRecipeSlotScript.playerGameObject = gameObject;
             CraftingRecipeSlotScript.index = i;

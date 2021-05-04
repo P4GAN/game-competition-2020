@@ -10,11 +10,9 @@ public class CraftingRecipeSlot : MonoBehaviour, IPointerClickHandler
     public int index;
     public bool craftable = false;
     public GameObject playerGameObject;
-    public Crafting CraftingScript;
 
     void Start()
     {
-        CraftingScript = playerGameObject.GetComponent<Crafting>();
     }
 
     // Update is called once per frame
@@ -24,7 +22,7 @@ public class CraftingRecipeSlot : MonoBehaviour, IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData) {
         if (craftable) {
-            CraftingScript.craftItem(index);
+            GameObject.Find("player").GetComponent<Crafting>().craftItem(index);
         }
         
     }

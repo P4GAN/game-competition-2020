@@ -22,6 +22,7 @@ public class EnemyBanditController : MonoBehaviour
         enemyPathfindingScript = GetComponent<EnemyPathfinding>();
         roamPosition = RandomPosition();
         enemyPathfindingScript.SetTargetPosition(roamPosition);
+        player = GameObject.Find("player");
     }
 
     // Update is called once per frame

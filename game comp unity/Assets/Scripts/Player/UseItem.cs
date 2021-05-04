@@ -18,6 +18,7 @@ public class UseItem : MonoBehaviour
     void Start()
     {
         InventoryScript = GetComponent<Inventory>();
+        itemControlGameObject = GameObject.Find("ItemControlGameObject");
         ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         PlayerInventoryScript = GetComponent<PlayerInventory>();
     }

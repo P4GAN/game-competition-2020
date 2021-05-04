@@ -92,6 +92,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 1677854228635084905}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &508236921418696322
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,6 +185,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 1848493222007343448}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &765892041259677443
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +278,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 3857650723189633950}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &1154014891613894843
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +371,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 8480112286983832852}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &1428424152600162003
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +464,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 4606004207298153561}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &1691573249335479016
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +557,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 5523987012609533012}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &2757139806317590719
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +650,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 7453063385978053884}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &3803657669872811343
 GameObject:
   m_ObjectHideFlags: 0
@@ -736,6 +743,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 3525338025237576483}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &3841971908189015247
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +836,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 2585431872779055452}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &4603552676029889310
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +928,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 0}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1 &4603552676144844836
 GameObject:
   m_ObjectHideFlags: 0
@@ -988,7 +998,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0.15686275, g: 0.15686275, b: 0.15686275, a: 0.392}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1096,6 +1106,7 @@ MonoBehaviour:
   PlayerInventoryScript: {fileID: 0}
   containedItem: {fileID: 474963253256462322}
   mouseOver: 0
+  itemCaption: {fileID: 0}
 --- !u!1001 &20921180353105000
 PrefabInstance:
   m_ObjectHideFlags: 0

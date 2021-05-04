@@ -20,13 +20,18 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Start is called before the first frame update
     void Start()
     {
-        PlayerInventoryScript = GameObject.Find("player").GetComponent<PlayerInventory>();
-        itemCaption = GameObject.Find("ItemCaption");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (PlayerInventoryScript == null) {
+            PlayerInventoryScript = GameObject.Find("player").GetComponent<PlayerInventory>();
+        }
+        if (itemCaption == null) {
+            itemCaption = GameObject.Find("Canvas").transform.Find("ItemCaption").gameObject;
+        }
         itemCaption.transform.position = Input.mousePosition;       
         if (Input.GetMouseButtonDown(0) && mouseOver) {
             

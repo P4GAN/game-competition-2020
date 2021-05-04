@@ -21,7 +21,7 @@ public class AsteroidBlockControl : MonoBehaviour
 
     }
 
-    Vector2 gamePositionToGridPosition(Vector2 gamePosition) {
+    public Vector2 gamePositionToGridPosition(Vector2 gamePosition) {
 
 
         gamePosition.x -= transform.position.x;
@@ -37,7 +37,7 @@ public class AsteroidBlockControl : MonoBehaviour
         return gamePosition;
 
     }
-    Vector2 gridPositionToGamePosition(Vector2 gridPosition) {
+    public Vector2 gridPositionToGamePosition(Vector2 gridPosition) {
 
 
         float angle = Mathf.Atan2(gridPosition.y, gridPosition.x) + (Mathf.Deg2Rad * transform.eulerAngles.z);

@@ -29,7 +29,9 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        itemControlGameObject = GameObject.Find("ItemControlGameObject");
         ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();  
+        canvas = GameObject.Find("Canvas");
 
         int inventorySize = inventoryWidth * inventoryHeight;
 
@@ -75,10 +77,10 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {       
-
     }
 
     public void UpdateInventoryUI() {
+        float startTime = Time.realtimeSinceStartup;
         PlayerInventory playerInventoryScript = GetComponent<PlayerInventory>();
         for (int i = playerInventoryScript.hotbarSize; i < InventoryItems.Count; i++) {
 
@@ -108,6 +110,7 @@ public class Inventory : MonoBehaviour
                 GetComponent<Crafting>().updateCraftingRecipes();
             }
         }
+        Debug.Log(Time.realtimeSinceStartup-startTime);
     }
 
 
