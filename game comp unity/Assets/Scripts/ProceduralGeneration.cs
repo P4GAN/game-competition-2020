@@ -25,18 +25,21 @@ public class ProceduralGeneration : MonoBehaviour
     }
 
 
-    void RandomSpawning(int minimumDistance, int distanceX, int distanceY) {
+    public List<GameObject> RandomSpawning(int minimumDistance, int distanceX, int distanceY) {
+        List<GameObject> asteroidList = new List<GameObject>();
         for (int x = -distanceX; x < distanceX; x += (minimumDistance * 3)) {
             for (int y = -distanceY; y < distanceY; y += (minimumDistance * 3)) {
                 if (Random.value < 0.5) {
-                    CreateAsteroid(Random.Range(x, x + distanceX), Random.Range(y, y + distanceY), Random.Range(10, 15), Random.Range(0, 10));
+                    asteroidList.Add(CreateAsteroid(Random.Range(x, x + distanceX), Random.Range(y, y + distanceY), Random.Range(10, 15), Random.Range(0, 10)));
+                
                 }
             }
         }
+        return asteroidList;
     }
 
     void SpawnOres(float minX, float maxX, float minY, float maxY, int blockID, float spread, float rarity, AsteroidBlockControl AsteroidBlockControlScript) {
-        //good for now, however later we need guaranteed mount of ore spawning and making it spawn in veins
+        //good for now, however later we need guaranteed amount of ore spawning and making it spawn in veins
         //pick random points and then use iterative process to create a patchs
         float randomOre = Random.value;
     
@@ -48,8 +51,8 @@ public class ProceduralGeneration : MonoBehaviour
                 if (noise > rarity) {
                     Vector2 blockPos = new Vector2 (x, y);
                     if (AsteroidBlockControlScript.IsOccupied(blockPos)) {
-                        AsteroidBlockControlScript.RemoveBlock(blockPos);
-                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(blockID, blockPos, false);
+
+                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(blockID, blockPos);
                     }
                 }
             }
@@ -86,7 +89,7 @@ public class ProceduralGeneration : MonoBehaviour
                     Vector2 blockPos = new Vector2 (x, y);
 
                         mass += 1;
-                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(1, blockPos, false);
+                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(1, blockPos);
                     
                 }
             }

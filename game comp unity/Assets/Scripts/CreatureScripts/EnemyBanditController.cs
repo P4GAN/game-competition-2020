@@ -15,7 +15,6 @@ public class EnemyBanditController : MonoBehaviour
     public GameObject projectile;
     public float shootCooldown;
     public float shootTimer;
-    public GameObject itemControlGameObject;
 
     void Start()
     {
@@ -53,7 +52,7 @@ public class EnemyBanditController : MonoBehaviour
             }
             if (shootTimer >= shootCooldown) {
                 Vector2 direction = (player.transform.position - transform.position).normalized;
-                itemControlGameObject.GetComponent<ProjectileFire>().DirectionFireProjectile(projectile, direction, gameObject);
+                ItemControl.projectileFireScript.DirectionFireProjectile(projectile, direction, gameObject);
                 shootTimer = 0f;
             }
         }

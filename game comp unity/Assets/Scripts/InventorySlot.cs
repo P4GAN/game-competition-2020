@@ -4,8 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-
-
 public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
 
@@ -16,11 +14,12 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public bool mouseOver = false;
 
     public GameObject itemCaption;
+    public bool hotbarSlot = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        itemCaption = GameObject.Find("Canvas").transform.Find("ItemCaption").gameObject;
     }
 
     // Update is called once per frame
@@ -29,9 +28,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         if (PlayerInventoryScript == null) {
             PlayerInventoryScript = GameObject.Find("player").GetComponent<PlayerInventory>();
         }
-        if (itemCaption == null) {
-            itemCaption = GameObject.Find("Canvas").transform.Find("ItemCaption").gameObject;
-        }
+
         itemCaption.transform.position = Input.mousePosition;       
         if (Input.GetMouseButtonDown(0) && mouseOver) {
             
@@ -51,7 +48,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         mouseOver = true;
         itemCaption.SetActive(true);
-        itemCaption.GetComponent<Text>().text = containedItem.GetComponent<ItemData>().itemCaptionString;
+        itemCaption.GetComponent<Text>().text = containedItem.GetComponent<ItemData>().item.itemCaptionString;
     }
 
     public void OnPointerExit(PointerEventData eventData)

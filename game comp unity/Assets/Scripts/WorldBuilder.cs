@@ -18,6 +18,7 @@ public class AsteroidObject {
     public float angle;
     public float velocityX;
     public float velocityY;
+    public float angularVelocity;
     public List<BlockObject> blockList;
 
 }
@@ -28,17 +29,15 @@ public class PlayerObject {
     public float angle;
     public float velocityX;
     public float velocityY;
-    public List<int> InventoryItems;
-    public List<int> InventoryAmounts;
+    public float angularVelocity;
+    public List<Item> InventoryItems;
 }
 
-
+[Serializable]
 public class WorldObject {
     public List<AsteroidObject> asteroidList;
     public PlayerObject playerObject;
 }
-
-
 
 public class WorldBuilder : MonoBehaviour
 {
@@ -47,7 +46,6 @@ public class WorldBuilder : MonoBehaviour
     public GameObject player;
     public GameObject playerPrefab;
     public ProceduralGeneration proceduralGenerationScript;
-    public ItemControl ItemControlScript;
 
     void Awake() {
         if (File.Exists("world.json")) {
@@ -77,6 +75,7 @@ public class WorldBuilder : MonoBehaviour
             asteroidObject.angle = asteroid.transform.eulerAngles.z;
             asteroidObject.velocityX = asteroid.GetComponent<Rigidbody2D>().velocity.x;
             asteroidObject.velocityY = asteroid.GetComponent<Rigidbody2D>().velocity.y;
+            asteroidObject.angularVelocity = asteroid.GetComponent<Rigidbody2D>().angularVelocity;            
             asteroidObject.blockList = new List<BlockObject>();
 
             foreach (Vector2 position in asteroid.GetComponent<AsteroidBlockControl>().asteroidBlocks.Keys) {
@@ -84,7 +83,7 @@ public class WorldBuilder : MonoBehaviour
                 BlockObject blockObject = new BlockObject();
                 blockObject.gridX = position.x;
                 blockObject.gridY = position.y;
-                blockObject.blockID = asteroid.GetComponent<AsteroidBlockControl>().asteroidBlocks[position].GetComponent<ItemData>().itemID;
+                blockObject.blockID = asteroid.GetComponent<AsteroidBlockControl>().asteroidBlocks[position].GetComponent<ItemData>().item.itemID;
                 asteroidObject.blockList.Add(blockObject);
 
             }
@@ -98,8 +97,8 @@ public class WorldBuilder : MonoBehaviour
         playerObject.angle = Player.transform.eulerAngles.z;
         playerObject.velocityX = Player.GetComponent<Rigidbody2D>().velocity.x;
         playerObject.velocityY = Player.GetComponent<Rigidbody2D>().velocity.y;
+        playerObject.angularVelocity = Player.GetComponent<Rigidbody2D>().angularVelocity;
         playerObject.InventoryItems = Player.GetComponent<Inventory>().InventoryItems;
-        playerObject.InventoryAmounts = Player.GetComponent<Inventory>().InventoryAmounts;
 
         worldObject.playerObject = playerObject;
 
@@ -111,26 +110,23 @@ public class WorldBuilder : MonoBehaviour
     void LoadWorld(string fileName) {
         string json = File.ReadAllText(fileName);
         WorldObject worldObject = JsonUtility.FromJson<WorldObject>(json);
-        ItemControlScript = GameObject.Find("ItemControlGameObject").GetComponent<ItemControl>();
 
         foreach (AsteroidObject asteroidObject in worldObject.asteroidList) {
             GameObject asteroidGameObjectInstance = Instantiate(asteroidGameObject, new Vector2(asteroidObject.x, asteroidObject.y), Quaternion.Euler(0, 0, asteroidObject.angle));
-            
+            AsteroidBlockControl asteroidBlockControlScript = asteroidGameObjectInstance.GetComponent<AsteroidBlockControl>();
             foreach (BlockObject blockObject in asteroidObject.blockList) {
-                Vector2 position = asteroidGameObjectInstance.GetComponent<AsteroidBlockControl>().gridPositionToGamePosition(new Vector2(blockObject.gridX, blockObject.gridY));
-                GameObject blockObjectInstance = Instantiate(ItemControlScript.itemList[blockObject.blockID], position, Quaternion.Euler(0, 0, asteroidObject.angle)); 
-                blockObjectInstance.transform.SetParent(asteroidGameObjectInstance.transform);
+                GameObject blockObjectInstance = asteroidBlockControlScript.PlaceBlock(blockObject.blockID, asteroidBlockControlScript.gridPositionToGamePosition(new Vector2(blockObject.gridX, blockObject.gridY))); 
             }
 
             asteroidGameObjectInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(asteroidObject.velocityX, asteroidObject.velocityY);
-
+            asteroidGameObjectInstance.GetComponent<Rigidbody2D>().angularVelocity = asteroidObject.angularVelocity;
             asteroidGameObjectList.Add(asteroidGameObjectInstance);
         }
 
         GameObject playerGameObjectInstance = Instantiate(playerPrefab, new Vector2(worldObject.playerObject.x, worldObject.playerObject.y), Quaternion.Euler(0, 0, worldObject.playerObject.angle));
         playerGameObjectInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(worldObject.playerObject.velocityX, worldObject.playerObject.velocityY);
+        playerGameObjectInstance.GetComponent<Rigidbody2D>().angularVelocity = worldObject.playerObject.angularVelocity;
         playerGameObjectInstance.GetComponent<Inventory>().InventoryItems = worldObject.playerObject.InventoryItems;
-        playerGameObjectInstance.GetComponent<Inventory>().InventoryAmounts = worldObject.playerObject.InventoryAmounts;
         playerGameObjectInstance.name = "player";
         player = playerGameObjectInstance;
     }
@@ -139,6 +135,7 @@ public class WorldBuilder : MonoBehaviour
         player = Instantiate(playerPrefab, new Vector2(0, 15), Quaternion.identity);
         player.name = "player";
         proceduralGenerationScript = GetComponent<ProceduralGeneration>();
+        //asteroidGameObjectList = proceduralGenerationScript.RandomSpawning(64, 1024, 1024);
         asteroidGameObjectList.Add(proceduralGenerationScript.CreateAsteroid(0f, 0f, 10f, 5f));
         SaveWorld(asteroidGameObjectList, player);
     }

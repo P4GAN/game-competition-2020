@@ -33,7 +33,7 @@ public class Planet : MonoBehaviour
                 float distance = Mathf.Sqrt(Mathf.Pow(x, 2) + Mathf.Pow(y, 2));
 
                 if (distance <= radius) {
-                    GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(3, new Vector2 (x, y), false);
+                    GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(3, new Vector2 (x, y));
                     
                 }
             }

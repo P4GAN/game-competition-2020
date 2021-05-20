@@ -1,0 +1,175 @@
+{
+    "CraftingRecipeList": [
+        {
+            "CraftingResult": 11,
+            "CraftingResultName": "coal",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                2
+            ],
+            "CraftingIngredientNames": [
+                "coal ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 12,
+            "CraftingResultName": "aluminum",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                3
+            ],
+            "CraftingIngredientNames": [
+                "aluminum ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 13,
+            "CraftingResultName": "iron",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                4
+            ],
+            "CraftingIngredientNames": [
+                "iron ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 14,
+            "CraftingResultName": "titanium",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                5
+            ],
+            "CraftingIngredientNames": [
+                "titanium ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 15,
+            "CraftingResultName": "copper",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                6
+            ],
+            "CraftingIngredientNames": [
+                "copper ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 16,
+            "CraftingResultName": "magnesium",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                7
+            ],
+            "CraftingIngredientNames": [
+                "magnesium ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 17,
+            "CraftingResultName": "cobalt",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                8
+            ],
+            "CraftingIngredientNames": [
+                "cobalt ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 18,
+            "CraftingResultName": "uranium",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                9
+            ],
+            "CraftingIngredientNames": [
+                "uranium ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 19,
+            "CraftingResultName": "silicon",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                1
+            ],
+            "CraftingIngredientNames": [
+                "stone"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 20,
+            "CraftingResultName": "ceramic",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                1
+            ],
+            "CraftingIngredientNames": [
+                "stone"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 21,
+            "CraftingResultName": "galacium",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                10
+            ],
+            "CraftingIngredientNames": [
+                "galacium ore"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": 22,
+            "CraftingResultName": "steel",
+            "CraftingResultAmount": 10,
+            "CraftingIngredients": [
+                13,
+                11
+            ],
+            "CraftingIngredientNames": [
+                "iron",
+                "coal"
+            ],
+            "CraftingIngredientAmounts": [
+                9,
+                1
+            ]
+        }
+    ]
+}

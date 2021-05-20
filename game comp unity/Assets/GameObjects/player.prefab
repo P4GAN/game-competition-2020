@@ -19,7 +19,6 @@ GameObject:
   - component: {fileID: 503048139455036168}
   - component: {fileID: 503048139455036160}
   - component: {fileID: 503048139455036161}
-  - component: {fileID: 503048139455036162}
   m_Layer: 8
   m_Name: player
   m_TagString: Player
@@ -178,10 +177,247 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75dfc996c3409479890a4eb71b1f1691, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemControlGameObject: {fileID: 0}
-  ItemControlScript: {fileID: 0}
-  InventoryItems: 
-  InventoryAmounts: 
+  InventoryItems:
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
+  - itemID: 0
+    itemName: 
+    itemAmount: 0
+    itemType: 
+    itemCaptionString: 
+    mass: 0
   InventoryPanelGameObject: {fileID: 4603552676144844836, guid: a7aa8566415704745894cf543894e674,
     type: 3}
   InventoryPanelGameObjectInstance: {fileID: 0}
@@ -191,7 +427,7 @@ MonoBehaviour:
   InventorySlots: []
   emptyItem: {fileID: 2570182255797173556, guid: bcf057de7f0e5482f8be90dfe42d15e6,
     type: 3}
-  position: {x: 0, y: 100}
+  position: {x: -250, y: 100}
   inventoryWidth: 10
   inventoryHeight: 4
 --- !u!114 &503048139455036215
@@ -206,19 +442,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d80fc166e4a2e4fafaf11fd7d64f20ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CraftingPanel: {fileID: 0}
-  CraftingMenuGameObjectName: CraftingMenuPlayer
+  CraftingMenuGameObjectName: CraftingPlayer
   CraftingRecipeGameObject: {fileID: 3758288094237772603, guid: 61dc9e517688147f5b8c1dc60e19e49e,
     type: 3}
-  craftingRecipeDistance: 25
-  itemIconDistance: 20
-  itemIconSize: {x: 15, y: 15}
+  craftingRecipeDistance: 45
+  itemIconDistance: 45
+  itemIconSize: {x: 35, y: 35}
   CraftingRecipeGameObjectList: []
   InventoryScript: {fileID: 0}
-  ItemControlScript: {fileID: 0}
-  itemControlGameObject: {fileID: 0}
   CraftingRecipeList: []
-  fileName: test.json
+  emptyItem: {fileID: 2570182255797173556, guid: bcf057de7f0e5482f8be90dfe42d15e6,
+    type: 3}
+  fileName: craftingRecipesPlayer.json
 --- !u!114 &503048139455036168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,15 +466,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e838bd76faa44b5a31ef3c7b94260f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryIndex: 0
-  itemControlGameObject: {fileID: 0}
-  ItemControlScript: {fileID: 0}
   InventoryScript: {fileID: 0}
+  inventoryIndex: 0
   canvas: {fileID: 0}
   inventoryPanel: {fileID: 0}
-  craftingPanel: {fileID: 0}
   currentHeldGameObject: {fileID: 0}
-  currentHeldAmount: 0
   emptyItem: {fileID: 2570182255797173556, guid: bcf057de7f0e5482f8be90dfe42d15e6,
     type: 3}
   hotbarSize: 10
@@ -283,24 +514,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f990ca0f1f7b4f4aadeb90d4d8397ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemControlGameObject: {fileID: 0}
   mousePos: {x: 0, y: 0}
-  ItemControlScript: {fileID: 0}
   InventoryScript: {fileID: 0}
   PlayerInventoryScript: {fileID: 0}
---- !u!114 &503048139455036162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 503048139455036214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a872a30fc6214417a7df198b7058f7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
 --- !u!1 &2333785809662378621
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,12 +5,8 @@ using UnityEngine;
 public class UseItem : MonoBehaviour
 {
 
-    public GameObject itemControlGameObject;
-
     public Vector2 mousePos;
     
-    public ItemControl ItemControlScript;
-
     public Inventory InventoryScript;
 
     public PlayerInventory PlayerInventoryScript;
@@ -18,8 +14,6 @@ public class UseItem : MonoBehaviour
     void Start()
     {
         InventoryScript = GetComponent<Inventory>();
-        itemControlGameObject = GameObject.Find("ItemControlGameObject");
-        ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         PlayerInventoryScript = GetComponent<PlayerInventory>();
     }
 
@@ -50,13 +44,16 @@ public class UseItem : MonoBehaviour
     public void UseItemLeftClickDown() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
+
+        Debug.Log(itemType);
+        Debug.Log(InventoryScript.InventoryItems[2].itemType);
 
         if (itemType == "projectileGun") {
-            ProjectileFire projectileFireScript = itemControlGameObject.GetComponent<ProjectileFire>(); 
-            int bulletIndex = InventoryScript.InventoryItems.IndexOf(16);
-            if (bulletIndex != -1 && InventoryScript.InventoryAmounts[bulletIndex] > 0) {
-                projectileFireScript.MouseFireProjectile(ItemControlScript.itemList[16], gameObject);
+            ProjectileFire projectileFireScript = ItemControl.projectileFireScript; 
+            int bulletIndex = InventoryScript.InventoryItems.FindIndex(x => x.itemName == "bullet");
+            if (bulletIndex != -1 && InventoryScript.InventoryItems[bulletIndex].itemAmount > 0) {
+                projectileFireScript.MouseFireProjectile(ItemControl.itemList[32], gameObject);
                 InventoryScript.RemoveItemAtIndex(bulletIndex, 1);
             }
         }
@@ -71,10 +68,12 @@ public class UseItem : MonoBehaviour
         */
 
         if (itemType == "tool") {
-            AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
+            AsteroidBlockControl AsteroidBlockControlScript = ItemControl.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
+            
             GameObject block = AsteroidBlockControlScript.RemoveBlock(mousePos);
+            Debug.Log(block);
             if (block) {
-                InventoryScript.AddItem(block.GetComponent<ItemData>().itemID, 1);
+                InventoryScript.AddItem(block.GetComponent<ItemData>().item, 1);
             }
 
         }
@@ -82,7 +81,7 @@ public class UseItem : MonoBehaviour
     }
 
     public void UseItemLeftClickHold() {
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
 
         if (itemType == "laserGun") {
             GetComponent<LaserFire>().ControlLaser();
@@ -90,7 +89,7 @@ public class UseItem : MonoBehaviour
 
     }
     public void UseItemLeftClickUp() {
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
 
         if (itemType == "laserGun") {
 
@@ -101,12 +100,12 @@ public class UseItem : MonoBehaviour
     public void UseItemRightClickDown() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
 
         if (itemType == "block") {
-            AsteroidBlockControl AsteroidBlockControlScript = ItemControlScript.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
-            if (InventoryScript.InventoryAmounts[PlayerInventoryScript.inventoryIndex] >= 1) {
-                if (AsteroidBlockControlScript.PlaceBlock(InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex], mousePos, true)) {
+            AsteroidBlockControl AsteroidBlockControlScript = ItemControl.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
+            if (InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemAmount >= 1) {
+                if (AsteroidBlockControlScript.PlaceBlockPlayer(InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemID, mousePos, true)) {
                     InventoryScript.RemoveItemAtIndex(PlayerInventoryScript.inventoryIndex, 1);
                 }
 
@@ -115,12 +114,12 @@ public class UseItem : MonoBehaviour
         }
     }
     public void UseItemRightClickHold() {
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
 
 
     }
     public void UseItemRightClickUp() {
-        string itemType = ItemControlScript.itemList[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex]].GetComponent<ItemData>().itemType;  
+        string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
 
 
     }

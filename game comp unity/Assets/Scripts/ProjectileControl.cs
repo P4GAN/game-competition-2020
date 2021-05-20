@@ -33,7 +33,7 @@ public class ProjectileControl : MonoBehaviour {
                     Instantiate(explosion, transform.position, Quaternion.identity);
                 }
                 if (col.CompareTag("Player")) {
-                    col.GetComponent<PlayerHealth>().TakeDamage(damage);
+                    col.GetComponent<PlayerResources>().TakeDamage(damage);
                 }
                 Destroy(gameObject);
             }

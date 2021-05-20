@@ -1,0 +1,13 @@
+{
+    "CraftingRecipeList":
+    [
+        {
+            "CraftingResult": 2,
+            "CraftingResultName": "",
+            "CraftingResultAmount": 10,
+            "CraftingIngredients": [1],
+            "CraftingIngredientNames": [""],
+            "CraftingIngredientAmounts": [1]
+        }
+    ]
+}

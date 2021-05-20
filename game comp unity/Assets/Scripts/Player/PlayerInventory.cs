@@ -7,21 +7,13 @@ public class PlayerInventory : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public int inventoryIndex;
-    public GameObject itemControlGameObject;
-
-    
-    public ItemControl ItemControlScript;
-
     public Inventory InventoryScript;
-
+    public int inventoryIndex;
     public GameObject canvas;
 
     public GameObject inventoryPanel;
-    public GameObject craftingPanel;
 
     public GameObject currentHeldGameObject;
-    public int currentHeldAmount;
 
     public GameObject emptyItem;
 
@@ -33,10 +25,7 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         InventoryScript = GetComponent<Inventory>();
-        itemControlGameObject = GameObject.Find("ItemControlGameObject");
-        ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
         inventoryPanel = InventoryScript.InventoryPanelGameObjectInstance;
-        craftingPanel = GetComponent<Crafting>().CraftingPanel;
         hotbarIndicator = GameObject.Find("HotbarIndicator");
         for (int i = 0; i < 10; i++) {
             hotbarSlots[i] = GameObject.Find("HotbarSlot" + i.ToString());
@@ -52,9 +41,9 @@ public class PlayerInventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab)) {
             inventoryPanel.SetActive(!inventoryPanel.activeSelf);
 
-            GameObject.Find("Canvas").transform.Find("CraftingMenuPlayer").gameObject.SetActive(inventoryPanel.activeSelf);
-            GameObject.Find("Canvas").transform.Find("CraftingMenuRefiner").gameObject.SetActive(false);
-            GameObject.Find("Canvas").transform.Find("CraftingMenuAssembler").gameObject.SetActive(false);
+            GameObject.Find("Canvas").transform.Find("CraftingPlayerContainer").gameObject.SetActive(inventoryPanel.activeSelf);
+            GameObject.Find("Canvas").transform.Find("CraftingRefinerContainer").gameObject.SetActive(false);
+            GameObject.Find("Canvas").transform.Find("CraftingAssemblerContainer").gameObject.SetActive(false);
         }
 
         if (inventoryPanel.activeSelf) {
@@ -78,9 +67,7 @@ public class PlayerInventory : MonoBehaviour
     }
 
     public void UpdateHotbarUI() {
-        if (itemControlGameObject == null) {
-            itemControlGameObject = GameObject.Find("ItemControlGameObject");
-        }
+
         if (hotbarSlots[0] == null) {
             for (int i = 0; i < 10; i++) {
                 hotbarSlots[i] = GameObject.Find("HotbarSlot" + i.ToString());
@@ -89,24 +76,23 @@ public class PlayerInventory : MonoBehaviour
 
         for (int i = 0; i < hotbarSize; i++) {
 
-            ItemControl ItemControlScript = itemControlGameObject.GetComponent<ItemControl>();
             InventorySlot InventorySlotScript = hotbarSlots[i].GetComponent<InventorySlot>();
             Inventory InventoryScript = GetComponent<Inventory>();
 
-            if (InventoryScript.InventoryItems[i] != InventorySlotScript.containedItem.GetComponent<ItemData>().itemID) {
-                GameObject item = Instantiate(ItemControlScript.itemIconList[InventoryScript.InventoryItems[i]], transform.position, Quaternion.identity);      
-                if (InventoryScript.InventoryAmounts[i] == 0) {
-                    item = Instantiate(emptyItem, transform.position, Quaternion.identity);
-                }
-
-                Destroy(InventorySlotScript.containedItem);
-                InventorySlotScript.containedItem = item;
-                InventorySlotScript.containedItem.transform.SetParent(hotbarSlots[i].transform, false);
-                InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            GameObject item = Instantiate(emptyItem, transform.position, Quaternion.identity);
+            if (InventoryScript.InventoryItems[i].itemAmount != 0) {
+                item.GetComponent<Image>().sprite = ItemControl.itemList[InventoryScript.InventoryItems[i].itemID].GetComponent<SpriteRenderer>().sprite;
+                item.GetComponent<ItemData>().item = InventoryScript.InventoryItems[i];
             }
 
-            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[i].ToString();
-            if (InventoryScript.InventoryAmounts[i] == 0 || InventoryScript.InventoryAmounts[i] == 1) {
+            Destroy(InventorySlotScript.containedItem);
+            InventorySlotScript.containedItem = item;
+            InventorySlotScript.containedItem.transform.SetParent(hotbarSlots[i].transform, false);
+            InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+        
+
+            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryItems[i].itemAmount.ToString();
+            if (InventoryScript.InventoryItems[i].itemAmount == 0 || InventoryScript.InventoryItems[i].itemAmount == 1) {
                 InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
             }
             
@@ -120,74 +106,79 @@ public class PlayerInventory : MonoBehaviour
         InventorySlot InventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
         InventoryScript = GetComponent<Inventory>();
 
-        if (currentHeldGameObject.GetComponent<ItemData>().itemID == 0) {
-            Destroy(currentHeldGameObject);
-            currentHeldGameObject = Instantiate(InventorySlotScript.containedItem, transform.position, Quaternion.identity);
-            currentHeldGameObject.transform.SetParent(canvas.transform);
-            currentHeldGameObject.GetComponent<Image>().raycastTarget = false;
+        //when inventory slot is right clicked, if there is no current held item and there is an item in the slot, split the slot 
+        //and put the smaller half in the slot
+        if (!InventorySlotScript.hotbarSlot) {
+            if (currentHeldGameObject.GetComponent<ItemData>().item.itemID == 0) {
+                Destroy(currentHeldGameObject);
+                currentHeldGameObject = Instantiate(emptyItem, transform.position, Quaternion.identity);
+                currentHeldGameObject.transform.SetParent(canvas.transform);
 
-            currentHeldAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] - InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex]/2;
+                currentHeldGameObject.GetComponent<ItemData>().item = InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].Clone();
 
-            currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldAmount.ToString();
-            if (currentHeldAmount == 0 || currentHeldAmount == 1) {
-                currentHeldGameObject.GetComponentInChildren<Text>().text = "";
-            }
+                currentHeldGameObject.GetComponent<ItemData>().item.itemAmount = (InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].itemAmount + 1)/2;
+                currentHeldGameObject.GetComponent<Image>().sprite = ItemControl.itemList[currentHeldGameObject.GetComponent<ItemData>().item.itemID].GetComponent<SpriteRenderer>().sprite;
 
+                currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldGameObject.GetComponent<ItemData>().item.itemAmount.ToString();
+                if (currentHeldGameObject.GetComponent<ItemData>().item.itemAmount == 0 || currentHeldGameObject.GetComponent<ItemData>().item.itemAmount == 1) {
+                    currentHeldGameObject.GetComponentInChildren<Text>().text = "";
+                }
 
-            InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] -= currentHeldAmount;
-            if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 ) {
-                Destroy(InventorySlotScript.containedItem);
-                InventorySlotScript.containedItem = Instantiate(emptyItem, transform.position, Quaternion.identity);
-                InventorySlotScript.containedItem.transform.SetParent(InventorySlotGameObject.transform, false);
-                InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
-            }
-            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString();
-            if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 1) {
-                InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
+                InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].itemAmount -= currentHeldGameObject.GetComponent<ItemData>().item.itemAmount;
+
             }
         }
+        currentHeldGameObject.transform.position = Input.mousePosition;
         
-        UpdateHotbarUI();
-        GetComponent<Crafting>().updateCraftingRecipes();
+        InventoryScript.UpdateInventoryUI();
     }
 
     public void InventorySlotLeftClicked(GameObject InventorySlotGameObject) {
 
+        //if item in hand and item in slot are the same, add them together and put in the slot
+        //if theyre different, swap the items 
+
         InventorySlot InventorySlotScript = InventorySlotGameObject.GetComponent<InventorySlot>();
         InventoryScript = GetComponent<Inventory>();
 
-        if (InventorySlotScript.containedItem.GetComponent<ItemData>().itemID == currentHeldGameObject.GetComponent<ItemData>().itemID) {
-            int newAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] + currentHeldAmount;
-            InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] = newAmount;
-            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = newAmount.ToString();
-            Destroy(currentHeldGameObject);
-            currentHeldGameObject = Instantiate(emptyItem, transform.position, Quaternion.identity);
+        if (InventorySlotScript.hotbarSlot) {
+            inventoryIndex = InventorySlotScript.inventoryIndex;
         }
         else {
-            GameObject temporaryContainedItem = InventorySlotScript.containedItem;
-            InventorySlotScript.containedItem = currentHeldGameObject;
 
-            InventorySlotScript.containedItem.transform.SetParent(InventorySlotGameObject.transform, false);
-            InventorySlotScript.containedItem.transform.localPosition = new Vector2(0, 0);
+            if (InventorySlotScript.containedItem.GetComponent<ItemData>().item.itemID == currentHeldGameObject.GetComponent<ItemData>().item.itemID) {
+                int newAmount = InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].itemAmount + currentHeldGameObject.GetComponent<ItemData>().item.itemAmount;
+                InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].itemAmount = newAmount;
+                Destroy(currentHeldGameObject);
+                currentHeldGameObject = Instantiate(emptyItem, transform.position, Quaternion.identity);
+            }
+            else {
+                Item temporaryItem = InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].Clone();
+                InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex] = currentHeldGameObject.GetComponent<ItemData>().item.Clone();
 
-            currentHeldGameObject = temporaryContainedItem;
+                Destroy(currentHeldGameObject);
+
+                currentHeldGameObject = Instantiate(emptyItem, transform.position, Quaternion.identity);
+
+                currentHeldGameObject.GetComponent<ItemData>().item = temporaryItem; 
+
+
+                Destroy(InventorySlotScript.containedItem);
+
+            }
+            currentHeldGameObject.GetComponent<Image>().sprite = ItemControl.itemList[currentHeldGameObject.GetComponent<ItemData>().item.itemID].GetComponent<SpriteRenderer>().sprite;
             currentHeldGameObject.transform.SetParent(canvas.transform);
-            currentHeldGameObject.GetComponent<Image>().raycastTarget = false;
 
-            InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex] = InventorySlotScript.containedItem.GetComponent<ItemData>().itemID;
-            
-            int temporaryAmount = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex];
-            InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] = currentHeldAmount;
-            currentHeldAmount = temporaryAmount;
-
+            currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldGameObject.GetComponent<ItemData>().item.itemAmount.ToString();
+            if (currentHeldGameObject.GetComponent<ItemData>().item.itemAmount == 0 || currentHeldGameObject.GetComponent<ItemData>().item.itemAmount == 1) {
+                currentHeldGameObject.GetComponentInChildren<Text>().text = "";
+            }
         }
+        InventoryScript.UpdateInventoryUI();
 
-        InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex].ToString();
-        if (InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 0 || InventoryScript.InventoryAmounts[InventorySlotScript.inventoryIndex] == 1 || InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex] == 0) {
-            InventorySlotScript.containedItem.GetComponentInChildren<Text>().text = "";
-        } 
+        currentHeldGameObject.transform.position = Input.mousePosition;
 
-        UpdateHotbarUI();
-        GetComponent<Crafting>().updateCraftingRecipes();
     }
+            
+
 }
