@@ -14,15 +14,16 @@ GameObject:
   - component: {fileID: 503048139455036172}
   - component: {fileID: 503048139455036171}
   - component: {fileID: 503048139455036170}
-  - component: {fileID: 503048139455036169}
+  - component: {fileID: -8061622390494411263}
   - component: {fileID: 503048139455036215}
   - component: {fileID: 503048139455036168}
   - component: {fileID: 503048139455036160}
   - component: {fileID: 503048139455036161}
+  - component: {fileID: -1886707207946064671}
   m_Layer: 8
   m_Name: player
   m_TagString: Player
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2800000, guid: 20f899bc523dd458bad5351f3c4b51ae, type: 3}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -35,7 +36,7 @@ Transform:
   m_GameObject: {fileID: 503048139455036214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 15, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 1371317678456354396}
   m_Father: {fileID: 0}
@@ -153,6 +154,8 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   moveForce: 1
   rotateForce: 1
+  y: {x: 0, y: 1}
+  x: {x: 1, y: 0}
 --- !u!114 &503048139455036170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5630d877633b94e81b5cb5fe289fedd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &503048139455036169
+--- !u!114 &-8061622390494411263
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,256 +181,256 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InventoryItems:
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  - itemID: 0
+  - itemID: 
     itemName: 
     itemAmount: 0
     itemType: 
     itemCaptionString: 
     mass: 0
-  InventoryPanelGameObject: {fileID: 4603552676144844836, guid: a7aa8566415704745894cf543894e674,
+  InventoryPanel: {fileID: 4603552676144844836, guid: a7aa8566415704745894cf543894e674,
     type: 3}
-  InventoryPanelGameObjectInstance: {fileID: 0}
+  InventoryPanelInstance: {fileID: 0}
   canvas: {fileID: 0}
   InventorySlotGameObject: {fileID: 9119294301812914148, guid: c7c7e86868ecb43c5b921691071184a8,
     type: 3}
   InventorySlots: []
   emptyItem: {fileID: 2570182255797173556, guid: bcf057de7f0e5482f8be90dfe42d15e6,
     type: 3}
-  position: {x: -250, y: 100}
+  position: {x: 0, y: 125}
   inventoryWidth: 10
   inventoryHeight: 4
 --- !u!114 &503048139455036215
@@ -468,6 +471,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryScript: {fileID: 0}
   inventoryIndex: 0
+  inventoryScroll: 0
+  inventoryScrollSpeed: 0
   canvas: {fileID: 0}
   inventoryPanel: {fileID: 0}
   currentHeldGameObject: {fileID: 0}
@@ -501,7 +506,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laser: {fileID: 2508295566898348497, guid: a9649585cfdbd4384881573baf1b9d07, type: 3}
   laserInstance: {fileID: 0}
-  mousePos: {x: 0, y: 0, z: 0}
+  mousePos: {x: 0, y: 0}
+  maxRange: 20
 --- !u!114 &503048139455036161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -517,6 +523,32 @@ MonoBehaviour:
   mousePos: {x: 0, y: 0}
   InventoryScript: {fileID: 0}
   PlayerInventoryScript: {fileID: 0}
+  indicatorBlockPrefab: {fileID: 3923884654879135883, guid: aa1fd9480cb6e412ea93f51d6c577051,
+    type: 3}
+  spriteRenderer: {fileID: 0}
+  rotation: 0
+--- !u!114 &-1886707207946064671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503048139455036214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5690cd6807ada4249b4fce683f5a4e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxHealth: 100
+  oxygen: 100
+  maxOxygen: 100
+  power: 0
+  maxPower: 100
+  oxygenUsage: 1
+  oxygenDamage: 1
+  healthSlider: {fileID: 0}
+  powerSlider: {fileID: 0}
 --- !u!1 &2333785809662378621
 GameObject:
   m_ObjectHideFlags: 0

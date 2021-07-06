@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerResources : MonoBehaviour
 {
@@ -14,9 +15,15 @@ public class PlayerResources : MonoBehaviour
     public float maxPower = 100f;
     public float oxygenUsage = 1f;
     public float oxygenDamage = 1f;
+
+    public Slider healthSlider;
+    public Slider powerSlider;
+
     void Start()
     {
-        
+        healthSlider = SceneReferences.healthSlider;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = maxHealth;
     }
 
     // Update is called once per frame
@@ -25,7 +32,7 @@ public class PlayerResources : MonoBehaviour
         oxygen -= oxygenUsage;
         if (oxygen <= 0) {
             oxygen = 0;
-            TakeDamage(oxygenDamage);
+            //TakeDamage(oxygenDamage);
         }
         if (oxygen >= maxOxygen) {
             oxygen = maxOxygen;
@@ -39,6 +46,7 @@ public class PlayerResources : MonoBehaviour
         if (power <= 0) {
             power = 0;
         }
+        healthSlider.value = health;
     }
 
     public bool TakeDamage(float damage) {

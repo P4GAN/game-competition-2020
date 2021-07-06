@@ -2,11 +2,9 @@
     "CraftingRecipeList":
     [
         {
-            "CraftingResult": 2,
-            "CraftingResultName": "",
+            "CraftingResult": "",
             "CraftingResultAmount": 10,
-            "CraftingIngredients": [1],
-            "CraftingIngredientNames": [""],
+            "CraftingIngredients": [""],
             "CraftingIngredientAmounts": [1]
         }
     ]

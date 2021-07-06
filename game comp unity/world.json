@@ -1,4 +1,335 @@
 {
+    "seed": -246758601,
+    "playerObject": {
+        "x": 0.0,
+        "y": 15.0,
+        "angle": 0.0,
+        "velocityX": 0.0,
+        "velocityY": 0.0,
+        "angularVelocity": 0.0,
+        "InventoryItems": [
+            {
+                "itemID": "pickaxe",
+                "itemName": "pickaxe",
+                "itemAmount": 1,
+                "itemType": "tool",
+                "itemCaptionString": "pickaxe",
+                "mass": 3000.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            },
+            {
+                "itemID": "empty",
+                "itemName": "empty",
+                "itemAmount": 0,
+                "itemType": "",
+                "itemCaptionString": "",
+                "mass": 0.0
+            }
+        ]
+    },
     "asteroidList": [
         {
             "x": 0.0,
@@ -11,1854 +342,1504 @@
                 {
                     "gridX": -11.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -11.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -11.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -10.0,
                     "gridY": -6.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -10.0,
                     "gridY": -5.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -10.0,
                     "gridY": -4.0,
-                    "blockID": 4
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -10.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -10.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -10.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": -5.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": -4.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": 1.0,
-                    "blockID": 5
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -9.0,
                     "gridY": 2.0,
-                    "blockID": 5
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -5.0,
-                    "blockID": 5
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -3.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 0.0,
-                    "blockID": 4
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 1.0,
-                    "blockID": 4
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 2.0,
-                    "blockID": 4
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 3.0,
-                    "blockID": 4
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 4.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 6.0,
-                    "blockID": 5
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -8.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -3.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 0.0,
-                    "blockID": 4
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 1.0,
-                    "blockID": 4
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 2.0,
-                    "blockID": 4
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 3.0,
-                    "blockID": 4
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 4.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 5.0,
-                    "blockID": 5
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 6.0,
-                    "blockID": 5
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -7.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 4.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 5.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -6.0,
                     "gridY": 7.0,
-                    "blockID": 4
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 3.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 4.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 7.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -5.0,
                     "gridY": 8.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -8.0,
-                    "blockID": 5
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 3.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 4.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -4.0,
                     "gridY": 8.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": -7.0,
-                    "blockID": 5
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": -5.0,
-                    "blockID": 4
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": -4.0,
-                    "blockID": 4
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 4.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -3.0,
                     "gridY": 8.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": -7.0,
-                    "blockID": 5
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": -6.0,
-                    "blockID": 6
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": -5.0,
-                    "blockID": 6
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": -4.0,
-                    "blockID": 6
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": -3.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 3.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 4.0,
-                    "blockID": 5
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 5.0,
-                    "blockID": 5
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -2.0,
                     "gridY": 8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -7.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -6.0,
-                    "blockID": 6
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -5.0,
-                    "blockID": 6
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -4.0,
-                    "blockID": 6
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -3.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 3.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 4.0,
-                    "blockID": 5
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 5.0,
-                    "blockID": 5
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": -1.0,
                     "gridY": 8.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -9.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 4.0,
-                    "blockID": 5
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 5.0,
-                    "blockID": 5
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 0.0,
                     "gridY": 8.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -10.0,
-                    "blockID": 1
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -9.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 2.0,
-                    "blockID": 4
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 3.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 4.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 1.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
-                    "gridX": 2.0,
-                    "gridY": -12.0,
-                    "blockID": 5
+                    "gridX": 1.0,
+                    "gridY": 8.0,
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -11.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -10.0,
-                    "blockID": 1
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -9.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": 1.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": 2.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": 3.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": 4.0,
-                    "blockID": 4
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 2.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
-                    "gridX": 3.0,
-                    "gridY": -12.0,
-                    "blockID": 1
+                    "gridX": 2.0,
+                    "gridY": 7.0,
+                    "blockID": "coal ore"
                 },
                 {
-                    "gridX": 3.0,
-                    "gridY": -11.0,
-                    "blockID": 6
+                    "gridX": 2.0,
+                    "gridY": 8.0,
+                    "blockID": "magnesium ore"
+                },
+                {
+                    "gridX": 2.0,
+                    "gridY": 9.0,
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -10.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -9.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": 3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": 4.0,
-                    "blockID": 1
+                    "blockID": "copper ore"
                 },
                 {
                     "gridX": 3.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "copper ore"
                 },
                 {
-                    "gridX": 4.0,
-                    "gridY": -12.0,
-                    "blockID": 1
+                    "gridX": 3.0,
+                    "gridY": 6.0,
+                    "blockID": "stone"
                 },
                 {
-                    "gridX": 4.0,
-                    "gridY": -11.0,
-                    "blockID": 1
+                    "gridX": 3.0,
+                    "gridY": 7.0,
+                    "blockID": "stone"
                 },
                 {
-                    "gridX": 4.0,
-                    "gridY": -10.0,
-                    "blockID": 1
+                    "gridX": 3.0,
+                    "gridY": 8.0,
+                    "blockID": "stone"
                 },
                 {
-                    "gridX": 4.0,
-                    "gridY": -9.0,
-                    "blockID": 1
+                    "gridX": 3.0,
+                    "gridY": 9.0,
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -8.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -7.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": 0.0,
-                    "blockID": 5
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": 1.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": 2.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": 3.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": 4.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 4.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
-                    "gridX": 5.0,
-                    "gridY": -10.0,
-                    "blockID": 1
+                    "gridX": 4.0,
+                    "gridY": 6.0,
+                    "blockID": "cobalt ore"
                 },
                 {
-                    "gridX": 5.0,
-                    "gridY": -9.0,
-                    "blockID": 1
+                    "gridX": 4.0,
+                    "gridY": 7.0,
+                    "blockID": "cobalt ore"
                 },
                 {
-                    "gridX": 5.0,
-                    "gridY": -8.0,
-                    "blockID": 1
+                    "gridX": 4.0,
+                    "gridY": 8.0,
+                    "blockID": "stone"
                 },
                 {
-                    "gridX": 5.0,
-                    "gridY": -7.0,
-                    "blockID": 6
+                    "gridX": 4.0,
+                    "gridY": 9.0,
+                    "blockID": "cobalt ore"
+                },
+                {
+                    "gridX": 4.0,
+                    "gridY": 10.0,
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": -6.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 0.0,
-                    "blockID": 5
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 1.0,
-                    "blockID": 5
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 2.0,
-                    "blockID": 5
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 3.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 4.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 5.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
-                    "gridX": 6.0,
-                    "gridY": -7.0,
-                    "blockID": 6
+                    "gridX": 5.0,
+                    "gridY": 8.0,
+                    "blockID": "cobalt ore"
                 },
                 {
-                    "gridX": 6.0,
-                    "gridY": -6.0,
-                    "blockID": 1
+                    "gridX": 5.0,
+                    "gridY": 9.0,
+                    "blockID": "cobalt ore"
+                },
+                {
+                    "gridX": 5.0,
+                    "gridY": 10.0,
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "iron ore"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": 3.0,
-                    "blockID": 1
-                },
-                {
-                    "gridX": 6.0,
-                    "gridY": 4.0,
-                    "blockID": 1
-                },
-                {
-                    "gridX": 6.0,
-                    "gridY": 5.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": 6.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 6.0,
                     "gridY": 7.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
-                    "gridX": 7.0,
-                    "gridY": -6.0,
-                    "blockID": 1
+                    "gridX": 6.0,
+                    "gridY": 8.0,
+                    "blockID": "stone"
+                },
+                {
+                    "gridX": 6.0,
+                    "gridY": 9.0,
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": -5.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": 1.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 7.0,
                     "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 7.0,
-                    "gridY": 3.0,
-                    "blockID": 1
-                },
-                {
-                    "gridX": 7.0,
-                    "gridY": 4.0,
-                    "blockID": 1
-                },
-                {
-                    "gridX": 7.0,
-                    "gridY": 5.0,
-                    "blockID": 5
-                },
-                {
-                    "gridX": 7.0,
-                    "gridY": 6.0,
-                    "blockID": 1
-                },
-                {
-                    "gridX": 7.0,
-                    "gridY": 7.0,
-                    "blockID": 1
-                },
-                {
-                    "gridX": 8.0,
-                    "gridY": -5.0,
-                    "blockID": 5
+                    "gridY": 8.0,
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 8.0,
                     "gridY": -4.0,
-                    "blockID": 1
+                    "blockID": "aluminum ore"
                 },
                 {
                     "gridX": 8.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 8.0,
                     "gridY": -2.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 8.0,
                     "gridY": -1.0,
-                    "blockID": 1
+                    "blockID": "coal ore"
                 },
                 {
                     "gridX": 8.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 8.0,
                     "gridY": 1.0,
-                    "blockID": 1
-                },
-                {
-                    "gridX": 8.0,
-                    "gridY": 2.0,
-                    "blockID": 1
+                    "blockID": "cobalt ore"
                 },
                 {
                     "gridX": 9.0,
                     "gridY": -4.0,
-                    "blockID": 5
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 9.0,
                     "gridY": -3.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 9.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 9.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "magnesium ore"
                 },
                 {
                     "gridX": 9.0,
                     "gridY": 0.0,
-                    "blockID": 1
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 10.0,
                     "gridY": -3.0,
-                    "blockID": 4
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 10.0,
                     "gridY": -2.0,
-                    "blockID": 6
+                    "blockID": "stone"
                 },
                 {
                     "gridX": 10.0,
                     "gridY": -1.0,
-                    "blockID": 6
+                    "blockID": "magnesium ore"
                 }
             ]
         }
-    ],
-    "playerObject": {
-        "x": 0.0,
-        "y": 15.0,
-        "angle": 0.0,
-        "velocityX": 0.0,
-        "velocityY": 0.0,
-        "angularVelocity": 0.0,
-        "InventoryItems": [
-            {
-                "itemID": 51,
-                "itemName": "assembler",
-                "itemAmount": 1,
-                "itemType": "block",
-                "itemCaptionString": "assembler",
-                "mass": 3000.0
-            },
-            {
-                "itemID": 52,
-                "itemName": "refiner",
-                "itemAmount": 1,
-                "itemType": "block",
-                "itemCaptionString": "refiner",
-                "mass": 3000.0
-            },
-            {
-                "itemID": 36,
-                "itemName": "pickaxe",
-                "itemAmount": 1,
-                "itemType": "tool",
-                "itemCaptionString": "pickaxe",
-                "mass": 3000.0
-            },
-            {
-                "itemID": 38,
-                "itemName": "handheld rifle",
-                "itemAmount": 1,
-                "itemType": "projectileGun",
-                "itemCaptionString": "handheld rifle",
-                "mass": 3000.0
-            },
-            {
-                "itemID": 32,
-                "itemName": "bullet",
-                "itemAmount": 100,
-                "itemType": "projectile",
-                "itemCaptionString": "bullet",
-                "mass": 1.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            },
-            {
-                "itemID": 0,
-                "itemName": "",
-                "itemAmount": 0,
-                "itemType": "",
-                "itemCaptionString": "",
-                "mass": 0.0
-            }
-        ]
-    }
+    ]
 }

@@ -10,11 +10,12 @@ public class ItemControl : MonoBehaviour
 
     public List<GameObject> setItemlist;
     public static GameObject selectedAsteroid;
+    public static AsteroidBlockControl AsteroidBlockControlScript;
     public GameObject itemIcon;
     public GameObject droppedItem;
 
     public static ProjectileFire projectileFireScript;
-    public static List<GameObject> itemList = new List<GameObject>();
+    public static Dictionary<string, GameObject> itemDictionary = new Dictionary<string, GameObject>();
     public static List<string> itemNameList = new List<string>() {
         "empty",
         "stone",
@@ -62,7 +63,6 @@ public class ItemControl : MonoBehaviour
         "basic jetpack",
         "basic power pack",
         "basic solar pack",
-        "ceramic armor",
         "steel armor",
         "titanium armor",
         "graphene armor",
@@ -75,14 +75,16 @@ public class ItemControl : MonoBehaviour
         "oxygen refiner",
         "cockpit",
         "basic ion thruster",
-        "armor block",
+        "light armor block",
+        "light armor block half",
     };
     void Awake()
     {
         for (int i = 0; i < itemNameList.Count; i++) {
             GameObject x = (GameObject)Resources.Load("ItemGameObjects/" + itemNameList[i]);
             x.GetComponent<ItemData>().item.itemAmount = 0;
-            itemList.Add((GameObject)Resources.Load("ItemGameObjects/" + itemNameList[i]));
+            x.GetComponent<ItemData>().item.itemID = x.GetComponent<ItemData>().item.itemName;
+            itemDictionary.Add(itemNameList[i], (GameObject)Resources.Load("ItemGameObjects/" + itemNameList[i]));
         }
         /*for (int i = 0; i < itemList.Count; i++) {
             GameObject itemIconInstance = Instantiate(itemIcon);

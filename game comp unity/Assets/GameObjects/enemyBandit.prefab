@@ -132,7 +132,6 @@ MonoBehaviour:
     type: 3}
   shootCooldown: 1
   shootTimer: 0
-  itemControlGameObject: {fileID: 0}
 --- !u!114 &7180491778481444966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +148,6 @@ MonoBehaviour:
   pathIndex: 0
   pathfindingTimer: 0
   pathfindingInterval: 0.5
-  pathfindingGameObject: {fileID: 0}
   pathfindingScript: {fileID: 0}
   moveDirection: {x: 0, y: 0}
   rb2d: {fileID: 0}

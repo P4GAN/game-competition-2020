@@ -6,7 +6,8 @@ public class LaserFire : MonoBehaviour {
 
     public GameObject laser;
     public GameObject laserInstance;
-    public Vector3 mousePos;
+    public Vector2 mousePos;
+    public float maxRange;
 
 	// Use this for initialization
 	void Start () {
@@ -18,22 +19,25 @@ public class LaserFire : MonoBehaviour {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float angle = Mathf.Atan2((mousePos.y - transform.position.y), (mousePos.x - transform.position.x)) * Mathf.Rad2Deg;
         
-        Vector2 direction = (mousePos - transform.position).normalized;
+        Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
+        Debug.Log(direction);
         int layerMask =~ LayerMask.GetMask("Player");
-        RaycastHit2D hit = Physics2D.Linecast(transform.position, mousePos, layerMask);
+        Vector2 maxPosition = (Vector2)transform.position + (direction * maxRange);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, maxPosition, layerMask);
 
         Vector2 position = new Vector2();
 
         if (hit.collider != null) {
-            position = new Vector2((transform.position.x + hit.point.x)/2, (transform.position.y + hit.point.y)/2);
+            position = new Vector2((transform.position.x + hit.point.x), (transform.position.y + hit.point.y))/2;
         }
         else {
-            position = new Vector2((transform.position.x + mousePos.x)/2, (transform.position.y + mousePos.y)/2);
+            Debug.Log(maxPosition);
+            position = (maxPosition + (Vector2)transform.position)/2;
         }
 
         laserInstance.transform.position = position; 
         laserInstance.transform.rotation = Quaternion.Euler(0, 0, angle);
-        laserInstance.transform.localScale = new Vector2(Vector2.Distance(transform.position, position) * 2, 1);
+        laserInstance.transform.localScale = new Vector2(Vector2.Distance(transform.position, position) * 2, 0.2f);
     }
 
 	public void StartLaser () {

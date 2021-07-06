@@ -20,20 +20,31 @@ public class BlockClick : MonoBehaviour
         
     }
 
-    void OnMouseDown() {
+    public void BlockClicked() {
+        Debug.Log("fff");
         if (blockType == "refiner") {
             Debug.Log("pos");
-            GameObject.Find("Canvas").transform.Find("CraftingMenuRefiner").gameObject.SetActive(true);
-            GameObject.Find("Canvas").transform.Find("CraftingMenuPlayer").gameObject.SetActive(false);
-            GameObject.Find("Canvas").transform.Find("CraftingMenuAssembler").gameObject.SetActive(false);
-            GameObject.Find("player").GetComponent<PlayerInventory>().inventoryPanel.SetActive(true);
+            SceneReferences.CraftingMenuRefiner.SetActive(true);
+            SceneReferences.CraftingMenuPlayer.SetActive(false);
+            SceneReferences.CraftingMenuAssembler.SetActive(false);
+            WorldBuilder.player.GetComponent<PlayerInventory>().inventoryPanel.SetActive(true);
         }
         if (blockType == "assembler") {
-            GameObject.Find("Canvas").transform.Find("CraftingMenuRefiner").gameObject.SetActive(false);
-            GameObject.Find("Canvas").transform.Find("CraftingMenuPlayer").gameObject.SetActive(false);
-            GameObject.Find("Canvas").transform.Find("CraftingMenuAssembler").gameObject.SetActive(true);
-            GameObject.Find("player").GetComponent<PlayerInventory>().inventoryPanel.SetActive(true);
+            SceneReferences.CraftingMenuRefiner.SetActive(false);
+            SceneReferences.CraftingMenuPlayer.SetActive(false);
+            SceneReferences.CraftingMenuAssembler.SetActive(true);
+            WorldBuilder.player.GetComponent<PlayerInventory>().inventoryPanel.SetActive(true);
 
+        }
+        if (blockType == "cockpit") {
+            if (!transform.parent.gameObject.GetComponent<ShipControl>().shipCreated) {
+                transform.parent.gameObject.GetComponent<ShipControl>().CreateShip(gameObject);
+            }
+            else {
+                //transform.parent.gameObject.GetComponent<ShipControl>().SelectShip(gameObject);
+
+            }
+            
         }
     }
   

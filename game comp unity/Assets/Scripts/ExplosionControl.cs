@@ -6,6 +6,7 @@ public class ExplosionControl : MonoBehaviour {
 
     public float explosionForce = 1f;
     public float timer = 0.0f;
+    public bool destroyBlocks;
 
 	// Use this for initialization
 	void Start () {

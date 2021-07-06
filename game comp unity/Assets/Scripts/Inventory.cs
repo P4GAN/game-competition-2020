@@ -7,8 +7,8 @@ public class Inventory : MonoBehaviour
 {
 
     public List<Item> InventoryItems;
-    public GameObject InventoryPanelGameObject;
-    public GameObject InventoryPanelGameObjectInstance;
+    public GameObject InventoryPanel;
+    public GameObject InventoryPanelInstance;
 
     public GameObject canvas;
 
@@ -24,13 +24,17 @@ public class Inventory : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        canvas = GameObject.Find("Canvas");
+        Debug.Log("I");
+        canvas = SceneReferences.canvas;
 
+
+Debug.Log(canvas);
+Debug.Log(SceneReferences.canvas);
         int inventorySize = inventoryWidth * inventoryHeight;
 
-        InventoryPanelGameObjectInstance = Instantiate(InventoryPanelGameObject, position, Quaternion.identity);
-        InventoryPanelGameObjectInstance.transform.SetParent(canvas.transform, false);
-        Vector2 InventoryPanelSize = InventoryPanelGameObjectInstance.GetComponent<RectTransform>().sizeDelta;
+        InventoryPanelInstance = Instantiate(InventoryPanel, position, Quaternion.identity);
+        InventoryPanelInstance.transform.SetParent(canvas.transform, false);
+        Vector2 InventoryPanelSize = InventoryPanelInstance.GetComponent<RectTransform>().sizeDelta;
         Vector2 InventorySlotSize = InventorySlotGameObject.GetComponent<RectTransform>().sizeDelta;
 
         int inventoryIndex = 0;
@@ -39,8 +43,9 @@ public class Inventory : MonoBehaviour
                 position = new Vector2(((-InventoryPanelSize.x/2) + (InventorySlotSize.x/2) + 5 + (x * 110)), ((-InventoryPanelSize.y/2) + (InventorySlotSize.y/2) + 5 + (y * 110)));
                 GameObject InventorySlotInstance = Instantiate(InventorySlotGameObject, position, Quaternion.identity); 
                 InventorySlotInstance.GetComponent<InventorySlot>().inventoryIndex = inventoryIndex;
+                InventoryItems[inventoryIndex] = emptyItem.GetComponent<ItemData>().item.Clone();
                 inventoryIndex += 1;
-                InventorySlotInstance.transform.SetParent(InventoryPanelGameObjectInstance.transform, false);
+                InventorySlotInstance.transform.SetParent(InventoryPanelInstance.transform, false);
                 InventorySlots.Add(InventorySlotInstance);
             }
         }
@@ -65,8 +70,8 @@ public class Inventory : MonoBehaviour
 
             //make new item object to update
             GameObject newItem = Instantiate(emptyItem, transform.position, Quaternion.identity);
-            if (InventoryItems[i].itemAmount != 0 && InventoryItems[i].itemID != 0) {
-                newItem.GetComponent<Image>().sprite = ItemControl.itemList[InventoryItems[i].itemID].GetComponent<SpriteRenderer>().sprite;
+            if (InventoryItems[i].itemAmount != 0 && InventoryItems[i].itemID != "empty") {
+                newItem.GetComponent<Image>().sprite = ItemControl.itemDictionary[InventoryItems[i].itemID].GetComponent<SpriteRenderer>().sprite;
                 newItem.GetComponent<ItemData>().item = InventoryItems[i];
             }
             else {
@@ -100,7 +105,7 @@ public class Inventory : MonoBehaviour
             InventoryItems[index].itemAmount += amount;
         }
         else {
-            index = InventoryItems.FindIndex(x => x.itemID == 0);
+            index = InventoryItems.FindIndex(x => x.itemID == "empty");
             InventoryItems[index] = item;
             InventoryItems[index].itemAmount += amount;
         }
@@ -108,21 +113,22 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void AddItem(int itemID, int amount) {
+    public void AddItem(string itemID, int amount) {
         int index = InventoryItems.FindIndex(x => x.itemID == itemID);
         if (index != -1) {
             InventoryItems[index].itemAmount += amount;
         }
         else {
-            index = InventoryItems.FindIndex(x => x.itemID == 0);
-            InventoryItems[index] = ItemControl.itemList[itemID].GetComponent<ItemData>().item.Clone();
+            index = InventoryItems.FindIndex(x => x.itemID == "empty");
+            Debug.Log(index);
+            InventoryItems[index] = ItemControl.itemDictionary[itemID].GetComponent<ItemData>().item.Clone();
             InventoryItems[index].itemAmount += amount;
         }
         UpdateInventoryUI();
 
     }
 
-    public bool ItemInInventory(int itemID, int amount) {
+    public bool ItemInInventory(string itemID, int amount) {
         int totalAmount = 0;
         for (int i = 0; i < InventoryItems.Count; i++) {
             if (InventoryItems[i].itemID == itemID) { 
@@ -141,7 +147,7 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public void RemoveItem(int itemID, int amount) {
+    public void RemoveItem(string itemID, int amount) {
         for (int i = 0; i < InventoryItems.Count; i++) {
             if (InventoryItems[i].itemID == itemID) { 
                 if (amount < InventoryItems[i].itemAmount) {

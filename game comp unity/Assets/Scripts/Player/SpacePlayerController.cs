@@ -8,8 +8,9 @@ public class SpacePlayerController : MonoBehaviour
     public Rigidbody2D rb2d;
     public float moveForce = 1f;
     public float rotateForce = 1f;
-    public static bool inShip = false;
-    public static GameObject ship;
+    public static bool playerInShip = false;
+    public Vector2 y = new Vector2(0, 1);
+    public Vector2 x = new Vector2(1, 0);
 
     // Start is called before the first frame update
     void Start()
@@ -21,18 +22,18 @@ public class SpacePlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     { 
-        if (!inShip) {
+        if (!playerInShip) {
             if (Input.GetKey(KeyCode.W)) {
-                rb2d.AddForce(transform.up * moveForce);
+                rb2d.AddForce(y * moveForce);
             }
             if (Input.GetKey(KeyCode.A)) {
-                rb2d.AddForce(-transform.right * moveForce);
+                rb2d.AddForce(-x * moveForce);
             }
             if (Input.GetKey(KeyCode.S)) {
-                rb2d.AddForce(-transform.up * moveForce);
+                rb2d.AddForce(-y * moveForce);
             }
             if (Input.GetKey(KeyCode.D)) {
-                rb2d.AddForce(transform.right * moveForce);
+                rb2d.AddForce(x * moveForce);
             }
 
             if (Input.GetKey(KeyCode.Q)) {

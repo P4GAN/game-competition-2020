@@ -101,7 +101,7 @@ MonoBehaviour:
     itemAmount: 0
     itemType: block
     itemCaptionString: aluminum ore
-    mass: 3000
+    mass: 3
 --- !u!61 &2078709717370632615
 BoxCollider2D:
   m_ObjectHideFlags: 0

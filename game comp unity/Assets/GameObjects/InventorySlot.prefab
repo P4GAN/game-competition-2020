@@ -93,6 +93,7 @@ MonoBehaviour:
   containedItem: {fileID: 6711809291055681833}
   mouseOver: 0
   itemCaption: {fileID: 0}
+  hotbarSlot: 0
 --- !u!1001 &9119294300864588829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -159,6 +160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: '00empty '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923713118451647009, guid: bcf057de7f0e5482f8be90dfe42d15e6,
+        type: 3}
+      propertyPath: item.itemID
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5122133144062080021, guid: bcf057de7f0e5482f8be90dfe42d15e6,
         type: 3}

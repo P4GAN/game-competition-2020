@@ -19,7 +19,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     // Start is called before the first frame update
     void Awake()
     {
-        itemCaption = GameObject.Find("Canvas").transform.Find("ItemCaption").gameObject;
+        itemCaption = SceneReferences.itemCaption;
     }
 
     // Update is called once per frame

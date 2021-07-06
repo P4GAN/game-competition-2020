@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    itemID: 20
+    itemID: ceramic
     itemName: ceramic
-    itemAmount: 1
+    itemAmount: 0
     itemType: block
     itemCaptionString: ceramic
     mass: 3000

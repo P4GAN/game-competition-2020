@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1722685006577526917}
   - component: {fileID: 8147603599430544871}
   - component: {fileID: 921204427219255008}
-  - component: {fileID: 2078709717370632615}
+  - component: {fileID: 7616381507395471355}
+  - component: {fileID: -5867001200578481221}
   m_Layer: 0
   m_Name: cockpit
   m_TagString: Untagged
@@ -96,13 +97,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    itemID: 57
+    itemID: cockpit
     itemName: cockpit
-    itemAmount: 1
+    itemAmount: 0
     itemType: block
     itemCaptionString: cockpit
     mass: 3000
---- !u!61 &2078709717370632615
+--- !u!114 &7616381507395471355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923884654879135883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28560cbdc0b6416889beb45700c4af3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockType: cockpit
+  canvas: {fileID: 0}
+--- !u!61 &-5867001200578481221
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -114,7 +129,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -126,5 +141,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.16, y: 2.33}
   m_EdgeRadius: 0

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item:
-    itemID: 0
+    itemID: empty
     itemName: empty
     itemAmount: 0
     itemType: 

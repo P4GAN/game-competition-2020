@@ -3,12 +3,14 @@ using System.IO;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+
 
 [Serializable] 
 public class BlockObject {
     public float gridX;
     public float gridY;
-    public int blockID;
+    public string blockID;
 }
 
 [Serializable]
@@ -35,19 +37,24 @@ public class PlayerObject {
 
 [Serializable]
 public class WorldObject {
-    public List<AsteroidObject> asteroidList;
+    public int seed;
     public PlayerObject playerObject;
+    public List<AsteroidObject> asteroidList;
 }
 
 public class WorldBuilder : MonoBehaviour
 {
-    public GameObject asteroidGameObject;
-    public List<GameObject> asteroidGameObjectList;
-    public GameObject player;
+    public int seed;    
+    public GameObject setAsteroidGameObject;
+    public static GameObject asteroidGameObject;
+    public static List<GameObject> asteroidGameObjectList = new List<GameObject>();
+    public static GameObject player;
     public GameObject playerPrefab;
     public ProceduralGeneration proceduralGenerationScript;
 
     void Awake() {
+        Debug.Log("W");
+        asteroidGameObject = setAsteroidGameObject;
         if (File.Exists("world.json")) {
             LoadWorld("world.json");
 
@@ -55,16 +62,18 @@ public class WorldBuilder : MonoBehaviour
         else {
             GenerateWorld();
         }
+        UnityEngine.Random.InitState(seed);
     }
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.P)) {
-            SaveWorld(asteroidGameObjectList, player);
+            SaveWorld(asteroidGameObjectList, player, seed);
         }
     }
 
-    void SaveWorld(List<GameObject> AsteroidList, GameObject Player) {
+    void SaveWorld(List<GameObject> AsteroidList, GameObject Player, int seed) {
         WorldObject worldObject = new WorldObject();
+        worldObject.seed = seed;
         worldObject.asteroidList = new List<AsteroidObject>();
 
         foreach (GameObject asteroid in AsteroidList) {
@@ -110,6 +119,7 @@ public class WorldBuilder : MonoBehaviour
     void LoadWorld(string fileName) {
         string json = File.ReadAllText(fileName);
         WorldObject worldObject = JsonUtility.FromJson<WorldObject>(json);
+        seed = worldObject.seed;
 
         foreach (AsteroidObject asteroidObject in worldObject.asteroidList) {
             GameObject asteroidGameObjectInstance = Instantiate(asteroidGameObject, new Vector2(asteroidObject.x, asteroidObject.y), Quaternion.Euler(0, 0, asteroidObject.angle));
@@ -118,8 +128,8 @@ public class WorldBuilder : MonoBehaviour
                 GameObject blockObjectInstance = asteroidBlockControlScript.PlaceBlock(blockObject.blockID, asteroidBlockControlScript.gridPositionToGamePosition(new Vector2(blockObject.gridX, blockObject.gridY))); 
             }
 
-            asteroidGameObjectInstance.GetComponent<Rigidbody2D>().velocity = new Vector2(asteroidObject.velocityX, asteroidObject.velocityY);
-            asteroidGameObjectInstance.GetComponent<Rigidbody2D>().angularVelocity = asteroidObject.angularVelocity;
+            asteroidBlockControlScript.rb2d.velocity = new Vector2(asteroidObject.velocityX, asteroidObject.velocityY);
+            asteroidBlockControlScript.rb2d.angularVelocity = asteroidObject.angularVelocity;
             asteroidGameObjectList.Add(asteroidGameObjectInstance);
         }
 
@@ -129,14 +139,36 @@ public class WorldBuilder : MonoBehaviour
         playerGameObjectInstance.GetComponent<Inventory>().InventoryItems = worldObject.playerObject.InventoryItems;
         playerGameObjectInstance.name = "player";
         player = playerGameObjectInstance;
+
+        player.GetComponent<Inventory>().UpdateInventoryUI();
+
+        ItemControl.selectedAsteroid = asteroidGameObjectList[0];
+        ItemControl.AsteroidBlockControlScript = ItemControl.selectedAsteroid.GetComponent<AsteroidBlockControl>();
     }
 
     void GenerateWorld() {
+        seed = UnityEngine.Random.Range(-2147483647, 2147483647);
+
         player = Instantiate(playerPrefab, new Vector2(0, 15), Quaternion.identity);
         player.name = "player";
+        player.GetComponent<Inventory>().AddItem("pickaxe", 1);
+        player.GetComponent<Inventory>().UpdateInventoryUI();
+
         proceduralGenerationScript = GetComponent<ProceduralGeneration>();
-        //asteroidGameObjectList = proceduralGenerationScript.RandomSpawning(64, 1024, 1024);
+            
+        float startTime = Time.realtimeSinceStartup;
+
+        //asteroidGameObjectList = proceduralGenerationScript.RandomSpawning(64, 512, 512);
         asteroidGameObjectList.Add(proceduralGenerationScript.CreateAsteroid(0f, 0f, 10f, 5f));
-        SaveWorld(asteroidGameObjectList, player);
+
+
+
+        SaveWorld(asteroidGameObjectList, player, seed);
+
+        Debug.Log(asteroidGameObjectList.Count);
+        Debug.Log(Time.realtimeSinceStartup-startTime);
+
+        ItemControl.selectedAsteroid = asteroidGameObjectList[0];
+        ItemControl.AsteroidBlockControlScript = ItemControl.selectedAsteroid.GetComponent<AsteroidBlockControl>();
     }
 }

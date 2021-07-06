@@ -1,13 +1,9 @@
 {
     "CraftingRecipeList": [
         {
-            "CraftingResult": 11,
-            "CraftingResultName": "coal",
+            "CraftingResult": "coal",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                2
-            ],
-            "CraftingIngredientNames": [
                 "coal ore"
             ],
             "CraftingIngredientAmounts": [
@@ -15,13 +11,9 @@
             ]
         },
         {
-            "CraftingResult": 12,
-            "CraftingResultName": "aluminum",
+            "CraftingResult": "aluminum",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                3
-            ],
-            "CraftingIngredientNames": [
                 "aluminum ore"
             ],
             "CraftingIngredientAmounts": [
@@ -29,13 +21,9 @@
             ]
         },
         {
-            "CraftingResult": 13,
-            "CraftingResultName": "iron",
+            "CraftingResult": "iron",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                4
-            ],
-            "CraftingIngredientNames": [
                 "iron ore"
             ],
             "CraftingIngredientAmounts": [
@@ -43,13 +31,9 @@
             ]
         },
         {
-            "CraftingResult": 14,
-            "CraftingResultName": "titanium",
+            "CraftingResult": "titanium",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                5
-            ],
-            "CraftingIngredientNames": [
                 "titanium ore"
             ],
             "CraftingIngredientAmounts": [
@@ -57,13 +41,9 @@
             ]
         },
         {
-            "CraftingResult": 15,
-            "CraftingResultName": "copper",
+            "CraftingResult": "copper",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                6
-            ],
-            "CraftingIngredientNames": [
                 "copper ore"
             ],
             "CraftingIngredientAmounts": [
@@ -71,13 +51,9 @@
             ]
         },
         {
-            "CraftingResult": 16,
-            "CraftingResultName": "magnesium",
+            "CraftingResult": "magnesium",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                7
-            ],
-            "CraftingIngredientNames": [
                 "magnesium ore"
             ],
             "CraftingIngredientAmounts": [
@@ -85,13 +61,9 @@
             ]
         },
         {
-            "CraftingResult": 17,
-            "CraftingResultName": "cobalt",
+            "CraftingResult": "cobalt",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                8
-            ],
-            "CraftingIngredientNames": [
                 "cobalt ore"
             ],
             "CraftingIngredientAmounts": [
@@ -99,13 +71,9 @@
             ]
         },
         {
-            "CraftingResult": 18,
-            "CraftingResultName": "uranium",
+            "CraftingResult": "uranium",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                9
-            ],
-            "CraftingIngredientNames": [
                 "uranium ore"
             ],
             "CraftingIngredientAmounts": [
@@ -113,13 +81,9 @@
             ]
         },
         {
-            "CraftingResult": 19,
-            "CraftingResultName": "silicon",
+            "CraftingResult": "silicon",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                1
-            ],
-            "CraftingIngredientNames": [
                 "stone"
             ],
             "CraftingIngredientAmounts": [
@@ -127,13 +91,9 @@
             ]
         },
         {
-            "CraftingResult": 20,
-            "CraftingResultName": "ceramic",
+            "CraftingResult": "ceramic",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                1
-            ],
-            "CraftingIngredientNames": [
                 "stone"
             ],
             "CraftingIngredientAmounts": [
@@ -141,13 +101,9 @@
             ]
         },
         {
-            "CraftingResult": 21,
-            "CraftingResultName": "galacium",
+            "CraftingResult": "galacium",
             "CraftingResultAmount": 1,
             "CraftingIngredients": [
-                10
-            ],
-            "CraftingIngredientNames": [
                 "galacium ore"
             ],
             "CraftingIngredientAmounts": [
@@ -155,14 +111,9 @@
             ]
         },
         {
-            "CraftingResult": 22,
-            "CraftingResultName": "steel",
+            "CraftingResult": "steel",
             "CraftingResultAmount": 10,
             "CraftingIngredients": [
-                13,
-                11
-            ],
-            "CraftingIngredientNames": [
                 "iron",
                 "coal"
             ],
@@ -170,6 +121,209 @@
                 9,
                 1
             ]
+        },
+        {
+            "CraftingResult": "copper wire",
+            "CraftingResultAmount": 10,
+            "CraftingIngredients": [
+                "copper"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "explosive",
+            "CraftingResultAmount": 5,
+            "CraftingIngredients": [
+                "magnesium"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "basic battery",
+            "CraftingResultAmount": 10,
+            "CraftingIngredients": [
+                "copper"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "advanced battery",
+            "CraftingResultAmount": 10,
+            "CraftingIngredients": [
+                "cobalt"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "electromagnet",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "cobalt",
+                "copper wire"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                5
+            ]
+        },
+        {
+            "CraftingResult": "computer",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "silicon",
+                "basic battery",
+                "aluminum"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "CraftingResult": "graphene",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "coal"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "silicone",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "silicon"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "riftsteel",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "steel",
+                "galacium"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                1
+            ]
+        },
+        {
+            "CraftingResult": "bullet",
+            "CraftingResultAmount": 50,
+            "CraftingIngredients": [
+                "steel",
+                "explosive"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                1
+            ]
+        },
+        {
+            "CraftingResult": "explosive bullet",
+            "CraftingResultAmount": 50,
+            "CraftingIngredients": [
+                "steel",
+                "explosive"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                2
+            ]
+        },
+        {
+            "CraftingResult": "railgun projectile",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "steel"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "missile",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "steel",
+                "explosive",
+                "computer"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "CraftingResult": "pickaxe",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "steel"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "drill",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "steel",
+                "electromagnet",
+                "basic battery"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                1,
+                1
+            ]
+        },
+        {
+            "CraftingResult": "basic ion thruster",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "aluminum",
+                "electromagnet"
+            ],
+            "CraftingIngredientAmounts": [
+                1,
+                1
+            ]
+        },
+        {
+            "CraftingResult": "light armor block",
+            "CraftingResultAmount": 1,
+            "CraftingIngredients": [
+                "aluminum"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
+        },
+        {
+            "CraftingResult": "light armor block half",
+            "CraftingResultAmount": 2,
+            "CraftingIngredients": [
+                "light armor block"
+            ],
+            "CraftingIngredientAmounts": [
+                1
+            ]
         }
+
     ]
 }

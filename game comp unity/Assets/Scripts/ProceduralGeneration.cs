@@ -6,6 +6,7 @@ public class ProceduralGeneration : MonoBehaviour
 {
 
     public GameObject asteroid;
+    public GameObject test;
     public float radius = 7f;
     /*public float scale = 5f;
     public float modifier = 0f;*/
@@ -31,14 +32,14 @@ public class ProceduralGeneration : MonoBehaviour
             for (int y = -distanceY; y < distanceY; y += (minimumDistance * 3)) {
                 if (Random.value < 0.5) {
                     asteroidList.Add(CreateAsteroid(Random.Range(x, x + distanceX), Random.Range(y, y + distanceY), Random.Range(10, 15), Random.Range(0, 10)));
-                
+                    //asteroidList.Add(Instantiate(test, new Vector2(x, y), Quaternion.identity));
                 }
             }
         }
         return asteroidList;
     }
 
-    void SpawnOres(float minX, float maxX, float minY, float maxY, int blockID, float spread, float rarity, AsteroidBlockControl AsteroidBlockControlScript) {
+    void SpawnOres(float minX, float maxX, float minY, float maxY, string blockID, float spread, float rarity, AsteroidBlockControl AsteroidBlockControlScript) {
         //good for now, however later we need guaranteed amount of ore spawning and making it spawn in veins
         //pick random points and then use iterative process to create a patchs
         float randomOre = Random.value;
@@ -81,23 +82,26 @@ public class ProceduralGeneration : MonoBehaviour
                 noise *= scale;
                 noise += modifier;
 
-                float distance = Mathf.Sqrt(Mathf.Pow(x - centerX, 2) + Mathf.Pow(y - centerY, 2));
+                float distanceSquared = (x - centerX) * (x - centerX) + (y - centerY) * (y - centerY);
 
                 //change this to create a minimum and maximum distances like noise + distance > minimum
 
-                if (noise - distance > 0) {
+                if (noise * noise - distanceSquared > 0) {
                     Vector2 blockPos = new Vector2 (x, y);
 
                         mass += 1;
-                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock(1, blockPos);
+                        GameObject placedBlock = AsteroidBlockControlScript.PlaceBlock("stone", blockPos);
                     
                 }
             }
         }
 
-        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, 4, 3, 0.7f, AsteroidBlockControlScript);
-        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, 5, 3, 0.7f, AsteroidBlockControlScript);
-        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, 6, 3, 0.7f, AsteroidBlockControlScript);
+        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, "iron ore", 3, 0.7f, AsteroidBlockControlScript);
+        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, "copper ore", 3, 0.7f, AsteroidBlockControlScript);
+        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, "aluminum ore", 3, 0.7f, AsteroidBlockControlScript);
+        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, "cobalt ore", 3, 0.7f, AsteroidBlockControlScript);
+        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, "coal ore", 3, 0.7f, AsteroidBlockControlScript);
+        SpawnOres(centerX - maxPerlinValue, centerX + maxPerlinValue, centerY - maxPerlinValue, centerY + maxPerlinValue, "magnesium ore", 3, 0.7f, AsteroidBlockControlScript);
 
         return asteroidInstance;
 

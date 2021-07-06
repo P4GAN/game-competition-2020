@@ -11,7 +11,6 @@ public class EnemyPathfinding : MonoBehaviour
     public float pathfindingTimer = 0f;
     public float pathfindingInterval = 0.5f;
 
-    public GameObject pathfindingGameObject;
     public Pathfinding pathfindingScript;
     public Vector2 moveDirection;
     public Rigidbody2D rb2d;
@@ -19,7 +18,6 @@ public class EnemyPathfinding : MonoBehaviour
 
     void Start()
     {
-        pathfindingScript = pathfindingGameObject.GetComponent<Pathfinding>();
         rb2d = GetComponent<Rigidbody2D>();
     }
 
@@ -44,9 +42,12 @@ public class EnemyPathfinding : MonoBehaviour
             else {
                 moveDirection = (targetPosition - transform.position).normalized;
             }
-            for (int i = 0; i < pathVectorList.Count - 1; i++) {
-                Debug.DrawLine(pathVectorList[i], pathVectorList[i + 1]);
-            }
+            
+        }
+
+        for (int i = 0; i < pathVectorList.Count - 1; i++) {
+            Debug.DrawLine(pathVectorList[i], pathVectorList[i + 1], Color.white, 2.5f);
+
         }
     }
 
@@ -61,8 +62,13 @@ public class EnemyPathfinding : MonoBehaviour
             pathIndex = 0;
             Vector2 startPosition = new Vector2(Mathf.RoundToInt(transform.position.x), Mathf.RoundToInt(transform.position.y));
             Vector2 endPosition = new Vector2(Mathf.RoundToInt(position.x), Mathf.RoundToInt(position.y));
+
+
             float startTime = Time.realtimeSinceStartup;
+
             pathVectorList = pathfindingScript.CreatePath(startPosition, endPosition);
+
+
             Debug.Log(Time.realtimeSinceStartup-startTime);
 
         }

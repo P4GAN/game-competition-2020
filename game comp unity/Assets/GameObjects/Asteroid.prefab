@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 193722923712682924}
   - component: {fileID: 285345554686428474}
   - component: {fileID: 3066645803777746714}
+  - component: {fileID: 3225549794751453265}
   m_Layer: 0
   m_Name: Asteroid
   m_TagString: Untagged
@@ -90,6 +91,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mass: 0
+  rb2d: {fileID: 193722923712682924}
+  isShip: 0
+--- !u!114 &3225549794751453265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670318208367838893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1e7a67ff6ff64d24897a68069276c4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thrusters: []
+  rotationWheels: []
+  thrusterForces:
+  - 0
+  - 0
+  - 0
+  - 0
+  rotateForce: 1000
+  rb2d: {fileID: 193722923712682924}
+  shipCreated: 0
+  shipSelected: 0
+  cockpit: {fileID: 0}
 --- !u!1 &1489597478459227884
 GameObject:
   m_ObjectHideFlags: 0

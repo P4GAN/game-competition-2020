@@ -16,8 +16,8 @@ public class Background : MonoBehaviour
 
     void Start()
     {
-        rb2d = GameObject.Find("player").GetComponent<Rigidbody2D>();
-        startPosition = GameObject.Find("player").transform.position;
+        rb2d = WorldBuilder.player.GetComponent<Rigidbody2D>();
+        startPosition = WorldBuilder.player.transform.position;
         for (int i = 0; i < speeds.Count; i++) {
             layerList.Add(Instantiate(backgroundPrefabs[i], startPosition, Quaternion.identity)); 
         }

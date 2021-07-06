@@ -8,7 +8,7 @@ public class CameraScript : MonoBehaviour
     GameObject player;
     void Start()
     {
-        player = GameObject.Find("player");
+        player = WorldBuilder.player;
     }
 
     // Update is called once per frame

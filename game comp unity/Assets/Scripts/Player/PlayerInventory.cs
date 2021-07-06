@@ -9,6 +9,8 @@ public class PlayerInventory : MonoBehaviour
 
     public Inventory InventoryScript;
     public int inventoryIndex;
+    public float inventoryScroll;
+    public float inventoryScrollSpeed;
     public GameObject canvas;
 
     public GameObject inventoryPanel;
@@ -25,13 +27,11 @@ public class PlayerInventory : MonoBehaviour
     void Start()
     {
         InventoryScript = GetComponent<Inventory>();
-        inventoryPanel = InventoryScript.InventoryPanelGameObjectInstance;
-        hotbarIndicator = GameObject.Find("HotbarIndicator");
-        for (int i = 0; i < 10; i++) {
-            hotbarSlots[i] = GameObject.Find("HotbarSlot" + i.ToString());
-        }
-        currentHeldGameObject = GameObject.Find("00empty");
-        canvas = GameObject.Find("Canvas");
+        inventoryPanel = InventoryScript.InventoryPanelInstance;
+        hotbarIndicator = SceneReferences.HotbarIndicator;
+        hotbarSlots = SceneReferences.hotbarSlots;
+        currentHeldGameObject = SceneReferences.CurrentHeldGameObject;
+        canvas = SceneReferences.canvas;
     }
 
     // Update is called once per frame
@@ -50,19 +50,14 @@ public class PlayerInventory : MonoBehaviour
             currentHeldGameObject.transform.position = Input.mousePosition;
         }
 
-        //if (Input.mouseScrollDelta.y > 0) {
+        inventoryScroll += inventoryScrollSpeed * Input.mouseScrollDelta.y;
+        inventoryScroll = inventoryScroll % hotbarSize;
 
-
-        if (Input.GetKeyDown(KeyCode.M)) {
-            inventoryIndex += 1;
-        } 
-        if (Input.GetKeyDown(KeyCode.N)) {
-            inventoryIndex -= 1;
-        } 
-        inventoryIndex = inventoryIndex % hotbarSize;
-        if (inventoryIndex < 0) {
-            inventoryIndex = hotbarSize + inventoryIndex;
+        if (inventoryScroll < 0) {
+            inventoryScroll = hotbarSize + inventoryScroll;
         }
+        inventoryIndex = (int)inventoryScroll;
+
         hotbarIndicator.transform.position = hotbarSlots[inventoryIndex].transform.position;
     }
 
@@ -81,7 +76,7 @@ public class PlayerInventory : MonoBehaviour
 
             GameObject item = Instantiate(emptyItem, transform.position, Quaternion.identity);
             if (InventoryScript.InventoryItems[i].itemAmount != 0) {
-                item.GetComponent<Image>().sprite = ItemControl.itemList[InventoryScript.InventoryItems[i].itemID].GetComponent<SpriteRenderer>().sprite;
+                item.GetComponent<Image>().sprite = ItemControl.itemDictionary[InventoryScript.InventoryItems[i].itemID].GetComponent<SpriteRenderer>().sprite;
                 item.GetComponent<ItemData>().item = InventoryScript.InventoryItems[i];
             }
 
@@ -109,7 +104,7 @@ public class PlayerInventory : MonoBehaviour
         //when inventory slot is right clicked, if there is no current held item and there is an item in the slot, split the slot 
         //and put the smaller half in the slot
         if (!InventorySlotScript.hotbarSlot) {
-            if (currentHeldGameObject.GetComponent<ItemData>().item.itemID == 0) {
+            if (currentHeldGameObject.GetComponent<ItemData>().item.itemID == "empty") {
                 Destroy(currentHeldGameObject);
                 currentHeldGameObject = Instantiate(emptyItem, transform.position, Quaternion.identity);
                 currentHeldGameObject.transform.SetParent(canvas.transform);
@@ -117,7 +112,7 @@ public class PlayerInventory : MonoBehaviour
                 currentHeldGameObject.GetComponent<ItemData>().item = InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].Clone();
 
                 currentHeldGameObject.GetComponent<ItemData>().item.itemAmount = (InventoryScript.InventoryItems[InventorySlotScript.inventoryIndex].itemAmount + 1)/2;
-                currentHeldGameObject.GetComponent<Image>().sprite = ItemControl.itemList[currentHeldGameObject.GetComponent<ItemData>().item.itemID].GetComponent<SpriteRenderer>().sprite;
+                currentHeldGameObject.GetComponent<Image>().sprite = ItemControl.itemDictionary[currentHeldGameObject.GetComponent<ItemData>().item.itemID].GetComponent<SpriteRenderer>().sprite;
 
                 currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldGameObject.GetComponent<ItemData>().item.itemAmount.ToString();
                 if (currentHeldGameObject.GetComponent<ItemData>().item.itemAmount == 0 || currentHeldGameObject.GetComponent<ItemData>().item.itemAmount == 1) {
@@ -166,7 +161,7 @@ public class PlayerInventory : MonoBehaviour
                 Destroy(InventorySlotScript.containedItem);
 
             }
-            currentHeldGameObject.GetComponent<Image>().sprite = ItemControl.itemList[currentHeldGameObject.GetComponent<ItemData>().item.itemID].GetComponent<SpriteRenderer>().sprite;
+            currentHeldGameObject.GetComponent<Image>().sprite = ItemControl.itemDictionary[currentHeldGameObject.GetComponent<ItemData>().item.itemID].GetComponent<SpriteRenderer>().sprite;
             currentHeldGameObject.transform.SetParent(canvas.transform);
 
             currentHeldGameObject.GetComponentInChildren<Text>().text = currentHeldGameObject.GetComponent<ItemData>().item.itemAmount.ToString();

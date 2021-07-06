@@ -6,9 +6,9 @@ using UnityEngine;
 
 [Serializable]
 public class Item {
-    public int itemID;
-    public string itemName;
-    public int itemAmount;
+    public string itemID = "empty";
+    public string itemName = "empty";
+    public int itemAmount = 0;
     public string itemType; // block, weapon, tool etc affects item usage
     [TextArea]
     public string itemCaptionString;

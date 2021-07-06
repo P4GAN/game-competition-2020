@@ -10,16 +10,48 @@ public class UseItem : MonoBehaviour
     public Inventory InventoryScript;
 
     public PlayerInventory PlayerInventoryScript;
+    public GameObject indicatorBlockPrefab;
+    public static GameObject indicatorBlock;
+    public SpriteRenderer spriteRenderer;
+    public int rotation = 0;
     // Start is called before the first frame update
     void Start()
     {
         InventoryScript = GetComponent<Inventory>();
         PlayerInventoryScript = GetComponent<PlayerInventory>();
+        indicatorBlock = Instantiate(indicatorBlockPrefab, transform.position, Quaternion.identity);
+        indicatorBlock.SetActive(false);
+        spriteRenderer = indicatorBlock.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType == "block" && 
+            ItemControl.selectedAsteroid != null &&
+            ItemControl.AsteroidBlockControlScript.IsOccupied(Camera.main.ScreenToWorldPoint(Input.mousePosition)) == false &&
+            ItemControl.AsteroidBlockControlScript.isAdjacent(Camera.main.ScreenToWorldPoint(Input.mousePosition)) == true) {
+                if (!indicatorBlock.activeSelf) {
+                    indicatorBlock.SetActive(true);
+                }
+
+                indicatorBlock.transform.position = ItemControl.AsteroidBlockControlScript.gridPositionToGamePosition(ItemControl.AsteroidBlockControlScript.gamePositionToGridPosition(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+                indicatorBlock.transform.rotation = Quaternion.Euler(0, 0, rotation + ItemControl.selectedAsteroid.transform.eulerAngles.z);
+                spriteRenderer.sprite = ItemControl.itemDictionary[InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemID].GetComponent<SpriteRenderer>().sprite; 
+            
+            
+        }
+        else {
+            if (indicatorBlock.activeSelf) {
+                indicatorBlock.SetActive(false);
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.R)) {
+            rotation += 90;
+            rotation = rotation % 360;
+        }
+
         if (Input.GetMouseButton(0)) {
             UseItemLeftClickHold();
         }
@@ -44,6 +76,13 @@ public class UseItem : MonoBehaviour
     public void UseItemLeftClickDown() {
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+        if (ItemControl.AsteroidBlockControlScript.IsOccupied(mousePos)) {
+            if (ItemControl.AsteroidBlockControlScript.asteroidBlocks[ItemControl.AsteroidBlockControlScript.gamePositionToGridPosition(mousePos)].GetComponent<BlockClick>() != null) {
+                ItemControl.AsteroidBlockControlScript.asteroidBlocks[ItemControl.AsteroidBlockControlScript.gamePositionToGridPosition(mousePos)].GetComponent<BlockClick>().BlockClicked();
+            }
+        }
+
+
         string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
 
         Debug.Log(itemType);
@@ -53,7 +92,7 @@ public class UseItem : MonoBehaviour
             ProjectileFire projectileFireScript = ItemControl.projectileFireScript; 
             int bulletIndex = InventoryScript.InventoryItems.FindIndex(x => x.itemName == "bullet");
             if (bulletIndex != -1 && InventoryScript.InventoryItems[bulletIndex].itemAmount > 0) {
-                projectileFireScript.MouseFireProjectile(ItemControl.itemList[32], gameObject);
+                projectileFireScript.MouseFireProjectile(ItemControl.itemDictionary["bullet"], gameObject);
                 InventoryScript.RemoveItemAtIndex(bulletIndex, 1);
             }
         }
@@ -68,9 +107,8 @@ public class UseItem : MonoBehaviour
         */
 
         if (itemType == "tool") {
-            AsteroidBlockControl AsteroidBlockControlScript = ItemControl.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
             
-            GameObject block = AsteroidBlockControlScript.RemoveBlock(mousePos);
+            GameObject block = ItemControl.AsteroidBlockControlScript.RemoveBlock(mousePos);
             Debug.Log(block);
             if (block) {
                 InventoryScript.AddItem(block.GetComponent<ItemData>().item, 1);
@@ -103,9 +141,9 @@ public class UseItem : MonoBehaviour
         string itemType = InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemType;  
 
         if (itemType == "block") {
-            AsteroidBlockControl AsteroidBlockControlScript = ItemControl.selectedAsteroid.GetComponent<AsteroidBlockControl>();;
             if (InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemAmount >= 1) {
-                if (AsteroidBlockControlScript.PlaceBlockPlayer(InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemID, mousePos, true)) {
+                GameObject placedBlock = ItemControl.AsteroidBlockControlScript.PlaceBlockPlayer(InventoryScript.InventoryItems[PlayerInventoryScript.inventoryIndex].itemID, mousePos, true, rotation);
+                if (placedBlock != null) {
                     InventoryScript.RemoveItemAtIndex(PlayerInventoryScript.inventoryIndex, 1);
                 }
 

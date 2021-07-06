@@ -4,78 +4,89 @@ using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    public int nodeWidth;
-    public int nodeHeight;
+    public int chunkSize = 100;
 
-    /*struct Node {
-        public int positionX;
-        public int positionY;
-        public int gridX;
-        public int gridY;
-        public int parentX;
-        public int parentY;
-        public int gCost;
-        public int fCost;
-
-        public Node(Vector2 position) {
-            this.positionX = position.x;
-            this.positionY = position.y;
-            this.
-        }
-    }*/
 
     public Node[,] grid;
 
-    public int startX;
-    public int startY;
+    public Vector2 center = new Vector2();
 
-    public int nodeDistance = 1;
+    public int nodeSeparatingDistance = 1;
 
     public LayerMask mask;
-    public int maxIterations = 100000;
+    public int maxIterations = 100;
+
+    public Vector2 playerChunkPosition = new Vector2();
 
     // Start is called before the first frame update
     void Awake()
     {
-        grid = new Node[nodeHeight, nodeWidth];
-        for (int x = 0; x < nodeWidth; x++) {
-            for (int y = 0; y < nodeHeight; y++) {
-                Vector2 pos = new Vector2(startX + (x * nodeDistance), startY + (y * nodeDistance));
-                grid[x, y] = new Node(pos);
+        grid = new Node[chunkSize * 3, chunkSize * 3];
+        for (int x = -chunkSize * 3 / 2; x < chunkSize * 3 / 2; x++) {
+            for (int y = -chunkSize * 3 / 2; y < chunkSize * 3 / 2; y++) {
+                Vector2 pos = new Vector2(center.x + (x * nodeSeparatingDistance), center.y + (y * nodeSeparatingDistance));
+                grid[x + chunkSize * 3 / 2, y + chunkSize * 3 / 2] = new Node(pos);
             }
         }
     }
 
-    // Update is called once per frame
+
+    
     void Update()
     {
+        Vector2 newPlayerChunkPosition = new Vector2();
+        newPlayerChunkPosition.x = Mathf.Floor((WorldBuilder.player.transform.position.x + (chunkSize * nodeSeparatingDistance / 2))/(chunkSize * nodeSeparatingDistance));
+        newPlayerChunkPosition.y = Mathf.Floor((WorldBuilder.player.transform.position.y + (chunkSize * nodeSeparatingDistance / 2))/(chunkSize * nodeSeparatingDistance));
+
+
+        if (newPlayerChunkPosition != playerChunkPosition) {
+            playerChunkPosition = newPlayerChunkPosition;
+            center.x = newPlayerChunkPosition.x * (chunkSize * nodeSeparatingDistance);
+            center.y = newPlayerChunkPosition.y * (chunkSize * nodeSeparatingDistance);
+            
+            grid = new Node[chunkSize, chunkSize];
+            for (int x = -chunkSize * 3 / 2; x < chunkSize * 3 / 2; x++) {
+                for (int y = -chunkSize * 3 / 2; y < chunkSize * 3 / 2; y++) {
+                    Vector2 pos = new Vector2(center.x + (x * nodeSeparatingDistance), center.y + (y * nodeSeparatingDistance));
+                    grid[x + chunkSize * 3 / 2, y + chunkSize * 3 / 2] = new Node(pos);
+                }
+                
+            }
+
+        }
+        for (int x = -chunkSize * 3 / 2; x < chunkSize * 3 / 2; x++) {
+
+            Vector2 start = new Vector2(center.x + (x * nodeSeparatingDistance), center.y - (nodeSeparatingDistance * chunkSize * 3 / 2));
+            Vector2 end = new Vector2(center.x + (x * nodeSeparatingDistance), center.y + (nodeSeparatingDistance * chunkSize * 3 / 2));
+            Debug.DrawLine(start, end, Color.blue, 1f);
+        }
+
         
     }
 
     List<Node> GetAdjacentNodes(Node node) {
-        int gridPosX = Mathf.RoundToInt((node.position.x - startX)/nodeDistance);
-        int gridPosY = Mathf.RoundToInt((node.position.y - startY)/nodeDistance);
-        List<Node> nodeList = new List<Node>();
-        for (int x = gridPosX - 1; x < gridPosX + 2; x++) {
-            for (int y = gridPosY - 1; y < gridPosY + 2; y++) {
-                if (x < nodeWidth - 1 && x > 0 && y < nodeHeight - 1 && y > 0) {
-                    nodeList.Add(grid[x, y]);
-                }
-            }
-        }
-        return nodeList;
+        return new List<Node>(){
+            new Node(node.worldPosition + new Vector2(-nodeSeparatingDistance, -nodeSeparatingDistance)),
+            new Node(node.worldPosition + new Vector2(-nodeSeparatingDistance, 0)),
+            new Node(node.worldPosition + new Vector2(-nodeSeparatingDistance, nodeSeparatingDistance)),
+            new Node(node.worldPosition + new Vector2(0, -nodeSeparatingDistance)),
+            new Node(node.worldPosition + new Vector2(0, nodeSeparatingDistance)),
+            new Node(node.worldPosition + new Vector2(nodeSeparatingDistance, -nodeSeparatingDistance)),
+            new Node(node.worldPosition + new Vector2(nodeSeparatingDistance, 0)),
+            new Node(node.worldPosition + new Vector2(nodeSeparatingDistance, nodeSeparatingDistance)),
+        };
     }
 
     bool IsWalkable(Node node) {
 
-        return !Physics2D.OverlapCircle(node.position, 0.5f, mask);
+        return !Physics2D.OverlapCircle(node.worldPosition, nodeSeparatingDistance/2, mask);
 
     }
 
 
 
     public List<Vector2> CreatePath(Vector2 start, Vector2 finish) {
-        
+        Debug.Log("j");
         Node startNode = new Node(start);
         Node finishNode = new Node(finish);
         List<Node> openList = new List<Node>(){startNode};
@@ -94,15 +105,15 @@ public class Pathfinding : MonoBehaviour
                 }
             }
             
-            if (lowest.position == finish) {
+            if (lowest.worldPosition == finish) {
                 List<Vector2> path = new List<Vector2>();
                 Node currentNode = lowest;
-                while (currentNode.position != start) {
-                    path.Add(currentNode.position);
+                while (currentNode.worldPosition != start) {
+                    path.Add(currentNode.worldPosition);
                     currentNode = currentNode.parent;
                 }
                 path.Reverse();
-
+                Debug.Log("S");
 
                 return path;
             }
@@ -110,9 +121,9 @@ public class Pathfinding : MonoBehaviour
             openList.Remove(lowest);
             closedList.Add(lowest);
             List<Node> adjacentNodes = GetAdjacentNodes(lowest);
+            Debug.Log(adjacentNodes.Count);
             for (int i = 0; i < adjacentNodes.Count; i++) {
                 if (IsWalkable(adjacentNodes[i]) && !closedList.Contains(adjacentNodes[i])) {
-
                     if (lowest.gCost + GetDistance(lowest, adjacentNodes[i]) < adjacentNodes[i].gCost || !openList.Contains(adjacentNodes[i])) {
 
                         adjacentNodes[i].parent = lowest;
@@ -128,13 +139,14 @@ public class Pathfinding : MonoBehaviour
             
 
         }
+        Debug.Log("non");
         return new List<Vector2>();
 
     }
 
     int GetDistance(Node a, Node b) {
-		int distanceX = Mathf.RoundToInt(Mathf.Abs(a.position.x - b.position.x)/nodeDistance);
-		int distanceY = Mathf.RoundToInt(Mathf.Abs(a.position.y - b.position.y)/nodeDistance);
+		int distanceX = Mathf.RoundToInt(Mathf.Abs(a.worldPosition.x - b.worldPosition.x)/nodeSeparatingDistance);
+		int distanceY = Mathf.RoundToInt(Mathf.Abs(a.worldPosition.y - b.worldPosition.y)/nodeSeparatingDistance);
 
 		if (distanceX > distanceY)
 			return 14 * distanceY + 10 * (distanceX - distanceY);

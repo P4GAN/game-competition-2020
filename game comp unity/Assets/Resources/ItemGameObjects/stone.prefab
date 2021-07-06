@@ -98,10 +98,10 @@ MonoBehaviour:
   item:
     itemID: 1
     itemName: stone
-    itemAmount: 1
+    itemAmount: 0
     itemType: block
     itemCaptionString: stone
-    mass: 3000
+    mass: 3
 --- !u!61 &3108591479957067930
 BoxCollider2D:
   m_ObjectHideFlags: 0

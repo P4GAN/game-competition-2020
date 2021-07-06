@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Node 
 {
-    public Vector2 position;
+    public Vector2 worldPosition;
     public int gCost = int.MaxValue;
     public int hCost = int.MaxValue;
     public Node parent;
 
-    public Node(Vector2 _position) {
-        position = _position;
+    public Node(Vector2 _worldPosition) {
+        worldPosition = _worldPosition;
     }
 
     public int fCost {

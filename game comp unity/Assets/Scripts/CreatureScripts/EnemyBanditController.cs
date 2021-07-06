@@ -21,7 +21,7 @@ public class EnemyBanditController : MonoBehaviour
         enemyPathfindingScript = GetComponent<EnemyPathfinding>();
         roamPosition = RandomPosition();
         enemyPathfindingScript.SetTargetPosition(roamPosition);
-        player = GameObject.Find("player");
+        player = WorldBuilder.player;
     }
 
     // Update is called once per frame
@@ -29,9 +29,10 @@ public class EnemyBanditController : MonoBehaviour
     {
         shootTimer += Time.deltaTime;
         if (state == "roaming") {
+            enemyPathfindingScript.SetTargetPosition(roamPosition);
             if (Mathf.Abs(roamPosition.x - transform.position.x) < 0.5f && Mathf.Abs(roamPosition.y - transform.position.y) < 0.5f) {
                 roamPosition = RandomPosition();
-                enemyPathfindingScript.SetTargetPosition(RandomPosition());
+                Debug.Log("Roam position is " + roamPosition);
             } 
             if (Vector2.Distance(player.transform.position, transform.position) <= chaseDistance) {
                 state = "chase";

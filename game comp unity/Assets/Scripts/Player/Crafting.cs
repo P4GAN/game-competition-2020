@@ -7,11 +7,9 @@ using UnityEngine.UI;
 
 [Serializable]
 public class CraftingRecipe {
-    public int CraftingResult;
-    public string CraftingResultName;
+    public string CraftingResult;
     public int CraftingResultAmount;
-    public List<int> CraftingIngredients;
-    public List<string> CraftingIngredientNames;
+    public List<string> CraftingIngredients;
     public List<int> CraftingIngredientAmounts;
 }
 
@@ -48,23 +46,21 @@ public class Crafting : MonoBehaviour
         string json = File.ReadAllText(fileName);
         CraftingRecipeList = JsonUtility.FromJson<CraftingRecipeObjects>(json).CraftingRecipeList;
 
-        //turns item names into item ids, delete for actual game, keep now to edit crafting recipe json easily using names
+        /*turns item names into item ids, delete for actual game, keep now to edit crafting recipe json easily using names
+
         CraftingRecipeObjects playerRecipes = new CraftingRecipeObjects();
         playerRecipes.CraftingRecipeList = CraftingRecipeList;
 
         for (int i = 0; i < CraftingRecipeList.Count; i++) {
-            playerRecipes.CraftingRecipeList[i].CraftingResult = ItemControl.itemList.FindIndex(x => x.GetComponent<ItemData>().item.itemName == playerRecipes.CraftingRecipeList[i].CraftingResultName);
+            playerRecipes.CraftingRecipeList[i].CraftingResult = ItemControl.itemDictionary.FindIndex(x => x.GetComponent<ItemData>().item.itemName == playerRecipes.CraftingRecipeList[i].CraftingResultName);
             playerRecipes.CraftingRecipeList[i].CraftingIngredients = new List<int>();
             for (int j = 0; j < playerRecipes.CraftingRecipeList[i].CraftingIngredientNames.Count; j++) {
-                playerRecipes.CraftingRecipeList[i].CraftingIngredients.Add(ItemControl.itemList.FindIndex(x => x.GetComponent<ItemData>().item.itemName == playerRecipes.CraftingRecipeList[i].CraftingIngredientNames[j]));
+                playerRecipes.CraftingRecipeList[i].CraftingIngredients.Add(ItemControl.itemDictionary.FindIndex(x => x.GetComponent<ItemData>().item.itemName == playerRecipes.CraftingRecipeList[i].CraftingIngredientNames[j]));
             }
         }
         json = JsonUtility.ToJson(playerRecipes, true);
-        File.WriteAllText(fileName, json);
+        File.WriteAllText(fileName, json);*/
 
-        json = File.ReadAllText(fileName);
-
-        CraftingRecipeList = JsonUtility.FromJson<CraftingRecipeObjects>(json).CraftingRecipeList;
 
         InventoryScript = GetComponent<Inventory>();
         for (int i = 0; i < CraftingRecipeList.Count; i++) {
@@ -75,12 +71,12 @@ public class Crafting : MonoBehaviour
             CraftingRecipeSlotScript.playerGameObject = gameObject;
             CraftingRecipeSlotScript.index = i;
 
-            List<int> itemIndexList = new List<int>(CraftingRecipeList[i].CraftingIngredients);
-            itemIndexList.Sort();
-            for (int j = 0; j < itemIndexList.Count; j++) {
+            List<string> itemNameList = new List<string>(CraftingRecipeList[i].CraftingIngredients);
+            itemNameList.Sort();
+            for (int j = 0; j < itemNameList.Count; j++) {
                 Vector2 itemIconPos = new Vector2(j * itemIconDistance - 75f, 0);
                 GameObject itemIcon = Instantiate(emptyItem, itemIconPos, Quaternion.identity);
-                itemIcon.GetComponent<Image>().sprite = ItemControl.itemList[itemIndexList[j]].GetComponent<SpriteRenderer>().sprite;
+                itemIcon.GetComponent<Image>().sprite = ItemControl.itemDictionary[itemNameList[j]].GetComponent<SpriteRenderer>().sprite;
                 itemIcon.GetComponent<RectTransform>().sizeDelta = itemIconSize;
                 itemIcon.GetComponentInChildren<Text>().text = CraftingRecipeList[i].CraftingIngredientAmounts[j].ToString();
                 if (CraftingRecipeList[i].CraftingIngredientAmounts[j] == 0 || CraftingRecipeList[i].CraftingIngredientAmounts[j] == 1) {
