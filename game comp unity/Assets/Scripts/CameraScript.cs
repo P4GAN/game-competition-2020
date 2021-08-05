@@ -5,15 +5,15 @@ using UnityEngine;
 public class CameraScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    GameObject player;
     void Start()
     {
-        player = WorldBuilder.player;
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10);
+        if (WorldBuilder.player != null) {
+            gameObject.transform.position = new Vector3(WorldBuilder.player.transform.position.x, WorldBuilder.player.transform.position.y, WorldBuilder.player.transform.position.z - 10);
+        }
     }
 }

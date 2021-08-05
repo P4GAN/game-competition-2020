@@ -13,32 +13,38 @@ public class Background : MonoBehaviour
     public List<float> speeds;
     public List<GameObject> layerList = new List<GameObject>();
     public Rigidbody2D rb2d;
+    public bool started = false;
 
-    void Start()
+    public void BackgroundScriptStart()
     {
         rb2d = WorldBuilder.player.GetComponent<Rigidbody2D>();
         startPosition = WorldBuilder.player.transform.position;
         for (int i = 0; i < speeds.Count; i++) {
             layerList.Add(Instantiate(backgroundPrefabs[i], startPosition, Quaternion.identity)); 
         }
+        started = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < layerList.Count; i++) {
-            layerList[i].transform.Translate(-rb2d.velocity * speeds[i]);
+        if (started) {
+            if (!MenuButtons.paused) {
+                for (int i = 0; i < layerList.Count; i++) {
+                    layerList[i].transform.Translate(-rb2d.velocity * speeds[i] * Time.deltaTime);
 
-            if (Mathf.Abs(transform.position.x - layerList[i].transform.position.x) >= backgroundWidth) {
-                float offsetPositionX = (transform.position.x - layerList[i].transform.position.x) % backgroundWidth;
-                layerList[i].transform.position = new Vector3(transform.position.x + offsetPositionX, layerList[i].transform.position.y);
-            }
+                    if (Mathf.Abs(transform.position.x - layerList[i].transform.position.x) >= backgroundWidth) {
+                        float offsetPositionX = (transform.position.x - layerList[i].transform.position.x) % backgroundWidth;
+                        layerList[i].transform.position = new Vector3(transform.position.x + offsetPositionX, layerList[i].transform.position.y);
+                    }
 
-            if (Mathf.Abs(transform.position.y - layerList[i].transform.position.y) >= backgroundHeight) {
-                float offsetPositionY = (transform.position.y - layerList[i].transform.position.y) % backgroundHeight;
-                layerList[i].transform.position = new Vector3(layerList[i].transform.position.x, transform.position.y + offsetPositionY);
+                    if (Mathf.Abs(transform.position.y - layerList[i].transform.position.y) >= backgroundHeight) {
+                        float offsetPositionY = (transform.position.y - layerList[i].transform.position.y) % backgroundHeight;
+                        layerList[i].transform.position = new Vector3(layerList[i].transform.position.x, transform.position.y + offsetPositionY);
+                    }
+            
+                }
             }
-    
         }
     }
 }

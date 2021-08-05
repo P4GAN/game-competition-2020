@@ -53,7 +53,7 @@ public class EnemyBanditController : MonoBehaviour
             }
             if (shootTimer >= shootCooldown) {
                 Vector2 direction = (player.transform.position - transform.position).normalized;
-                ItemControl.projectileFireScript.DirectionFireProjectile(projectile, direction, gameObject);
+                ProjectileFire.DirectionFireProjectile(projectile, direction, gameObject);
                 shootTimer = 0f;
             }
         }

@@ -54,12 +54,7 @@ public class Pathfinding : MonoBehaviour
             }
 
         }
-        for (int x = -chunkSize * 3 / 2; x < chunkSize * 3 / 2; x++) {
 
-            Vector2 start = new Vector2(center.x + (x * nodeSeparatingDistance), center.y - (nodeSeparatingDistance * chunkSize * 3 / 2));
-            Vector2 end = new Vector2(center.x + (x * nodeSeparatingDistance), center.y + (nodeSeparatingDistance * chunkSize * 3 / 2));
-            Debug.DrawLine(start, end, Color.blue, 1f);
-        }
 
         
     }
